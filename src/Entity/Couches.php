@@ -10,9 +10,7 @@ use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Put;
-use App\Controller\CoucheByDemandeIdController;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\Common\Collections\ArrayCollection;
 
 use App\Repository\CouchesRepository;
 use Doctrine\DBAL\Types\Types;
@@ -28,64 +26,47 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
         new Post(),
         new Put(),
         new Delete(),
-        new GetCollection(
-            uriTemplate: '/articleCouchesByDemande/{demandeId}',
-            controller: CoucheByDemandeIdController::class,
-            name: 'CouchesSysteme'
-        )
     ],
     normalizationContext: ['groups' => ['couches:read']],
     denormalizationContext: ['groups' => ['couches:write']]
 )]
-#[ApiFilter(SearchFilter::class, properties: ['Systemes_couche' => 'exact'])]
+#[ApiFilter(SearchFilter::class, properties: ['systeme_couche' => 'exact'])]
 class Couches
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['couches:read'])]
+    #[Groups(['couches:read', 'articleCoucheForDemande:read'])]
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 15, scale: 2, nullable: true)]
-    #[Groups(['couches:read', 'couches:write'])]
+    #[Groups(['couches:read', 'couches:write', 'articleCoucheForDemande:read'])]
     #[SerializedName('epaisseurCouche')]
     private ?string $epaisseur_couche = null;
 
-    #[ORM\Column(type: Types::DECIMAL, precision: 3, scale: 2, nullable: true)]
-    #[Groups(['couches:read', 'couches:write'])]
+    #[ORM\Column(length: 50,nullable: true)]
+    #[Groups(['couches:read', 'couches:write', 'articleCoucheForDemande:read'])]
+    #[SerializedName('nomCouche')]
+    private ?string $nom_couche = null;
+
+
+    #[ORM\Column(type: Types::DECIMAL, precision: 15, scale: 2, nullable: true)]
+    #[Groups(['couches:read', 'couches:write', 'articleCoucheForDemande:read'])]
     #[SerializedName('tarifCouche')]
     private ?string $tarif_couche = null;
 
-    #[ORM\ManyToOne(targetEntity: Articles::class, inversedBy: 'Couches_article')]
-    #[Groups(['couches:read', 'couches:write'])]
-    #[SerializedName('ArticleCouche')]
-    private ?Articles $codeArticle_couche = null;
-
     #[ORM\ManyToOne(targetEntity: Systemes::class, inversedBy: 'Couches_syteme')]
-    #[Groups(['couches:read', 'couches:write'])]
-    #[SerializedName('SystemeCouche')]
-    private ?Systemes $Systemes_couche;
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
+    #[Groups(['couches:read', 'couches:write', 'articleCoucheForDemande:read'])]
+    #[SerializedName('systemeCouche')]
+    private ?Systemes $systeme_couche;
 
-    #[ORM\OneToMany(targetEntity: SurfaceCouches::class, mappedBy: 'couche_surfaceCouche')]
-    #[Groups(['couches:read'])]
-    #[SerializedName('surfaceCouchesCouche')]
-    private ?Collection $surfaceCouches_couche = null;
+    #[ORM\OneToMany(targetEntity: ArticleCouche::class, mappedBy: 'couche_articleCouche')]
+    private ?Collection $articleCouches_couche = null;
 
     public function getId(): ?int
     {
         return $this->id;
-    }
-
-    public function getSurfaceCouche(): ?string
-    {
-        return $this->surface_couche;
-    }
-
-    public function setSurfaceCouche(string $surface_couche): static
-    {
-        $this->surface_couche = $surface_couche;
-
-        return $this;
     }
 
     public function getEpaisseurCouche(): ?string
@@ -105,57 +86,54 @@ class Couches
         return $this->tarif_couche;
     }
 
-    public function setTarifCouche(?string $tarif_couche): static
+    public function setTarifCouche(?string $tarif_couche): void
     {
         $this->tarif_couche = $tarif_couche;
-
-        return $this;
     }
 
-
-    public function getCodeArticleCouche(): ?Articles
+    public function getSystemeCouche(): ?Systemes
     {
-        return $this->codeArticle_couche;
+        return $this->systeme_couche;
     }
 
-    public function setCodeArticleCouche(?Articles $codeArticle_couche): static
+    public function setSystemeCouche(?Systemes $systeme_couche): void
     {
-        $this->codeArticle_couche = $codeArticle_couche;
-
-        return $this;
+        $this->systeme_couche = $systeme_couche;
     }
 
-    public function getSystemesCouche(): ?Systemes
+    public function getArticleCouchesCouche(): ?Collection
     {
-        return $this->Systemes_couche;
+        return $this->articleCouches_couche;
     }
 
-    public function setSystemesCouche(?Systemes $Systemes_couche): void
+    public function addSurfaceCouchesCouche(ArticleCouche $surfaceCouches): static
     {
-        $this->Systemes_couche = $Systemes_couche;
-    }
-
-    public function getSurfaceCouchesCouche(): ?Collection
-    {
-        return $this->surfaceCouches_couche;
-    }
-
-    public function addSurfaceCouchesCouche(SurfaceCouches $surfaceCouches): static
-    {
-        if ($this->surfaceCouches_couche->contains($surfaceCouches)) {
-            $this->surfaceCouches_couche[] = $surfaceCouches;
-            $surfaceCouches->setCoucheSurfaceCouche($this);
+        if ($this->articleCouches_couche->contains($surfaceCouches)) {
+            $this->articleCouches_couche[] = $surfaceCouches;
+            $surfaceCouches->setCoucheArticleCouche($this);
         }
         return $this;
     }
 
-    public function removeSurfaceCouchesCouche(SurfaceCouches $surfaceCouches): static
+    public function removeSurfaceCouchesCouche(ArticleCouche $surfaceCouches): static
     {
-        if ($this->surfaceCouches_couche->removeElement($surfaceCouches)) {
-            if ($surfaceCouches->getCoucheSurfaceCouche() === $this) {
-                $surfaceCouches->setCoucheSurfaceCouche(null);
+        if ($this->articleCouches_couche->removeElement($surfaceCouches)) {
+            if ($surfaceCouches->getCoucheArticleCouche() === $this) {
+                $surfaceCouches->setCoucheArticleCouche(null);
             }
         }
         return $this;
     }
+
+    public function getNomCouche(): ?string
+    {
+        return $this->nom_couche;
+    }
+
+    public function setNomCouche(?string $nom_couche): void
+    {
+        $this->nom_couche = $nom_couche;
+    }
+
+
 }

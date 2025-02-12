@@ -10,15 +10,9 @@ class DemandesCalendar
     #[SerializedName('idDemande')]
     #[Groups(['demandesCalendar:read'])]
     public ?int $id = null;
-
     #[SerializedName('numeroDemande')]
     #[Groups(['demandesCalendar:read'])]
     public ?string $numero_demande = null;
-
-    #[SerializedName('numeroPhaseDemande')]
-    #[Groups(['demandesCalendar:read'])]
-    public ?string $numeroPhase_demande = null;
-
     #[SerializedName('idAffaire')]
     #[Groups(['demandesCalendar:read'])]
     public ?int $id_affaire = null;
@@ -46,6 +40,10 @@ class DemandesCalendar
     #[SerializedName('nombrePieceDemande')]
     #[Groups(['demandesCalendar:read'])]
     public ?int $nombrePiece_demande = null;
+
+    #[SerializedName('dateDemande')]
+    #[Groups(['demandesCalendar:read'])]
+    public ?\DateTimeInterface $date_demande = null;
 
     #[SerializedName('etatDemande')]
     #[Groups(['demandesCalendar:read'])]

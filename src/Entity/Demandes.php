@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Delete;
 use ApiPlatform\Metadata\Get;
@@ -48,16 +50,11 @@ class Demandes
     private ?string $numero_demande = null;
 
 
-    #[ORM\Column(length: 50, nullable: true)]
-    #[Groups(['demande:read', 'demande:write'])]
-    #[SerializedName('numeroPhaseDemande')]
-    private ?string $numeroPhase_demande = null;
-
-    #[ORM\ManyToOne(targetEntity: Commandes::class, inversedBy: 'Demandes_commande')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\ManyToOne(targetEntity: Commandes::class, inversedBy: 'demandes_commande')]
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
     #[Groups(['demandes:read', 'demandes:write'])]
     #[SerializedName('commandeDemande')]
-    private ?Commandes $idCommande_demande = null;
+    private ?Commandes $commande_demande = null;
 
     #[ORM\Column(length: 50, nullable:  true)]
     #[Groups(['demandes:read', 'demandes:write'])]
@@ -74,12 +71,15 @@ class Demandes
     #[SerializedName('nombrePieceDemande')]
     private ?int $nombrePiece_demande = null;
 
+    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    #[Groups(['demandes:read', 'demandes:write'])]
+    #[SerializedName('dateDemande')]
+    private ?\DateTimeInterface $date_demande = null;
+
     #[ORM\OneToMany(targetEntity: OFs::class, mappedBy: 'idDemande_of', cascade: ['persist', 'remove'])]
-    #[Groups(['demandes:read'])]
     private Collection $Of_demande;
 
     #[ORM\OneToMany(targetEntity: SurfaceCouches::class, mappedBy: 'demande_surfaceCouche', cascade: ['persist', 'remove'])]
-    #[Groups(['demandes:read'])]
     private Collection $surfaceCouches_demande;
 
     public function getId(): ?int
@@ -109,14 +109,14 @@ class Demandes
         $this->numeroPhase_demande = $numeroPhase_demande;
     }
 
-    public function getIdCommandeDemande(): ?Commandes
+    public function getCommandeDemande(): ?Commandes
     {
-        return $this->idCommande_demande;
+        return $this->commande_demande;
     }
 
-    public function setIdCommandeDemande(?Commandes $idCommande_demande): static
+    public function setCommandeDemande(?Commandes $commande_demande): static
     {
-        $this->idCommande_demande = $idCommande_demande;
+        $this->commande_demande = $commande_demande;
 
         return $this;
     }
@@ -155,6 +155,17 @@ class Demandes
         $this->nombrePiece_demande = $nombrePiece_demande;
     }
 
+    public function getDateDemande(): ?\DateTimeInterface
+    {
+        return $this->date_demande;
+    }
+
+    public function setDateDemande(?\DateTimeInterface $date_demande): static
+    {
+        $this->date_demande = $date_demande;
+
+        return $this;
+    }
 
     public function getOfs(): Collection
     {

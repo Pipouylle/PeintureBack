@@ -45,9 +45,9 @@ class DemandesRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('d')
             ->select('d', 'c', 'a', 's')
-            ->join('d.idCommande_demande', 'c', 'WITH', 'd.idCommande_demande = c.id')
-            ->join('c.idAffaire_commande', 'a', 'WITH', 'c.idAffaire_commande = a.id')
-            ->join('c.idSysteme_commande', 's', 'WITH', 'c.idSysteme_commande = s.id')
+            ->join('d.commande_demande', 'c')
+            ->join('c.affaire_commande', 'a')
+            ->join('c.systeme_commande', 's')
             ->getQuery()
             ->getArrayResult();
     }

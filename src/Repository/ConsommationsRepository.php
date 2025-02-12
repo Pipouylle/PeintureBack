@@ -44,10 +44,10 @@ class ConsommationsRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('c')
             ->Select('c')
-            ->join('c.of_consommation', 'o', 'WITH', 'c.of_consommation = o.id')
+            ->join('c.of_consommation', 'o')
             ->andWhere('o.semaine_of = :semaine')
             ->setParameter('semaine', $semaine)
             ->getQuery()
-            ->getArrayResult();
+            ->getResult();
     }
 }

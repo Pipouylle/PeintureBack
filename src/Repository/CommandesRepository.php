@@ -45,8 +45,8 @@ class CommandesRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('c')
             ->select('c', 'a', 's')
-            ->Join('c.idAffaire_commande', 'a', 'WITH', 'c.idAffaire_commande = a.id')
-            ->Join('c.idSysteme_commande', 's', 'WITH', 'c.idSysteme_commande = s.id')
+            ->Join('c.affaire_commande', 'a')
+            ->Join('c.systeme_commande', 's')
             ->getQuery()
             ->getArrayResult();
     }

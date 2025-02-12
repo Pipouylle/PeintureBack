@@ -51,7 +51,7 @@ class CommandeWithAffaire
     #[Groups(['commandesAffairesSystemes:read'])]
     public ?bool $ficheH_commande = null;
 
-    #[SerializedName('tarifFichehCommande')]
+    #[SerializedName('pvPeintureCommande')]
     #[Groups(['commandesAffairesSystemes:read'])]
-    public ?string $tarifFicheH_commande = null;
+    public ?bool $pvPeinture_commande = null;
 }

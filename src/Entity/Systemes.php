@@ -5,6 +5,11 @@ namespace App\Entity;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Delete;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Patch;
+use ApiPlatform\Metadata\Post;
 use App\Repository\SystemesRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -17,10 +22,16 @@ use function Webmozart\Assert\Tests\StaticAnalysis\null;
 
 #[ORM\Entity(repositoryClass: SystemesRepository::class)]
 #[ApiResource(
+    operations: [
+        new Get(),
+        new Post(),
+        new GetCollection(),
+        new Patch(),
+        new Delete(),
+    ],
     normalizationContext: ['groups' => ['systemes:read']],
     denormalizationContext: ['groups' => ['systemes:write']]
 )]
-#[ApiFilter(SearchFilter::class, properties: ['idAffaire_systeme' => 'exact'])]
 class Systemes
 {
     #[ORM\Id]
@@ -34,13 +45,13 @@ class Systemes
     #[SerializedName('nomSysteme')]
     private ?string $nom_systeme = null;
 
-
     #[ORM\Column(length: 50, nullable: true)]
     #[Groups(['systemes:read', 'systemes:write'])]
     #[SerializedName('fournisseurSysteme')]
     private ?string $fournisseur_systeme = null;
 
     #[ORM\ManyToOne(targetEntity: Grenaillage::class, inversedBy: 'systemes_grenaillage')]
+    #[ORM\JoinColumn(nullable: true, onDelete: 'CASCADE')]
     #[Groups(['systemes:read', 'systemes:write'])]
     #[SerializedName('grenaillageSysteme')]
     private ?Grenaillage $grenaillage_systeme = null;
@@ -55,14 +66,10 @@ class Systemes
     #[SerializedName('regieSFPSysteme')]
     private ?string $regieSFP_systeme = null;
 
-    #[ORM\OneToMany(targetEntity: Commandes::class, mappedBy: 'idSysteme_commande', cascade: ['persist', 'remove'])]
-    #[Groups(['systemes:read'])]
-    #[SerializedName('commandesSysteme')]
+    #[ORM\OneToMany(targetEntity: Commandes::class, mappedBy: 'systeme_commande', cascade: ['persist', 'remove'])]
     private Collection $commande_systeme;
 
-    #[ORM\OneToMany(targetEntity: Couches::class, mappedBy: 'Systemes_couche', cascade: ['persist', 'remove'])]
-    #[Groups(['systemes:read'])]
-    #[SerializedName('couchesSysteme')]
+    #[ORM\OneToMany(targetEntity: Couches::class, mappedBy: 'systeme_couche', cascade: ['persist', 'remove'])]
     private Collection $Couches_syteme;
 
     public function getId(): ?int
@@ -147,7 +154,7 @@ class Systemes
     {
         if (!$this->Couches_syteme->contains($couche)) {
             $this->Couches_syteme[] = $couche;
-            $couche->setSystemesCouche($this);
+            $couche->setSystemeCouche($this);
         }
 
         return $this;
@@ -156,7 +163,7 @@ class Systemes
     public function removeCouche(Couches $couche): static
     {
         if ($this->Couches_syteme->removeElement($couche)) {
-            $couche->setSystemesCouche(null);
+            $couche->setSystemeCouche(null);
         }
 
         return $this;
@@ -171,7 +178,7 @@ class Systemes
     {
         if ($this->commande_systeme->contains($commandes)) {
             $this->commande_systeme[] = $commandes;
-            $commandes->setIdSystemeCommande($this);
+            $commandes->setSystemeCommande($this);
         }
 
         return $this;
@@ -180,7 +187,7 @@ class Systemes
     public function removeCommande(Commandes $commandes): static
     {
         if ($this->commande_systeme->removeElement($commandes)) {
-            $commandes->setIdSystemeCommande(null);
+            $commandes->setSystemeCommande(null);
         }
 
         return $this;

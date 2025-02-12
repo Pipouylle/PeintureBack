@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiResource;
 use App\DTOs\OFsInput as OFsInputDTO;
 use App\Processors\OFsProcessor as OFsInputProcessor;
@@ -17,9 +19,8 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
 #[ApiResource(
     normalizationContext: ['groups' => ['ofs:read']],
     denormalizationContext: ['groups' => ['ofs:write']],
-    input: OFsInputDTO::class,
-    processor: OFsInputProcessor::class
 )]
+#[ApiFilter(SearchFilter::class, properties: ['semaine_of' => 'exact'])]
 class OFs
 {
     #[ORM\Id]
@@ -33,39 +34,32 @@ class OFs
     #[SerializedName('cabineOf')]
     private ?string $cabine_of = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
-    #[Groups(['ofs:read', 'ofs:write'])]
-    #[SerializedName('dateOf')]
-    private ?\DateTimeInterface $date_of = null;
-
     #[ORM\Column(length: 10, nullable: true)]
     #[Groups(['ofs:read', 'ofs:write'])]
     #[SerializedName('avancementOf')]
     private ?string $avancement_of = null;
 
     #[ORM\ManyToOne(targetEntity: Demandes::class, inversedBy: 'Of_demande')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
     #[Groups(['ofs:read', 'ofs:write'])]
     #[SerializedName('demandeOf')]
     private ?Demandes $idDemande_of = null;
 
     #[ORM\ManyToOne(targetEntity: Jours::class, inversedBy: 'ofs_jour',)]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
     #[Groups(['ofs:read', 'ofs:write'])]
     #[SerializedName('jourOf')]
     private ?Jours $jour_of = null;
 
     #[ORM\ManyToOne(targetEntity: Semaines::class, inversedBy: 'ofs_semaine',)]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
     #[Groups(['ofs:read', 'ofs:write'])]
     #[SerializedName('semaineOf')]
     private ?Semaines $semaine_of = null;
 
 
     #[ORM\OneToMany(targetEntity: Consommations::class, mappedBy: 'of_consommation')]
-    #[Groups(['ofs:read'])]
-    #[SerializedName('consommationOf')]
-    private Collection $consommation_of;
+    private Collection $consommations_of;
 
 
     public function getId(): ?int
@@ -81,18 +75,6 @@ class OFs
     public function setCabineOf(?string $cabine_of): static
     {
         $this->cabine_of = $cabine_of;
-
-        return $this;
-    }
-
-    public function getDateOf(): ?\DateTimeInterface
-    {
-        return $this->date_of;
-    }
-
-    public function setDateOf(?\DateTimeInterface $date_of): static
-    {
-        $this->date_of = $date_of;
 
         return $this;
     }
@@ -141,15 +123,15 @@ class OFs
         $this->semaine_of = $semaine_of;
     }
 
-    public function getConsommationOf(): Collection
+    public function getConsommationsOf(): Collection
     {
-        return $this->consommation_of;
+        return $this->consommations_of;
     }
 
     public function addConsommation(Consommations $consommation): static
     {
-        if (!$this->consommation_of->contains($consommation)){
-            $this->consommation_of[] = $consommation;
+        if (!$this->consommations_of->contains($consommation)){
+            $this->consommations_of[] = $consommation;
             $consommation->setOfConsommation($this);
         }
 
@@ -158,7 +140,7 @@ class OFs
 
     public function removeConsommation(Consommations $consommation): static
     {
-        if ($this->consommation_of->removeElement($consommation)){
+        if ($this->consommations_of->removeElement($consommation)){
             if ($consommation->getOfConsommation() === $this){
                 $consommation->setOfConsommation(null);
             }

@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Delete;
 use ApiPlatform\Metadata\Get;
@@ -36,6 +38,7 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
     normalizationContext: ['groups' => ['commandes:read']],
     denormalizationContext: ['groups' => ['commandes:write']]
 )]
+#[ApiFilter(SearchFilter::class, properties: ['affaire_commande' => 'exact', 'systeme_commande' => 'exact'])]
 class Commandes
 {
     #[ORM\Id]
@@ -44,17 +47,17 @@ class Commandes
     #[Groups(['commandes:read', 'commandesAffaires:read'])]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(targetEntity: Affaires::class, inversedBy: 'Commande_affaire')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\ManyToOne(targetEntity: Affaires::class, inversedBy: 'commandes_affaire')]
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
     #[Groups(['commandes:read', 'commandes:write'])]
     #[SerializedName('affaireCommande')]
-    private ?Affaires $idAffaire_commande = null;
+    private ?Affaires $affaire_commande = null;
 
     #[ORM\ManyToOne(targetEntity: Systemes::class, inversedBy: 'commande_systeme')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
     #[Groups(['commandes:read', 'commandes:write'])]
     #[SerializedName('systemeCommande')]
-    private ?Systemes $idSysteme_commande = null;
+    private ?Systemes $systeme_commande = null;
 
     #[ORM\Column(length: 50)]
     #[Groups(['commandes:read', 'commandes:write'])]
@@ -86,40 +89,42 @@ class Commandes
     #[SerializedName('ficheHCommande')]
     private ?bool $ficheH_commande = null;
 
-
     #[ORM\Column(type: Types::BOOLEAN, nullable: true)]
     #[Groups(['commandes:read', 'commandes:write'])]
     #[SerializedName('pvPeintureCommande')]
     private ?bool $pvPeinture_commande = null;
 
-    #[ORM\OneToMany(targetEntity: Demandes::class, mappedBy: 'idCommande_demande', cascade: ['persist', 'remove'])]
-    private Collection $Demandes_commande;
+    #[ORM\OneToMany(targetEntity: Demandes::class, mappedBy: 'commande_demande', cascade: ['persist', 'remove'])]
+    private Collection $demandes_commande;
+
+    #[ORM\OneToMany(targetEntity: ArticleCouche::class, mappedBy: 'commande_articleCouche', cascade: ['persist', 'remove'])]
+    private Collection $articleCouches_commande;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getIdAffaireCommande(): ?Affaires
+    public function getAffaireCommande(): ?Affaires
     {
-        return $this->idAffaire_commande;
+        return $this->affaire_commande;
     }
 
-    public function setIdAffaireCommande(Affaires $idAffaire_commande): static
+    public function setAffaireCommande(Affaires $affaire_commande): static
     {
-        $this->idAffaire_commande = $idAffaire_commande;
+        $this->affaire_commande = $affaire_commande;
 
         return $this;
     }
 
-    public function getIdSystemeCommande(): ?Systemes
+    public function getSystemeCommande(): ?Systemes
     {
-        return $this->idSysteme_commande;
+        return $this->systeme_commande;
     }
 
-    public function setIdSystemeCommande(Systemes $idSysteme_commande): static
+    public function setSystemeCommande(Systemes $systeme_commande): static
     {
-        $this->idSysteme_commande = $idSysteme_commande;
+        $this->systeme_commande = $systeme_commande;
 
         return $this;
     }
@@ -206,14 +211,14 @@ class Commandes
 
     public function getDemandes(): Collection
     {
-        return $this->Demandes_commande;
+        return $this->demandes_commande;
     }
 
     public function addDemande(Demandes $demandes): static
     {
-        if ($this->Demandes_commande->contains($demandes)) {
-            $this->Demandes_commande[] = $demandes;
-            $demandes->setIdCommandeDemande($this);
+        if ($this->demandes_commande->contains($demandes)) {
+            $this->demandes_commande[] = $demandes;
+            $demandes->setCommandeDemande($this);
         }
 
         return $this;
@@ -221,12 +226,37 @@ class Commandes
 
     public function removeDemande(Demandes $demandes): static
     {
-        if ($this->Demandes_commande->removeElement($demandes)) {
-            if ($demandes->getIdCommandeDemande() === $this) {
-                $demandes->setIdCommandeDemande(null);
+        if ($this->demandes_commande->removeElement($demandes)) {
+            if ($demandes->getCommandeDemande() === $this) {
+                $demandes->setCommandeDemande(null);
             }
         }
 
+        return $this;
+    }
+
+    public function getCouches(): Collection
+    {
+        return $this->articleCouches_commande;
+    }
+
+    public function addCouche(ArticleCouche $couches): static
+    {
+        if ($this->articleCouches_commande->contains($couches)) {
+            $this->articleCouches_commande[] = $couches;
+            $couches->setCommandeArticleCouche($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCouche(ArticleCouche $couches): static
+    {
+        if ($this->articleCouches_commande->removeElement($couches)) {
+            if ($couches->getCommandeArticleCouche() === $this) {
+                $couches->setCommandeArticleCouche(null);
+            }
+        }
         return $this;
     }
 }
