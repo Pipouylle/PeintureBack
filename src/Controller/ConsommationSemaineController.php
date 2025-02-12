@@ -6,6 +6,8 @@ use App\Repository\ConsommationsRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Serializer\SerializerInterface;
+
 
 final class ConsommationSemaineController extends AbstractController
 {
@@ -15,12 +17,12 @@ final class ConsommationSemaineController extends AbstractController
         $this->repository = $repository;
     }
 
-    public function __invoke(string $SemaineId): Response
+    public function __invoke(string $SemaineId, SerializerInterface $serializer): Response
     {
         $explode = explode("/", $SemaineId);
         $id = (int) array_pop($explode);
         $ConsommationSemaine = $this->repository->findBySemaine($id);
-        // TODO: Implement __invoke() method.
-        return new JsonResponse($ConsommationSemaine);
+        $json = $serializer->serialize($ConsommationSemaine, 'json', ['groups' => 'consommations:read']);
+        return new JsonResponse($json, 200, [], true);
     }
 }

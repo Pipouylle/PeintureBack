@@ -10,8 +10,7 @@ use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
-use App\Controller\ArticlesTypesController;
-use App\Controller\ArticlesController;
+use App\Controller\ArticleCoucheByDemandeController;
 use App\Repository\ArticlesRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -29,9 +28,9 @@ use Symfony\Component\Serializer\Attribute\Groups;
         new Delete(),
         new Patch(),
         new GetCollection(
-            uriTemplate: '/articlesTypes',
-            controller: ArticlesTypesController::class,
-            name: 'ArticlesCategories'
+            uriTemplate: '/articleCouche/{demandeId}',
+            controller: ArticleCoucheByDemandeController::class,
+            name: 'articleCoucheByDemande'
         )
     ],
     normalizationContext: ['groups' => ['articles:read']],
@@ -42,103 +41,38 @@ class Articles
 {
     #[ORM\Id]
     #[ORM\Column(type: Types::BIGINT)]
-    #[Groups(['articles:read', 'articles:write'])]
+    #[Groups(['articles:read', 'articles:write', 'articleCoucheForDemande:read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 50, nullable: true)]
-    #[Groups(['articles:read', 'articles:write'])]
-    #[SerializedName('nomArticle')]
-    private ?string $nom_article = null;
-
-    #[ORM\Column(length: 50, nullable: true)]
-    #[Groups(['articles:read', 'articles:write'])]
-    #[SerializedName('RALArticle')]
-    private ?string $RAL_article = null;
-
-    #[ORM\Column(type: Types::BIGINT)]
-    #[Groups(['articles:read', 'articles:write'])]
-    #[SerializedName('stockArticle')]
-    private ?string $stock_article = null;
-
-
-    #[ORM\Column(length: 50)]
-    #[Groups(['articles:read', 'articles:write'])]
-    #[SerializedName('fournisseurArticle')]
-    private ?string $fournisseur_article = null;
-
-    #[ORM\Column(length: 50)]
-    #[Groups(['articles:read', 'articles:write'])]
-    #[SerializedName('typeArticle')]
-    private ?string $type_article = null;
+    #[Groups(['articles:read', 'articles:write', 'articleCoucheForDemande:read'])]
+    #[SerializedName('designationArticle')]
+    private ?string $designation_article = null;
 
     #[ORM\OneToMany(targetEntity: Consommations::class, mappedBy: 'codeArticle_consommation', cascade: ['persist', 'remove'])]
     private Collection $consommation_article;
 
-    #[ORM\OneToMany(targetEntity: Couches::class, mappedBy: 'codeArticle_couche', cascade: ['persist', 'remove'])]
-    private Collection $Couches_article;
+
+    #[ORM\ManyToMany(targetEntity: ArticleCouche::class, inversedBy: 'articles_articleCouche')]
+    #[ORM\JoinTable(name: 'articles_article_couche')]
+    private Collection $articleCouches_article;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getNomArticle(): ?string
+    public function getDesignationArticle(): ?string
     {
-        return $this->nom_article;
+        return $this->designation_article;
     }
 
-    public function setNomArticle(string $nom_article): static
+    public function setDesignationArticle(string $designation_article): static
     {
-        $this->nom_article = $nom_article;
+        $this->designation_article = $designation_article;
 
         return $this;
     }
-
-    public function getRALArticle(): ?string
-    {
-        return $this->RAL_article;
-    }
-
-    public function setRALArticle(string $RAL_article): static
-    {
-        $this->RAL_article = $RAL_article;
-
-        return $this;
-    }
-
-    public function getStockArticle(): ?string
-    {
-        return $this->stock_article;
-    }
-
-    public function setStockArticle(string $stock_article): static
-    {
-        $this->stock_article = $stock_article;
-
-        return $this;
-    }
-
-    public function getFournisseurArticle(): ?string
-    {
-        return $this->fournisseur_article;
-    }
-
-    public function setFournisseurArticle(?string $fournisseur_article): void
-    {
-        $this->fournisseur_article = $fournisseur_article;
-    }
-
-    public function getTypeArticle(): ?string
-    {
-        return $this->type_article;
-    }
-
-    public function setTypeArticle(string $categorie_article): static
-    {
-        $this->type_article = $categorie_article;
-        return $this;
-    }
-
 
     public function getConsommation(): Collection
     {
@@ -147,7 +81,7 @@ class Articles
 
     public function addConsommation(Consommations $consommations): static
     {
-        if ($this->consommation_article->contains($consommations)) {
+        if (!$this->consommation_article->contains($consommations)) {
             $this->consommation_article[] = $consommations;
             $consommations->setCodeArticleConsommation($this);
         }
@@ -168,26 +102,21 @@ class Articles
 
     public function getCouches(): ?Collection
     {
-        return $this->Couches_article;
+        return $this->articleCouches_article;
     }
 
-    public function addCouche(Couches $couches): static
+    public function addCouche(ArticleCouche $couches): static
     {
-        if ($this->Couches_article->contains($couches)) {
-            $this->Couches_article[] = $couches;
-            $couches->setCodeArticleCouche($this);
+        if (!$this->articleCouches_article->contains($couches)) {
+            $this->articleCouches_article[] = $couches;
         }
 
         return $this;
     }
 
-    public function removeCouche(Couches $couches): static
+    public function removeCouche(ArticleCouche $couches): static
     {
-        if ($this->Couches_article->removeElement($couches)) {
-            if ($couches->getCodeArticleCouche() === $this) {
-                $couches->setCodeArticleCouche(null);
-            }
-        }
+        $this->articleCouches_article->removeElement($couches);
         return $this;
     }
 }

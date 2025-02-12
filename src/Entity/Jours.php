@@ -27,7 +27,7 @@ class Jours
     #[SerializedName('jour')]
     private ?string $jour = null;
 
-    #[ORM\OneToMany(targetEntity: OFs::class, mappedBy: 'jour_savOfs')]
+    #[ORM\OneToMany(targetEntity: OFs::class, mappedBy: 'jour_of')]
     #[Groups(['jours:read'])]
     #[SerializedName('ofsJour')]
     private Collection $ofs_jour;

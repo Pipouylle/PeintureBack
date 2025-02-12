@@ -16,7 +16,7 @@ use App\Controller\ConsommationSemaineController;
 
 #[ORM\Entity(repositoryClass: ConsommationsRepository::class)]
 #[ApiResource(
-    operations:[
+    operations: [
         new Get(),
         new GetCollection(),
         new Post(),
@@ -40,13 +40,13 @@ class Consommations
     private ?int $id = null;
 
     #[ORM\ManyToOne(targetEntity: OFs::class, inversedBy: 'consommations_of')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
     #[Groups(['consommations:read', 'consommations:write'])]
     #[SerializedName('ofConsommation')]
     private ?OFs $of_consommation = null;
 
     #[ORM\ManyToOne(targetEntity: Articles::class, inversedBy: 'consommation_article')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
     #[Groups(['consommations:read', 'consommations:write'])]
     #[SerializedName('articleConsommation')]
     private ?Articles $codeArticle_consommation = null;
@@ -59,6 +59,12 @@ class Consommations
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function setId(int $id): static
+    {
+        $this->id = $id;
+        return $this;
     }
 
     public function getDemandeConsommation(): ?OFs
@@ -97,5 +103,14 @@ class Consommations
         return $this;
     }
 
+    public function getOfConsommation(): ?OFs
+    {
+        return $this->of_consommation;
+    }
+
+    public function setOfConsommation(?OFs $of_consommation): void
+    {
+        $this->of_consommation = $of_consommation;
+    }
 
 }

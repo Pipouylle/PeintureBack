@@ -40,17 +40,4 @@ class CouchesRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
-
-    public function findByDemandeId($demandeId): array
-    {
-        return $this->createQueryBuilder('c')
-            ->select('a.id')
-            ->join('c.codeArticle_couche', 'a')
-            ->join('c.surfaceCouches_couche', 'sc')
-            ->join('sc.demande_surfaceCouche', 'd')
-            ->where('d.id = :demandeId')
-            ->setParameter('demandeId', $demandeId)
-            ->getQuery()
-            ->getResult();
-    }
 }

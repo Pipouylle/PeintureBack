@@ -3,9 +3,12 @@
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Delete;
 use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
-use App\Controller\AffairesController;
+use ApiPlatform\Metadata\Put;
 use App\Repository\AffairesRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
@@ -15,6 +18,14 @@ use Symfony\Component\Serializer\Annotation\SerializedName;
 
 #[ORM\Entity(repositoryClass: AffairesRepository::class)]
 #[ApiResource(
+    operations:[
+        new Get(),
+        new GetCollection(),
+        new Post(),
+        new Delete(),
+        new Patch(),
+        new Put()
+    ],
     normalizationContext: ['groups' => ['affaires:read']],
     denormalizationContext: ['groups' => ['affaires:write']],
 )]
@@ -36,9 +47,8 @@ class Affaires
     #[SerializedName('nomAffaire')]
     private ?string $nom_affaire = null;
 
-    #[ORM\OneToMany(targetEntity: Commandes::class, mappedBy: 'idAffaire_commande')]
-    #[Groups(['affaires:read'])]
-    private Collection $Commande_affaire;
+    #[ORM\OneToMany(targetEntity: Commandes::class, mappedBy: 'affaire_commande')]
+    private Collection $commandes_affaire;
 
     public function getId(): ?int
     {
@@ -69,14 +79,14 @@ class Affaires
 
     public function getCommandes(): Collection
     {
-        return $this->Commande_affaire;
+        return $this->commandes_affaire;
     }
 
     public function addCommande(Commandes $commandes): static
     {
-        if(!$this->Commande_affaire->contains($commandes)){
-            $this->Commande_affaire[] = $commandes;
-            $commandes->setIdAffaireCommande($this);
+        if(!$this->commandes_affaire->contains($commandes)){
+            $this->commandes_affaire[] = $commandes;
+            $commandes->setAffaireCommande($this);
         }
 
         return $this;
@@ -84,8 +94,8 @@ class Affaires
 
     public function removeCommande(Commandes $commandes): static
     {
-        if ($this->Commande_affaire->removeElement($commandes)){
-            $commandes->setIdAffaireCommande(null);
+        if ($this->commandes_affaire->removeElement($commandes)){
+            $commandes->setAffaireCommande(null);
         }
 
         return $this;

@@ -20,6 +20,7 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
     normalizationContext: ['groups' => ['semaines:read']],
     denormalizationContext: ['groups' => ['semaines:write']],
     input: SemainesInput::class,
+    paginationEnabled: false,
     processor: SemainesProcessor::class
 )]
 #[ApiFilter(SearchFilter::class, properties: ['annees' => 'exact', 'mois' => 'exact', 'semaine' => 'exact'])]

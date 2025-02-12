@@ -22,14 +22,14 @@ class SurfaceCouches
     #[Groups(['surface_couches:read'])]
     private ?int $id = null;
 
-    #[ORM\ManyToOne(targetEntity: Couches::class, inversedBy: 'surfaceCouches_couche')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\ManyToOne(targetEntity: ArticleCouche::class, inversedBy: 'surfaceCouches_articleCouche')]
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
     #[Groups(['surface_couches:read', 'surface_couches:write'])]
-    #[SerializedName('coucheSurfaceCouche')]
-    private ?Couches $couche_surfaceCouche = null;
+    #[SerializedName('articleCoucheSurfaceCouche')]
+    private ?ArticleCouche $articleCouche_surfaceCouche = null;
 
     #[ORM\ManyToOne(targetEntity: Demandes::class, inversedBy: 'surfaceCouches_demande')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
     #[Groups(['surface_couches:read', 'surface_couches:write'])]
     #[SerializedName('demandeSurfaceCouche')]
     private ?Demandes $demande_surfaceCouche = null;
@@ -46,14 +46,14 @@ class SurfaceCouches
         return $this->id;
     }
 
-    public function getCoucheSurfaceCouche(): ?Couches
+    public function getArticleCoucheSurfaceCouche(): ?ArticleCouche
     {
-        return $this->couche_surfaceCouche;
+        return $this->articleCouche_surfaceCouche;
     }
 
-    public function setCoucheSurfaceCouche(?Couches $couches_surfaceCouche): void
+    public function setArticleCoucheSurfaceCouche(?ArticleCouche $couches_surfaceCouche): void
     {
-        $this->couche_surfaceCouche = $couches_surfaceCouche;
+        $this->articleCouche_surfaceCouche = $couches_surfaceCouche;
     }
 
     public function getDemandeSurfaceCouche(): ?Demandes

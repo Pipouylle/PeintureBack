@@ -41,12 +41,16 @@ class ArticlesRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-    public function findTypes(): array
+    public function findArticleCoucheByIdDemande($demandeId): array
     {
         return $this->createQueryBuilder('a')
-            ->select('DISTINCT a.type_article')
-            ->where('a.type_article IS NOT NULL')
+            ->select('a', 'ac')
+            ->join('a.articleCouches_article', 'ac')
+            ->join('ac.surfaceCouches_articleCouche', 'sc')
+            ->join('sc.demande_surfaceCouche', 'd')
+            ->where('d.id = :demandeId')
+            ->setParameter('demandeId', $demandeId)
             ->getQuery()
-            ->getScalarResult();
+            ->getArrayResult();
     }
 }
