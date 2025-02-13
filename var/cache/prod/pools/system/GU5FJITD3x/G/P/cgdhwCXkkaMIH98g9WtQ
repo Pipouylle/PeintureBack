@@ -1,0 +1,76 @@
+<?php //App_Entity_Semaines
+
+return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Symfony\\Component\\Serializer\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\ClassMetadata')),
+        clone ($p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata')),
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'App\\Entity\\Semaines',
+                'id',
+                'annees',
+                'mois',
+                'semaine',
+                'dateDebut_semaine',
+                'ofs_semaine',
+                'dateDebutSemaine',
+                'ofsSemaine',
+            ],
+            'attributesMetadata' => [
+                [
+                    'id' => $o[1],
+                    'annees' => $o[2],
+                    'mois' => $o[3],
+                    'semaine' => $o[4],
+                    'dateDebut_semaine' => $o[5],
+                    'ofs_semaine' => $o[6],
+                    'dateDebutSemaine' => $o[7],
+                    'ofsSemaine' => $o[8],
+                ],
+            ],
+            'groups' => [
+                1 => [
+                    'semaines:read',
+                ],
+                [
+                    'semaines:read',
+                    'semaines:write',
+                ],
+                [
+                    'semaines:read',
+                    'semaines:write',
+                ],
+                [
+                    'semaines:read',
+                    'semaines:write',
+                ],
+                [
+                    'semaines:read',
+                    'semaines:write',
+                ],
+                [
+                    'semaines:read',
+                ],
+            ],
+            'serializedName' => [
+                2 => 'annees',
+                'mois',
+                'semaine',
+                'dateDebutSemaine',
+                'ofs_semaine',
+            ],
+        ],
+    ],
+    $o[0],
+    []
+)];

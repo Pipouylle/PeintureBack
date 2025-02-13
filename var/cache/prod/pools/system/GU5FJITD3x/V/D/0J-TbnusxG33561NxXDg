@@ -1,0 +1,73 @@
+<?php //App_Entity_Grenaillage
+
+return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Symfony\\Component\\Serializer\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\ClassMetadata')),
+        clone ($p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata')),
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'App\\Entity\\Grenaillage',
+                'id',
+                'nom_grenaillage',
+                'typeChantier_grenaillage',
+                'tarif_grenaillage',
+                'systemes_grenaillage',
+                'nomGrenaillage',
+                'typeChantierGrenaillage',
+                'tarifGrenaillage',
+                'systemesGrenaillage',
+            ],
+            'attributesMetadata' => [
+                [
+                    'id' => $o[1],
+                    'nom_grenaillage' => $o[2],
+                    'typeChantier_grenaillage' => $o[3],
+                    'tarif_grenaillage' => $o[4],
+                    'systemes_grenaillage' => $o[5],
+                    'nomGrenaillage' => $o[6],
+                    'typeChantierGrenaillage' => $o[7],
+                    'tarifGrenaillage' => $o[8],
+                    'systemesGrenaillage' => $o[9],
+                ],
+            ],
+            'groups' => [
+                1 => [
+                    'grenaillage:read',
+                ],
+                [
+                    'grenaillage:read',
+                    'grenaillage:write',
+                ],
+                [
+                    'grenaillage:read',
+                    'grenaillage:write',
+                ],
+                [
+                    'grenaillage:read',
+                    'grenaillage:write',
+                ],
+                [
+                    'grenaillage:read',
+                ],
+            ],
+            'serializedName' => [
+                2 => 'nomGrenaillage',
+                'typeChantierGrenaillage',
+                'tarifGrenaillage',
+            ],
+        ],
+    ],
+    $o[0],
+    []
+)];

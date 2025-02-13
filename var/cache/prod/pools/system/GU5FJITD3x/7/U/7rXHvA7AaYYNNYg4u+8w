@@ -1,0 +1,86 @@
+<?php //App_Entity_Couches
+
+return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Symfony\\Component\\Serializer\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\ClassMetadata')),
+        clone ($p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata')),
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'App\\Entity\\Couches',
+                'id',
+                'epaisseur_couche',
+                'nom_couche',
+                'tarif_couche',
+                'systeme_couche',
+                'articleCouches_couche',
+                'epaisseurCouche',
+                'tarifCouche',
+                'systemeCouche',
+                'articleCouchesCouche',
+                'nomCouche',
+            ],
+            'attributesMetadata' => [
+                [
+                    'id' => $o[1],
+                    'epaisseur_couche' => $o[2],
+                    'nom_couche' => $o[3],
+                    'tarif_couche' => $o[4],
+                    'systeme_couche' => $o[5],
+                    'articleCouches_couche' => $o[6],
+                    'epaisseurCouche' => $o[7],
+                    'tarifCouche' => $o[8],
+                    'systemeCouche' => $o[9],
+                    'articleCouchesCouche' => $o[10],
+                    'nomCouche' => $o[11],
+                ],
+            ],
+            'groups' => [
+                1 => [
+                    'couches:read',
+                    'articleCoucheForDemande:read',
+                ],
+                [
+                    'couches:read',
+                    'couches:write',
+                    'articleCoucheForDemande:read',
+                ],
+                [
+                    'couches:read',
+                    'couches:write',
+                    'articleCoucheForDemande:read',
+                ],
+                [
+                    'couches:read',
+                    'couches:write',
+                    'articleCoucheForDemande:read',
+                ],
+                [
+                    'couches:read',
+                    'couches:write',
+                    'articleCoucheForDemande:read',
+                ],
+            ],
+            'serializedName' => [
+                2 => 'epaisseurCouche',
+                'nomCouche',
+                'tarifCouche',
+                'systemeCouche',
+            ],
+        ],
+    ],
+    $o[0],
+    []
+)];
