@@ -1,0 +1,87 @@
+<?php //App_Entity_ArticleCouche
+
+return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Symfony\\Component\\Serializer\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\ClassMetadata')),
+        clone ($p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata')),
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'App\\Entity\\ArticleCouche',
+                'id',
+                'tarif_articleCouche',
+                'articles_articleCouche',
+                'couche_articleCouche',
+                'commande_articleCouche',
+                'surfaceCouches_articleCouche',
+                'tarifArticleCouche',
+                'articlesArticleCouche',
+                'coucheArticleCouche',
+                'commandeArticleCouche',
+                'surfaceCouchesArticleCouche',
+            ],
+            'attributesMetadata' => [
+                [
+                    'id' => $o[1],
+                    'tarif_articleCouche' => $o[2],
+                    'articles_articleCouche' => $o[3],
+                    'couche_articleCouche' => $o[4],
+                    'commande_articleCouche' => $o[5],
+                    'surfaceCouches_articleCouche' => $o[6],
+                    'tarifArticleCouche' => $o[7],
+                    'articlesArticleCouche' => $o[8],
+                    'coucheArticleCouche' => $o[9],
+                    'commandeArticleCouche' => $o[10],
+                    'surfaceCouchesArticleCouche' => $o[11],
+                ],
+            ],
+            'groups' => [
+                1 => [
+                    'article_couche:read',
+                    'articles_articleCouche:read',
+                    'articleCoucheForDemande:read',
+                ],
+                [
+                    'article_couche:read',
+                    'article_couche:write',
+                    'articleCoucheForDemande:read',
+                ],
+                [
+                    'articles_articleCouche:read',
+                    'articles_articleCouche:write',
+                    'articleCoucheForDemande:read',
+                ],
+                [
+                    'article_couche:read',
+                    'article_couche:write',
+                    'articleCoucheForDemande:read',
+                ],
+                [
+                    'article_couche:read',
+                    'article_couche:write',
+                    'articleCoucheForDemande:read',
+                ],
+            ],
+            'serializedName' => [
+                2 => 'tarifArticleCouche',
+                'articlesArticleCouche',
+                'coucheArticleCouche',
+                'commandeArticleCouche',
+            ],
+        ],
+    ],
+    $o[0],
+    []
+)];

@@ -1,0 +1,103 @@
+<?php //App_Entity_Systemes
+
+return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Symfony\\Component\\Serializer\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\ClassMetadata')),
+        clone ($p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata')),
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'App\\Entity\\Systemes',
+                'id',
+                'nom_systeme',
+                'fournisseur_systeme',
+                'grenaillage_systeme',
+                'regieFP_Systeme',
+                'regieSFP_systeme',
+                'commande_systeme',
+                'Couches_syteme',
+                'nomSysteme',
+                'fournisseurSysteme',
+                'commandeSysteme',
+                'grenaillageSysteme',
+                'regieSFPSysteme',
+                'regieFPSysteme',
+                'couches',
+                'commandes',
+            ],
+            'attributesMetadata' => [
+                [
+                    'id' => $o[1],
+                    'nom_systeme' => $o[2],
+                    'fournisseur_systeme' => $o[3],
+                    'grenaillage_systeme' => $o[4],
+                    'regieFP_Systeme' => $o[5],
+                    'regieSFP_systeme' => $o[6],
+                    'commande_systeme' => $o[7],
+                    'Couches_syteme' => $o[8],
+                    'nomSysteme' => $o[9],
+                    'fournisseurSysteme' => $o[10],
+                    'commandeSysteme' => $o[11],
+                    'grenaillageSysteme' => $o[12],
+                    'regieSFPSysteme' => $o[13],
+                    'regieFPSysteme' => $o[14],
+                    'couches' => $o[15],
+                    'commandes' => $o[16],
+                ],
+            ],
+            'groups' => [
+                1 => [
+                    'systemes:read',
+                    'commandesAffairesSystemes:read',
+                ],
+                [
+                    'systemes:read',
+                    'systemes:write',
+                    'commandesAffairesSystemes:read',
+                ],
+                [
+                    'systemes:read',
+                    'systemes:write',
+                ],
+                [
+                    'systemes:read',
+                    'systemes:write',
+                ],
+                [
+                    'systemes:read',
+                    'systemes:write',
+                ],
+                [
+                    'systemes:read',
+                    'systemes:write',
+                ],
+            ],
+            'serializedName' => [
+                2 => 'nomSysteme',
+                'fournisseurSysteme',
+                'grenaillageSysteme',
+                'refieFPSysteme',
+                'regieSFPSysteme',
+            ],
+        ],
+    ],
+    $o[0],
+    []
+)];

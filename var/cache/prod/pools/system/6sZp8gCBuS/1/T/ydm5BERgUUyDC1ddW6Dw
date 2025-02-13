@@ -1,0 +1,20 @@
+<?php //getProperties.a%253A2%253A%257Bi%253A0%253Bs%253A19%253A%2522App%255CEntity%255CSystemes%2522%253Bi%253A1%253Ba%253A1%253A%257Bs%253A17%253A%2522serializer_groups%2522%253BN%253B%257D%257D
+
+return [PHP_INT_MAX, [
+    'id',
+    'nom_systeme',
+    'fournisseur_systeme',
+    'grenaillage_systeme',
+    'regieFP_Systeme',
+    'regieSFP_systeme',
+    'commande_systeme',
+    'Couches_syteme',
+    'nomSysteme',
+    'fournisseurSysteme',
+    'commandeSysteme',
+    'grenaillageSysteme',
+    'regieSFPSysteme',
+    'regieFPSysteme',
+    'couches',
+    'commandes',
+]];

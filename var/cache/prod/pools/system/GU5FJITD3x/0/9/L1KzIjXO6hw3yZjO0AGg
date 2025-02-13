@@ -1,0 +1,49 @@
+<?php //App_Entity_Jours
+
+return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Symfony\\Component\\Serializer\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\ClassMetadata')),
+        clone ($p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata')),
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'App\\Entity\\Jours',
+                'id',
+                'jour',
+                'ofs_jour',
+                'ofsJour',
+            ],
+            'attributesMetadata' => [
+                [
+                    'id' => $o[1],
+                    'jour' => $o[2],
+                    'ofs_jour' => $o[3],
+                    'ofsJour' => $o[4],
+                ],
+            ],
+            'groups' => [
+                1 => [
+                    'jours:read',
+                ],
+                [
+                    'jours:read',
+                    'jours:write',
+                ],
+                [
+                    'jours:read',
+                ],
+            ],
+            'serializedName' => [
+                2 => 'jour',
+                'ofsJour',
+            ],
+        ],
+    ],
+    $o[0],
+    []
+)];

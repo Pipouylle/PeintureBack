@@ -1,0 +1,59 @@
+<?php //App_Entity_Affaires
+
+return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+    $o = [
+        clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Symfony\\Component\\Serializer\\Mapping\\ClassMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\ClassMetadata')),
+        clone ($p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata')),
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+        clone $p['Symfony\\Component\\Serializer\\Mapping\\AttributeMetadata'],
+    ],
+    null,
+    [
+        'stdClass' => [
+            'name' => [
+                'App\\Entity\\Affaires',
+                'id',
+                'numero_affaire',
+                'nom_affaire',
+                'commandes_affaire',
+                'nomAffaire',
+                'numeroAffaire',
+                'commandes',
+            ],
+            'attributesMetadata' => [
+                [
+                    'id' => $o[1],
+                    'numero_affaire' => $o[2],
+                    'nom_affaire' => $o[3],
+                    'commandes_affaire' => $o[4],
+                    'nomAffaire' => $o[5],
+                    'numeroAffaire' => $o[6],
+                    'commandes' => $o[7],
+                ],
+            ],
+            'groups' => [
+                1 => [
+                    'affaires:read',
+                ],
+                [
+                    'affaires:read',
+                    'affaires:write',
+                ],
+                [
+                    'affaires:read',
+                    'affaires:write',
+                ],
+            ],
+            'serializedName' => [
+                2 => 'numeroAffaire',
+                'nomAffaire',
+            ],
+        ],
+    ],
+    $o[0],
+    []
+)];
