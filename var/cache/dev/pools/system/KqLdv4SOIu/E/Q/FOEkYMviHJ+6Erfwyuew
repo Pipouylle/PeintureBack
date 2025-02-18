@@ -84,7 +84,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 null,
             ],
             'paginationEnabled' => [
-                null,
+                false,
             ],
             'paginationType' => [
                 null,
@@ -572,15 +572,15 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 23 => null,
             ],
             'paginationEnabled' => [
-                2 => null,
-                5 => null,
-                7 => null,
-                10 => null,
-                12 => null,
-                15 => null,
-                17 => null,
-                20 => null,
-                23 => null,
+                2 => false,
+                5 => false,
+                7 => false,
+                10 => false,
+                12 => false,
+                15 => false,
+                17 => false,
+                20 => false,
+                23 => false,
             ],
             'paginationType' => [
                 2 => null,

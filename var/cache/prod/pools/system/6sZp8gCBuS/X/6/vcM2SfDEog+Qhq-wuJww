@@ -12,4 +12,5 @@ return [PHP_INT_MAX, [
     'couche',
     'commandes',
     'commande',
+    'typeSysteme',
 ]];

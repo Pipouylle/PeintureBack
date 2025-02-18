@@ -34,7 +34,8 @@ use Symfony\Component\Serializer\Attribute\Groups;
         )
     ],
     normalizationContext: ['groups' => ['articles:read']],
-    denormalizationContext: ['groups' => ['articles:write']]
+    denormalizationContext: ['groups' => ['articles:write']],
+    paginationEnabled: false,
 )]
 #[ApiFilter(SearchFilter::class, properties: ['type_article' => 'exact','fournisseur_article' => 'exact'])]
 class Articles
@@ -44,7 +45,7 @@ class Articles
     #[Groups(['articles:read', 'articles:write', 'articleCoucheForDemande:read'])]
     private ?int $id = null;
 
-    #[ORM\Column(length: 50, nullable: true)]
+    #[ORM\Column(length: 200, nullable: true)]
     #[Groups(['articles:read', 'articles:write', 'articleCoucheForDemande:read'])]
     #[SerializedName('designationArticle')]
     private ?string $designation_article = null;

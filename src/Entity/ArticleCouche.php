@@ -50,7 +50,8 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
         )
     ],
     normalizationContext: ['groups' => ['article_couche:read']],
-    denormalizationContext: ['groups' => ['article_couche:write']]
+    denormalizationContext: ['groups' => ['article_couche:write']],
+    paginationEnabled: false,
 )]
 #[ApiFilter(SearchFilter::class, properties: ['article_articleCouche' => 'exact', 'couche_articleCouche' => 'exact', 'commande_articleCouche' => 'exact'])]
 class ArticleCouche

@@ -29,7 +29,8 @@ use App\Controller\ConsommationSemaineController;
         )
     ],
     normalizationContext: ['groups' => ['consommations:read']],
-    denormalizationContext: ['groups' => ['consommations:write']]
+    denormalizationContext: ['groups' => ['consommations:write']],
+    paginationEnabled: false,
 )]
 class Consommations
 {

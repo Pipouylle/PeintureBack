@@ -3,7 +3,6 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/bookshop-api.iml" filepath="$PROJECT_DIR$/.idea/bookshop-api.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../peinture Symphonie/portfolio/.idea/portfolio.iml" filepath="$PROJECT_DIR$/../peinture Symphonie/portfolio/.idea/portfolio.iml" />
     </modules>
   </component>
 </project>

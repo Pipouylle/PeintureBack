@@ -30,6 +30,7 @@ class Systemes extends \App\Entity\Systemes implements \Doctrine\ORM\Proxy\Inter
         "\0".parent::class."\0".'nom_systeme' => [parent::class, 'nom_systeme', null],
         "\0".parent::class."\0".'regieFP_Systeme' => [parent::class, 'regieFP_Systeme', null],
         "\0".parent::class."\0".'regieSFP_systeme' => [parent::class, 'regieSFP_systeme', null],
+        "\0".parent::class."\0".'type_systeme' => [parent::class, 'type_systeme', null],
         'Couches_syteme' => [parent::class, 'Couches_syteme', null],
         'commande_systeme' => [parent::class, 'commande_systeme', null],
         'fournisseur_systeme' => [parent::class, 'fournisseur_systeme', null],
@@ -38,6 +39,7 @@ class Systemes extends \App\Entity\Systemes implements \Doctrine\ORM\Proxy\Inter
         'nom_systeme' => [parent::class, 'nom_systeme', null],
         'regieFP_Systeme' => [parent::class, 'regieFP_Systeme', null],
         'regieSFP_systeme' => [parent::class, 'regieSFP_systeme', null],
+        'type_systeme' => [parent::class, 'type_systeme', null],
     ];
 
     public function __isInitialized(): bool

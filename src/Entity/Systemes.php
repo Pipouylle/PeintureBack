@@ -30,7 +30,8 @@ use function Webmozart\Assert\Tests\StaticAnalysis\null;
         new Delete(),
     ],
     normalizationContext: ['groups' => ['systemes:read']],
-    denormalizationContext: ['groups' => ['systemes:write']]
+    denormalizationContext: ['groups' => ['systemes:write']],
+    paginationEnabled: false,
 )]
 class Systemes
 {
@@ -49,6 +50,11 @@ class Systemes
     #[Groups(['systemes:read', 'systemes:write'])]
     #[SerializedName('fournisseurSysteme')]
     private ?string $fournisseur_systeme = null;
+
+    #[ORM\Column(length: 50, nullable: true)]
+    #[Groups(['systemes:read', 'systemes:write'])]
+    #[SerializedName('typeSysteme')]
+    private ?string $type_systeme = null;
 
     #[ORM\ManyToOne(targetEntity: Grenaillage::class, inversedBy: 'systemes_grenaillage')]
     #[ORM\JoinColumn(nullable: true, onDelete: 'CASCADE')]
@@ -191,5 +197,15 @@ class Systemes
         }
 
         return $this;
+    }
+
+    public function getTypeSysteme(): ?string
+    {
+        return $this->type_systeme;
+    }
+
+    public function setTypeSysteme(?string $type_systeme): void
+    {
+        $this->type_systeme = $type_systeme;
     }
 }

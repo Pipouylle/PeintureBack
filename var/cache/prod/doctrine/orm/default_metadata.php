@@ -1997,6 +1997,7 @@ return [[
             clone $p['Doctrine\\ORM\\Mapping\\FieldMapping'],
             clone $p['Doctrine\\ORM\\Mapping\\FieldMapping'],
             clone $p['Doctrine\\ORM\\Mapping\\FieldMapping'],
+            clone $p['Doctrine\\ORM\\Mapping\\FieldMapping'],
             clone ($p['Doctrine\\ORM\\Mapping\\ManyToOneAssociationMapping'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\ManyToOneAssociationMapping')),
             clone ($p['Doctrine\\ORM\\Mapping\\JoinColumnMapping'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\JoinColumnMapping')),
             clone ($p['Doctrine\\ORM\\Mapping\\OneToManyAssociationMapping'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Doctrine\\ORM\\Mapping\\OneToManyAssociationMapping')),
@@ -2028,8 +2029,9 @@ return [[
                         'id' => $o[1],
                         'nom_systeme' => $o[2],
                         'fournisseur_systeme' => $o[3],
-                        'regieFP_Systeme' => $o[4],
-                        'regieSFP_systeme' => $o[5],
+                        'type_systeme' => $o[4],
+                        'regieFP_Systeme' => $o[5],
+                        'regieSFP_systeme' => $o[6],
                     ],
                 ],
                 'fieldNames' => [
@@ -2037,6 +2039,7 @@ return [[
                         'id' => 'id',
                         'nom_systeme' => 'nom_systeme',
                         'fournisseur_systeme' => 'fournisseur_systeme',
+                        'type_systeme' => 'type_systeme',
                         'regie_fp_systeme' => 'regieFP_Systeme',
                         'regie_sfp_systeme' => 'regieSFP_systeme',
                     ],
@@ -2046,6 +2049,7 @@ return [[
                         'id' => 'id',
                         'nom_systeme' => 'nom_systeme',
                         'fournisseur_systeme' => 'fournisseur_systeme',
+                        'type_systeme' => 'type_systeme',
                         'regieFP_Systeme' => 'regie_fp_systeme',
                         'regieSFP_systeme' => 'regie_sfp_systeme',
                     ],
@@ -2057,23 +2061,24 @@ return [[
                 ],
                 'associationMappings' => [
                     [
-                        'grenaillage_systeme' => $o[6],
-                        'commande_systeme' => $o[8],
-                        'Couches_syteme' => $o[9],
+                        'grenaillage_systeme' => $o[7],
+                        'commande_systeme' => $o[9],
+                        'Couches_syteme' => $o[10],
                     ],
                 ],
                 'idGenerator' => [
-                    $o[10],
+                    $o[11],
                 ],
                 'name' => [
                     'App\\Entity\\Systemes',
-                    7 => 'grenaillage_systeme_id',
+                    8 => 'grenaillage_systeme_id',
                 ],
                 'id' => [
                     1 => true,
                 ],
                 'type' => [
                     1 => 'integer',
+                    'string',
                     'string',
                     'string',
                     'decimal',
@@ -2083,6 +2088,7 @@ return [[
                     1 => 'id',
                     'nom_systeme',
                     'fournisseur_systeme',
+                    'type_systeme',
                     'regieFP_Systeme',
                     'regieSFP_systeme',
                 ],
@@ -2090,71 +2096,74 @@ return [[
                     1 => 'id',
                     'nom_systeme',
                     'fournisseur_systeme',
+                    'type_systeme',
                     'regie_fp_systeme',
                     'regie_sfp_systeme',
                 ],
                 'length' => [
                     2 => 50,
                     50,
+                    50,
                 ],
                 'nullable' => [
                     3 => true,
                     true,
                     true,
-                    7 => true,
+                    true,
+                    8 => true,
                 ],
                 'precision' => [
-                    4 => 15,
+                    5 => 15,
                     15,
                 ],
                 'scale' => [
-                    4 => 2,
+                    5 => 2,
                     2,
                 ],
                 'fetch' => [
-                    6 => 2,
-                    8 => 2,
+                    7 => 2,
+                    9 => 2,
                     2,
                 ],
                 'sourceEntity' => [
-                    6 => 'App\\Entity\\Systemes',
-                    8 => 'App\\Entity\\Systemes',
+                    7 => 'App\\Entity\\Systemes',
+                    9 => 'App\\Entity\\Systemes',
                     'App\\Entity\\Systemes',
                 ],
                 'inversedBy' => [
-                    6 => 'systemes_grenaillage',
+                    7 => 'systemes_grenaillage',
                 ],
                 'sourceToTargetKeyColumns' => [
-                    6 => [
+                    7 => [
                         'grenaillage_systeme_id' => 'id',
                     ],
                 ],
                 'targetToSourceKeyColumns' => [
-                    6 => [
+                    7 => [
                         'id' => 'grenaillage_systeme_id',
                     ],
                 ],
                 'joinColumns' => [
-                    6 => [
-                        $o[7],
+                    7 => [
+                        $o[8],
                     ],
                 ],
                 'joinColumnFieldNames' => [
-                    6 => [
+                    7 => [
                         'grenaillage_systeme_id' => 'grenaillage_systeme_id',
                     ],
                 ],
                 'unique' => [
-                    7 => false,
+                    8 => false,
                 ],
                 'onDelete' => [
-                    7 => 'CASCADE',
+                    8 => 'CASCADE',
                 ],
                 'referencedColumnName' => [
-                    7 => 'id',
+                    8 => 'id',
                 ],
                 'cascade' => [
-                    8 => [
+                    9 => [
                         'persist',
                         'remove',
                     ],
@@ -2164,19 +2173,19 @@ return [[
                     ],
                 ],
                 'mappedBy' => [
-                    8 => 'systeme_commande',
+                    9 => 'systeme_commande',
                     'systeme_couche',
                 ],
             ],
             'Doctrine\\ORM\\Mapping\\AssociationMapping' => [
                 'fieldName' => [
-                    6 => 'grenaillage_systeme',
-                    8 => 'commande_systeme',
+                    7 => 'grenaillage_systeme',
+                    9 => 'commande_systeme',
                     'Couches_syteme',
                 ],
                 'targetEntity' => [
-                    6 => 'App\\Entity\\Grenaillage',
-                    8 => 'App\\Entity\\Commandes',
+                    7 => 'App\\Entity\\Grenaillage',
+                    9 => 'App\\Entity\\Commandes',
                     'App\\Entity\\Couches',
                 ],
             ],

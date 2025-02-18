@@ -16,7 +16,7 @@ if (!\class_exists(App_KernelProdContainer::class, false)) {
 
 return new \ContainerSKILRsg\App_KernelProdContainer([
     'container.build_hash' => 'SKILRsg',
-    'container.build_id' => '8be8281b',
-    'container.build_time' => 1739462065,
+    'container.build_id' => '6dc082e2',
+    'container.build_time' => 1739866214,
     'container.runtime_mode' => \in_array(\PHP_SAPI, ['cli', 'phpdbg', 'embed'], true) ? 'web=0' : 'web=1',
 ], __DIR__.\DIRECTORY_SEPARATOR.'ContainerSKILRsg');

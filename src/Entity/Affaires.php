@@ -24,30 +24,38 @@ use Symfony\Component\Serializer\Annotation\SerializedName;
         new Post(),
         new Delete(),
         new Patch(),
-        new Put()
+        new Put(),
+        new GetCollection(
+            uriTemplate: '/RecapSemaine',
+            normalizationContext: ['groups' => ['RecapSemaine:read']],
+            name: 'RecapSemaine'
+        ),
     ],
     normalizationContext: ['groups' => ['affaires:read']],
     denormalizationContext: ['groups' => ['affaires:write']],
+    paginationEnabled: false,
 )]
 class Affaires
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['affaires:read'])]
+    #[Groups(['affaires:read', 'RecapSemaine:read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 50, nullable: true)]
-    #[Groups(['affaires:read', 'affaires:write'])]
+    #[Groups(['affaires:read', 'affaires:write', 'RecapSemaine:read'])]
     #[SerializedName('numeroAffaire')]
     private ?string $numero_affaire = null;
 
     #[ORM\Column(length: 50, nullable: true)]
-    #[Groups(['affaires:read', 'affaires:write'])]
+    #[Groups(['affaires:read', 'affaires:write', 'RecapSemaine:read'])]
     #[SerializedName('nomAffaire')]
     private ?string $nom_affaire = null;
 
-    #[ORM\OneToMany(targetEntity: Commandes::class, mappedBy: 'affaire_commande')]
+    #[ORM\OneToMany(targetEntity: Commandes::class, mappedBy: 'affaire_commande', fetch: 'EAGER')]
+    #[Groups(['RecapSemaine:read'])]
+    #[SerializedName('commandesAffaire')]
     private Collection $commandes_affaire;
 
     public function getId(): ?int

@@ -11,6 +11,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 [
                     'nom_systeme',
                     'fournisseur_systeme',
+                    'type_systeme',
                     'grenaillage_systeme',
                     'regieFP_Systeme',
                     'regieSFP_systeme',

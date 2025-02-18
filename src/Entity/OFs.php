@@ -19,6 +19,7 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
 #[ApiResource(
     normalizationContext: ['groups' => ['ofs:read']],
     denormalizationContext: ['groups' => ['ofs:write']],
+    paginationEnabled: false,
 )]
 #[ApiFilter(SearchFilter::class, properties: ['semaine_of' => 'exact'])]
 class OFs

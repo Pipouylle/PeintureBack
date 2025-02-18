@@ -36,7 +36,8 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
         ),
     ],
     normalizationContext: ['groups' => ['commandes:read']],
-    denormalizationContext: ['groups' => ['commandes:write']]
+    denormalizationContext: ['groups' => ['commandes:write']],
+    paginationEnabled: false,
 )]
 #[ApiFilter(SearchFilter::class, properties: ['affaire_commande' => 'exact', 'systeme_commande' => 'exact'])]
 class Commandes
@@ -44,53 +45,53 @@ class Commandes
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['commandes:read', 'commandesAffaires:read'])]
+    #[Groups(['commandes:read', 'commandesAffaires:read', 'RecapSemaine:read'])]
     private ?int $id = null;
 
     #[ORM\ManyToOne(targetEntity: Affaires::class, inversedBy: 'commandes_affaire')]
     #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
-    #[Groups(['commandes:read', 'commandes:write'])]
+    #[Groups(['commandes:read', 'commandes:write', 'RecapSemaine:read'])]
     #[SerializedName('affaireCommande')]
     private ?Affaires $affaire_commande = null;
 
     #[ORM\ManyToOne(targetEntity: Systemes::class, inversedBy: 'commande_systeme')]
     #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
-    #[Groups(['commandes:read', 'commandes:write'])]
+    #[Groups(['commandes:read', 'commandes:write', 'RecapSemaine:read'])]
     #[SerializedName('systemeCommande')]
     private ?Systemes $systeme_commande = null;
 
     #[ORM\Column(length: 50)]
-    #[Groups(['commandes:read', 'commandes:write'])]
+    #[Groups(['commandes:read', 'commandes:write', 'RecapSemaine:read'])]
     #[SerializedName('eurekaCommande')]
     private ?string $eureka_commande = null;
 
     #[ORM\Column(length: 100, nullable: true)]
-    #[Groups(['commandes:read', 'commandes:write'])]
+    #[Groups(['commandes:read', 'commandes:write', 'RecapSemaine:read'])]
     #[SerializedName('commentaireCommande')]
     private ?string $commentaire_commande = null;
 
     #[ORM\Column(type: Types::BIGINT, nullable: true)]
-    #[Groups(['commandes:read', 'commandes:write'])]
+    #[Groups(['commandes:read', 'commandes:write', 'RecapSemaine:read'])]
     #[SerializedName('surfaceCommande')]
     private ?string $surface_commande = null;
 
     #[ORM\Column(type: Types::BIGINT, nullable: true)]
-    #[Groups(['commandes:read', 'commandes:write'])]
+    #[Groups(['commandes:read', 'commandes:write', 'RecapSemaine:read'])]
     #[SerializedName('regieSFPCommande')]
     private ?string $regieSFP_commande = null;
 
     #[ORM\Column(type: Types::BIGINT, nullable: true)]
-    #[Groups(['commandes:read', 'commandes:write'])]
+    #[Groups(['commandes:read', 'commandes:write', 'RecapSemaine:read'])]
     #[SerializedName('regieFPCommande')]
     private ?string $regieFP_commande = null;
 
     #[ORM\Column(type: Types::BOOLEAN, nullable: true)]
-    #[Groups(['commandes:read', 'commandes:write'])]
+    #[Groups(['commandes:read', 'commandes:write', 'RecapSemaine:read'])]
     #[SerializedName('ficheHCommande')]
     private ?bool $ficheH_commande = null;
 
     #[ORM\Column(type: Types::BOOLEAN, nullable: true)]
-    #[Groups(['commandes:read', 'commandes:write'])]
+    #[Groups(['commandes:read', 'commandes:write', 'RecapSemaine:read'])]
     #[SerializedName('pvPeintureCommande')]
     private ?bool $pvPeinture_commande = null;
 
