@@ -28,7 +28,8 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
         new Delete(),
     ],
     normalizationContext: ['groups' => ['couches:read']],
-    denormalizationContext: ['groups' => ['couches:write']]
+    denormalizationContext: ['groups' => ['couches:write']],
+    paginationEnabled: false,
 )]
 #[ApiFilter(SearchFilter::class, properties: ['systeme_couche' => 'exact'])]
 class Couches

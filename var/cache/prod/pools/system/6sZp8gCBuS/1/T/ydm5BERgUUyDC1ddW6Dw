@@ -4,6 +4,7 @@ return [PHP_INT_MAX, [
     'id',
     'nom_systeme',
     'fournisseur_systeme',
+    'type_systeme',
     'grenaillage_systeme',
     'regieFP_Systeme',
     'regieSFP_systeme',
@@ -17,4 +18,5 @@ return [PHP_INT_MAX, [
     'regieFPSysteme',
     'couches',
     'commandes',
+    'typeSysteme',
 ]];

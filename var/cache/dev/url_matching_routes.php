@@ -8,6 +8,7 @@
 return [
     false, // $matchHost
     [ // $staticRoutes
+        '/api/RecapSemaine' => [[['_route' => 'RecapSemaine', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Affaires', '_api_operation_name' => 'RecapSemaine'], null, ['GET' => 0], null, false, false, null]],
         '/api/articlesArticleCouches' => [[['_route' => 'articles articleCouches', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\ArticleCouche', '_api_operation_name' => 'articles articleCouches'], null, ['GET' => 0], null, false, false, null]],
         '/api/commandesAffaires' => [[['_route' => 'CommandesCategories', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Commandes', '_api_operation_name' => 'CommandesCategories'], null, ['GET' => 0], null, false, false, null]],
         '/api/demandesCalendar' => [[['_route' => 'DemandesOf', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Demandes', '_api_operation_name' => 'DemandesOf'], null, ['GET' => 0], null, false, false, null]],

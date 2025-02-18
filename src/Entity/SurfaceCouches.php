@@ -12,7 +12,8 @@ use Symfony\Component\Serializer\Attribute\Groups;
 #[ORM\Entity(repositoryClass: SurfaceCouchesRepository::class)]
 #[ApiResource(
     normalizationContext: ['groups' => ['surface_couches:read']],
-    denormalizationContext: ['groups' => ['surface_couches:write']]
+    denormalizationContext: ['groups' => ['surface_couches:write']],
+    paginationEnabled: false,
 )]
 class SurfaceCouches
 {

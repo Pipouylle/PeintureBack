@@ -3,11 +3,11 @@
         'name' => 'symfony/skeleton',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '4b34c07f9850286cafc9d0b9e9e9b28f120f0f2f',
+        'reference' => '59b89ad3556e545c2e9b8d06f72d44088f85039e',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'dev' => false,
+        'dev' => true,
     ),
     'versions' => array(
         'api-platform/doctrine-common' => array(
@@ -270,6 +270,15 @@
             'install_path' => __DIR__ . '/../nelmio/cors-bundle',
             'aliases' => array(),
             'dev_requirement' => false,
+        ),
+        'nikic/php-parser' => array(
+            'pretty_version' => 'v5.4.0',
+            'version' => '5.4.0.0',
+            'reference' => '447a020a1f875a434d62f2a401f53b82a396e494',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../nikic/php-parser',
+            'aliases' => array(),
+            'dev_requirement' => true,
         ),
         'phpdocumentor/reflection-common' => array(
             'pretty_version' => '2.2.0',
@@ -595,6 +604,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'symfony/maker-bundle' => array(
+            'pretty_version' => 'v1.62.1',
+            'version' => '1.62.1.0',
+            'reference' => '468ff2708200c95ebc0d85d3174b6c6711b8a590',
+            'type' => 'symfony-bundle',
+            'install_path' => __DIR__ . '/../symfony/maker-bundle',
+            'aliases' => array(),
+            'dev_requirement' => true,
+        ),
         'symfony/password-hasher' => array(
             'pretty_version' => 'v7.2.0',
             'version' => '7.2.0.0',
@@ -697,6 +715,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'symfony/process' => array(
+            'pretty_version' => 'v7.2.0',
+            'version' => '7.2.0.0',
+            'reference' => 'd34b22ba9390ec19d2dd966c40aa9e8462f27a7e',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/process',
+            'aliases' => array(),
+            'dev_requirement' => true,
+        ),
         'symfony/property-access' => array(
             'pretty_version' => 'v7.2.3',
             'version' => '7.2.3.0',
@@ -796,7 +823,7 @@
         'symfony/skeleton' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '4b34c07f9850286cafc9d0b9e9e9b28f120f0f2f',
+            'reference' => '59b89ad3556e545c2e9b8d06f72d44088f85039e',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

@@ -34,7 +34,8 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
         ),
     ],
     normalizationContext: ['groups' => ['demandes:read']],
-    denormalizationContext: ['groups' => ['demandes:write']]
+    denormalizationContext: ['groups' => ['demandes:write']],
+    paginationEnabled: false,
 )]
 class Demandes
 {
@@ -75,6 +76,11 @@ class Demandes
     #[Groups(['demandes:read', 'demandes:write'])]
     #[SerializedName('dateDemande')]
     private ?\DateTimeInterface $date_demande = null;
+
+    #[ORM\Column(type: Types::BOOLEAN, nullable: true)]
+    #[Groups(['demandes:read', 'demandes:write'])]
+    #[SerializedName('reservationPeintureDemande')]
+    private ?bool $reservationPeinture_demande = null;
 
     #[ORM\OneToMany(targetEntity: OFs::class, mappedBy: 'idDemande_of', cascade: ['persist', 'remove'])]
     private Collection $Of_demande;
@@ -217,5 +223,15 @@ class Demandes
         }
 
         return $this;
+    }
+
+    public function getReservationPeintureDemande(): ?bool
+    {
+        return $this->reservationPeinture_demande;
+    }
+
+    public function setReservationPeintureDemande(?bool $reservationPeinture_demande): void
+    {
+        $this->reservationPeinture_demande = $reservationPeinture_demande;
     }
 }

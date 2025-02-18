@@ -342,7 +342,6 @@
       </parameter>
     </parameter>
     <parameter key="api_platform.resource_class_directories" type="collection">
-      <parameter>C:\Users\timot\Documents\bookshop-api/src/ApiResource</parameter>
       <parameter>C:\Users\timot\Documents\bookshop-api/src/Entity</parameter>
     </parameter>
     <parameter key="api_platform.class_name_resources" type="collection">
@@ -601,7 +600,9 @@
       <argument type="service" id="debug.argument_resolver"/>
       <argument>true</argument>
     </service>
-    <service id="request_stack" class="Symfony\Component\HttpFoundation\RequestStack" public="true"/>
+    <service id="request_stack" class="Symfony\Component\HttpFoundation\RequestStack" public="true">
+      <tag name="kernel.reset" method="resetRequestFormats" on_invalid="ignore"/>
+    </service>
     <service id="http_cache" class="Symfony\Bundle\FrameworkBundle\HttpCache\HttpCache">
       <tag name="container.hot_path"/>
       <argument type="service" id="kernel"/>
@@ -646,6 +647,8 @@
     </service>
     <service id="services_resetter" class="Symfony\Component\HttpKernel\DependencyInjection\ServicesResetter" public="true">
       <argument type="iterator">
+        <argument key="request_stack" type="service" id="request_stack" on-invalid="ignore_uninitialized"/>
+        <argument key="container.env_var_processor" type="service" id="container.env_var_processor" on-invalid="ignore_uninitialized"/>
         <argument key="cache.app" type="service" id="cache.app" on-invalid="ignore_uninitialized"/>
         <argument key="cache.system" type="service" id="cache.system" on-invalid="ignore_uninitialized"/>
         <argument key="cache.validator" type="service" id="cache.validator" on-invalid="ignore_uninitialized"/>
@@ -672,6 +675,12 @@
         <argument key="debug.security.event_dispatcher.main" type="service" id="debug.security.event_dispatcher.main" on-invalid="ignore_uninitialized"/>
       </argument>
       <argument type="collection">
+        <argument key="request_stack" type="collection">
+          <argument>?resetRequestFormats</argument>
+        </argument>
+        <argument key="container.env_var_processor" type="collection">
+          <argument>reset</argument>
+        </argument>
         <argument key="cache.app" type="collection">
           <argument>reset</argument>
         </argument>
@@ -762,6 +771,7 @@
     </service>
     <service id="container.env_var_processor" class="Symfony\Component\DependencyInjection\EnvVarProcessor">
       <tag name="container.env_var_processor"/>
+      <tag name="kernel.reset" method="reset"/>
       <argument type="service" id="service_container"/>
       <argument type="tagged_iterator" tag="container.env_var_loader"/>
     </service>
@@ -1403,7 +1413,6 @@
     </service>
     <service id="cache.system_clearer" class="Symfony\Component\HttpKernel\CacheClearer\Psr6CacheClearer" public="true">
       <tag name="cache.pool.clearer"/>
-      <tag name="kernel.cache_clearer"/>
       <argument type="collection">
         <argument key="cache.system" type="service" id="cache.system" on-invalid="ignore_uninitialized"/>
         <argument key="cache.validator" type="service" id="cache.validator" on-invalid="ignore_uninitialized"/>
@@ -2136,6 +2145,9 @@
         <argument type="service" id="api_platform.yamlopenapi.encoder"/>
         <argument type="service" id="api_platform.jsonld.encoder"/>
         <argument type="service" id="api_platform.problem.encoder"/>
+      </argument>
+      <argument type="collection">
+        <argument key="hydra_prefix">false</argument>
       </argument>
     </service>
     <service id="serializer.mapping.class_discriminator_resolver" class="Symfony\Component\Serializer\Mapping\ClassDiscriminatorFromClassMetadata">

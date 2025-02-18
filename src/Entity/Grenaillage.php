@@ -13,7 +13,8 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
 #[ORM\Entity(repositoryClass: GrenaillageRepository::class)]
 #[ApiResource(
     normalizationContext: ['groups' => ['grenaillage:read']],
-    denormalizationContext: ['groups' => ['grenaillage:write']]
+    denormalizationContext: ['groups' => ['grenaillage:write']],
+    paginationEnabled: false,
 )]
 class Grenaillage
 {
