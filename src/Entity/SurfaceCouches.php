@@ -2,8 +2,11 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiResource;
 use App\Repository\SurfaceCouchesRepository;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\SerializedName;
@@ -15,6 +18,7 @@ use Symfony\Component\Serializer\Attribute\Groups;
     denormalizationContext: ['groups' => ['surface_couches:write']],
     paginationEnabled: false,
 )]
+#[ApiFilter(SearchFilter::class, properties: ['demande_surfaceCouche' => 'exact'])]
 class SurfaceCouches
 {
     #[ORM\Id]
@@ -40,6 +44,8 @@ class SurfaceCouches
     #[SerializedName('surface')]
     private ?string $surface = null;
 
+    #[ORM\OneToMany(targetEntity: AvancementSurfaceCouches::class, mappedBy: 'surfaceCouches_avancement')]
+    private Collection $avancementSurfaceCouches_surfaceCouches;
 
 
     public function getId(): ?int
@@ -78,4 +84,32 @@ class SurfaceCouches
 
         return $this;
     }
+
+    public function getAvancementSurfaceCouchesSurfaceCouches(): ?Collection
+    {
+        return $this->avancementSurfaceCouches_surfaceCouches;
+    }
+
+    public function addAvancementSurfaceCouchesSurfaceCouches(AvancementSurfaceCouches $avancementSurfaceCouches): static
+    {
+        if (!$this->avancementSurfaceCouches_surfaceCouches->contains($avancementSurfaceCouches)) {
+            $this->avancementSurfaceCouches_surfaceCouches[] = $avancementSurfaceCouches;
+            $avancementSurfaceCouches->setSurfaceCouchesAvancement($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAvancementSurfaceCouchesSurfaceCouches(AvancementSurfaceCouches $avancementSurfaceCouches): static
+    {
+        if ($this->avancementSurfaceCouches_surfaceCouches->removeElement($avancementSurfaceCouches)) {
+            if ($avancementSurfaceCouches->getSurfaceCouchesAvancement() === $this) {
+                $avancementSurfaceCouches->setSurfaceCouchesAvancement(null);
+            }
+        }
+
+        return $this;
+    }
+
+
 }

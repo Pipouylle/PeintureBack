@@ -17,6 +17,9 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
         clone ($p['ApiPlatform\\Metadata\\Delete'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Metadata\\Delete')),
         clone $p['ApiPlatform\\Doctrine\\Orm\\State\\Options'],
         clone $p['ApiPlatform\\Metadata\\Link'],
+        clone ($p['ApiPlatform\\Metadata\\Patch'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Metadata\\Patch')),
+        clone $p['ApiPlatform\\Doctrine\\Orm\\State\\Options'],
+        clone $p['ApiPlatform\\Metadata\\Link'],
         clone $p['ApiPlatform\\Metadata\\Link'],
     ],
     null,
@@ -152,7 +155,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
             ],
             'uriVariables' => [
                 [
-                    'id' => $o[15],
+                    'id' => $o[18],
                 ],
             ],
             'routePrefix' => [
@@ -233,6 +236,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'middleware' => [
                 null,
@@ -241,6 +245,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'rules' => [
                 2 => null,
@@ -248,6 +253,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'queryParameterValidationEnabled' => [
                 2 => null,
@@ -255,6 +261,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
         ],
         'ApiPlatform\\Metadata\\Operations' => [
@@ -280,6 +287,10 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                         '_api_/couches/{id}{._format}_delete',
                         $o[12],
                     ],
+                    [
+                        '_api_/couches/{id}{._format}_patch',
+                        $o[15],
+                    ],
                 ],
             ],
         ],
@@ -290,6 +301,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => 'Couches',
                 9 => 'Couches',
                 12 => 'Couches',
+                15 => 'Couches',
             ],
             'class' => [
                 2 => 'App\\Entity\\Couches',
@@ -297,6 +309,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => 'App\\Entity\\Couches',
                 9 => 'App\\Entity\\Couches',
                 12 => 'App\\Entity\\Couches',
+                15 => 'App\\Entity\\Couches',
             ],
             'description' => [
                 2 => null,
@@ -304,6 +317,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'urlGenerationStrategy' => [
                 2 => null,
@@ -311,6 +325,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'deprecationReason' => [
                 2 => null,
@@ -318,6 +333,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'normalizationContext' => [
                 2 => [
@@ -341,6 +357,11 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                     ],
                 ],
                 12 => [
+                    'groups' => [
+                        'couches:read',
+                    ],
+                ],
+                15 => [
                     'groups' => [
                         'couches:read',
                     ],
@@ -372,6 +393,11 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                         'couches:write',
                     ],
                 ],
+                15 => [
+                    'groups' => [
+                        'couches:write',
+                    ],
+                ],
             ],
             'collectDenormalizationErrors' => [
                 2 => null,
@@ -379,6 +405,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'validationContext' => [
                 2 => null,
@@ -386,6 +413,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'filters' => [
                 2 => [
@@ -403,6 +431,9 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 12 => [
                     'annotated_app_entity_couches_api_platform_doctrine_orm_filter_search_filter',
                 ],
+                15 => [
+                    'annotated_app_entity_couches_api_platform_doctrine_orm_filter_search_filter',
+                ],
             ],
             'elasticsearch' => [
                 2 => null,
@@ -410,6 +441,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'order' => [
                 2 => null,
@@ -417,6 +449,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'fetchPartial' => [
                 2 => null,
@@ -424,6 +457,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'forceEager' => [
                 2 => null,
@@ -431,6 +465,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'paginationEnabled' => [
                 2 => false,
@@ -438,6 +473,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => false,
                 9 => false,
                 12 => false,
+                15 => false,
             ],
             'paginationType' => [
                 2 => null,
@@ -445,6 +481,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'paginationItemsPerPage' => [
                 2 => null,
@@ -452,6 +489,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'paginationMaximumItemsPerPage' => [
                 2 => null,
@@ -459,6 +497,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'paginationPartial' => [
                 2 => null,
@@ -466,6 +505,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'paginationClientEnabled' => [
                 2 => null,
@@ -473,6 +513,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'paginationClientItemsPerPage' => [
                 2 => null,
@@ -480,6 +521,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'paginationClientPartial' => [
                 2 => null,
@@ -487,6 +529,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'paginationFetchJoinCollection' => [
                 2 => null,
@@ -494,6 +537,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'paginationUseOutputWalkers' => [
                 2 => null,
@@ -501,6 +545,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'security' => [
                 2 => null,
@@ -508,6 +553,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'securityMessage' => [
                 2 => null,
@@ -515,6 +561,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'securityPostDenormalize' => [
                 2 => null,
@@ -522,6 +569,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'securityPostDenormalizeMessage' => [
                 2 => null,
@@ -529,6 +577,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'securityPostValidation' => [
                 2 => null,
@@ -536,6 +585,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'securityPostValidationMessage' => [
                 2 => null,
@@ -543,6 +593,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'provider' => [
                 2 => 'ApiPlatform\\Doctrine\\Orm\\State\\ItemProvider',
@@ -550,6 +601,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => 'ApiPlatform\\Doctrine\\Orm\\State\\ItemProvider',
                 9 => 'ApiPlatform\\Doctrine\\Orm\\State\\ItemProvider',
                 12 => 'ApiPlatform\\Doctrine\\Orm\\State\\ItemProvider',
+                15 => 'ApiPlatform\\Doctrine\\Orm\\State\\ItemProvider',
             ],
             'processor' => [
                 2 => 'api_platform.doctrine.orm.state.persist_processor',
@@ -557,6 +609,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => 'api_platform.doctrine.orm.state.persist_processor',
                 9 => 'api_platform.doctrine.orm.state.persist_processor',
                 12 => 'api_platform.doctrine.orm.state.remove_processor',
+                15 => 'api_platform.doctrine.orm.state.persist_processor',
             ],
             'stateOptions' => [
                 2 => $o[3],
@@ -564,6 +617,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => $o[8],
                 9 => $o[10],
                 12 => $o[13],
+                15 => $o[16],
             ],
             'extraProperties' => [
                 2 => [],
@@ -571,6 +625,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => [],
                 9 => [],
                 12 => [],
+                15 => [],
             ],
             'read' => [
                 2 => null,
@@ -578,6 +633,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'deserialize' => [
                 2 => null,
@@ -585,6 +641,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'validate' => [
                 2 => null,
@@ -592,6 +649,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'write' => [
                 2 => null,
@@ -599,6 +657,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'serialize' => [
                 2 => null,
@@ -606,6 +665,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'priority' => [
                 2 => 0,
@@ -613,6 +673,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => 2,
                 9 => 3,
                 12 => 4,
+                15 => 5,
             ],
             'name' => [
                 2 => '_api_/couches/{id}{._format}_get',
@@ -620,6 +681,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => '_api_/couches{._format}_post',
                 9 => '_api_/couches/{id}{._format}_put',
                 12 => '_api_/couches/{id}{._format}_delete',
+                15 => '_api_/couches/{id}{._format}_patch',
             ],
         ],
         'ApiPlatform\\Metadata\\HttpOperation' => [
@@ -629,6 +691,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'method' => [
                 2 => 'GET',
@@ -636,6 +699,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => 'POST',
                 9 => 'PUT',
                 12 => 'DELETE',
+                15 => 'PATCH',
             ],
             'uriTemplate' => [
                 2 => '/couches/{id}{._format}',
@@ -643,6 +707,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => '/couches{._format}',
                 9 => '/couches/{id}{._format}',
                 12 => '/couches/{id}{._format}',
+                15 => '/couches/{id}{._format}',
             ],
             'types' => [
                 2 => null,
@@ -650,6 +715,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'inputFormats' => [
                 2 => [
@@ -675,6 +741,11 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 12 => [
                     'jsonld' => [
                         'application/ld+json',
+                    ],
+                ],
+                15 => [
+                    'json' => [
+                        'application/merge-patch+json',
                     ],
                 ],
             ],
@@ -704,6 +775,11 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                         'application/ld+json',
                     ],
                 ],
+                15 => [
+                    'jsonld' => [
+                        'application/ld+json',
+                    ],
+                ],
             ],
             'uriVariables' => [
                 2 => [
@@ -716,6 +792,9 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 12 => [
                     'id' => $o[14],
                 ],
+                15 => [
+                    'id' => $o[17],
+                ],
             ],
             'routePrefix' => [
                 2 => null,
@@ -723,6 +802,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'routeName' => [
                 2 => null,
@@ -730,6 +810,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'defaults' => [
                 2 => null,
@@ -737,6 +818,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'requirements' => [
                 2 => null,
@@ -744,6 +826,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'options' => [
                 2 => null,
@@ -751,6 +834,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'stateless' => [
                 2 => true,
@@ -758,6 +842,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => true,
                 9 => true,
                 12 => true,
+                15 => true,
             ],
             'sunset' => [
                 2 => null,
@@ -765,13 +850,15 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'acceptPatch' => [
-                2 => null,
+                2 => 'application/merge-patch+json',
                 5 => null,
-                7 => null,
-                9 => null,
-                12 => null,
+                7 => 'application/merge-patch+json',
+                9 => 'application/merge-patch+json',
+                12 => 'application/merge-patch+json',
+                15 => 'application/merge-patch+json',
             ],
             'host' => [
                 2 => null,
@@ -779,6 +866,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'schemes' => [
                 2 => null,
@@ -786,6 +874,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'condition' => [
                 2 => null,
@@ -793,6 +882,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'controller' => [
                 2 => 'api_platform.symfony.main_controller',
@@ -800,6 +890,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => 'api_platform.symfony.main_controller',
                 9 => 'api_platform.symfony.main_controller',
                 12 => 'api_platform.symfony.main_controller',
+                15 => 'api_platform.symfony.main_controller',
             ],
             'headers' => [
                 2 => null,
@@ -807,6 +898,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'cacheHeaders' => [
                 2 => [
@@ -844,6 +936,13 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                         'Origin',
                     ],
                 ],
+                15 => [
+                    'vary' => [
+                        'Content-Type',
+                        'Authorization',
+                        'Origin',
+                    ],
+                ],
             ],
             'hydraContext' => [
                 2 => null,
@@ -851,6 +950,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'openapi' => [
                 2 => null,
@@ -858,6 +958,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'exceptionToStatus' => [
                 2 => null,
@@ -865,6 +966,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'links' => [
                 2 => null,
@@ -872,6 +974,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
             'errors' => [
                 2 => null,
@@ -879,6 +982,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => null,
                 9 => null,
                 12 => null,
+                15 => null,
             ],
         ],
         'ApiPlatform\\Doctrine\\Common\\State\\Options' => [
@@ -888,6 +992,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 8 => 'api_platform.doctrine.orm.links_handler',
                 10 => 'api_platform.doctrine.orm.links_handler',
                 13 => 'api_platform.doctrine.orm.links_handler',
+                16 => 'api_platform.doctrine.orm.links_handler',
             ],
         ],
         'ApiPlatform\\Doctrine\\Orm\\State\\Options' => [
@@ -897,6 +1002,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 8 => null,
                 10 => null,
                 13 => null,
+                16 => null,
             ],
         ],
         'ApiPlatform\\Metadata\\Parameter' => [
@@ -904,90 +1010,105 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 4 => null,
                 11 => null,
                 14 => null,
+                17 => null,
                 null,
             ],
             'schema' => [
                 4 => null,
                 11 => null,
                 14 => null,
+                17 => null,
                 null,
             ],
             'openApi' => [
                 4 => null,
                 11 => null,
                 14 => null,
+                17 => null,
                 null,
             ],
             'provider' => [
                 4 => null,
                 11 => null,
                 14 => null,
+                17 => null,
                 null,
             ],
             'filter' => [
                 4 => null,
                 11 => null,
                 14 => null,
+                17 => null,
                 null,
             ],
             'property' => [
                 4 => null,
                 11 => null,
                 14 => null,
+                17 => null,
                 null,
             ],
             'description' => [
                 4 => null,
                 11 => null,
                 14 => null,
+                17 => null,
                 null,
             ],
             'required' => [
                 4 => null,
                 11 => null,
                 14 => null,
+                17 => null,
                 null,
             ],
             'priority' => [
                 4 => null,
                 11 => null,
                 14 => null,
+                17 => null,
                 null,
             ],
             'hydra' => [
                 4 => null,
                 11 => null,
                 14 => null,
+                17 => null,
                 null,
             ],
             'constraints' => [
                 4 => null,
                 11 => null,
                 14 => null,
+                17 => null,
                 null,
             ],
             'security' => [
                 4 => null,
                 11 => null,
                 14 => null,
+                17 => null,
                 null,
             ],
             'securityMessage' => [
                 4 => null,
                 11 => null,
                 14 => null,
+                17 => null,
                 null,
             ],
             'extraProperties' => [
                 4 => [],
                 11 => [],
                 14 => [],
+                17 => [],
                 [],
             ],
             'filterContext' => [
                 4 => null,
                 11 => null,
                 14 => null,
+                17 => null,
                 null,
             ],
         ],
@@ -996,30 +1117,35 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 4 => 'id',
                 11 => 'id',
                 14 => 'id',
+                17 => 'id',
                 'id',
             ],
             'fromProperty' => [
                 4 => null,
                 11 => null,
                 14 => null,
+                17 => null,
                 null,
             ],
             'toProperty' => [
                 4 => null,
                 11 => null,
                 14 => null,
+                17 => null,
                 null,
             ],
             'fromClass' => [
                 4 => 'App\\Entity\\Couches',
                 11 => 'App\\Entity\\Couches',
                 14 => 'App\\Entity\\Couches',
+                17 => 'App\\Entity\\Couches',
                 'App\\Entity\\Couches',
             ],
             'toClass' => [
                 4 => null,
                 11 => null,
                 14 => null,
+                17 => null,
                 null,
             ],
             'identifiers' => [
@@ -1032,6 +1158,9 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 14 => [
                     'id',
                 ],
+                17 => [
+                    'id',
+                ],
                 [
                     'id',
                 ],
@@ -1040,18 +1169,21 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 4 => null,
                 11 => null,
                 14 => null,
+                17 => null,
                 null,
             ],
             'expandedValue' => [
                 4 => null,
                 11 => null,
                 14 => null,
+                17 => null,
                 null,
             ],
             'securityObjectName' => [
                 4 => null,
                 11 => null,
                 14 => null,
+                17 => null,
                 null,
             ],
         ],

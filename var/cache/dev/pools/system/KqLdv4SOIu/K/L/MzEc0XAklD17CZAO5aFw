@@ -388,11 +388,21 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 12 => null,
             ],
             'filters' => [
-                2 => [],
-                5 => [],
-                7 => [],
-                9 => [],
-                12 => [],
+                2 => [
+                    'annotated_app_entity_surface_couches_api_platform_doctrine_orm_filter_search_filter',
+                ],
+                5 => [
+                    'annotated_app_entity_surface_couches_api_platform_doctrine_orm_filter_search_filter',
+                ],
+                7 => [
+                    'annotated_app_entity_surface_couches_api_platform_doctrine_orm_filter_search_filter',
+                ],
+                9 => [
+                    'annotated_app_entity_surface_couches_api_platform_doctrine_orm_filter_search_filter',
+                ],
+                12 => [
+                    'annotated_app_entity_surface_couches_api_platform_doctrine_orm_filter_search_filter',
+                ],
             ],
             'elasticsearch' => [
                 2 => null,

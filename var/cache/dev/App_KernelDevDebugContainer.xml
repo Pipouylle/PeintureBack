@@ -393,6 +393,22 @@
     <service id="App\Entity" class="App\Entity" abstract="true">
       <tag name="container.excluded" source="in &quot;config/services.yaml&quot;"/>
     </service>
+    <service id="App\Controller\AllAvancementDemandeController" class="App\Controller\AllAvancementDemandeController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <argument type="service" id="App\Repository\AvancementSurfaceCouchesRepository"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.ZyP9f7K.App\Controller\AllAvancementDemandeController"/>
+      </call>
+    </service>
+    <service id="App\Controller\AllAvancementSemaineController" class="App\Controller\AllAvancementSemaineController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <argument type="service" id="App\Repository\AvancementSurfaceCouchesRepository"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.ZyP9f7K.App\Controller\AllAvancementSemaineController"/>
+      </call>
+    </service>
     <service id="App\Controller\ArticleCoucheByDemandeController" class="App\Controller\ArticleCoucheByDemandeController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -444,6 +460,10 @@
       <argument type="service" id="doctrine"/>
     </service>
     <service id="App\Repository\ArticlesRepository" class="App\Repository\ArticlesRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\AvancementSurfaceCouchesRepository" class="App\Repository\AvancementSurfaceCouchesRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
@@ -530,7 +550,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.xjcn0aJ"/>
+      <argument type="service" id=".service_locator.nBwWIG5"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -1917,7 +1937,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.xjcn0aJ"/>
+      <argument type="service" id=".service_locator.nBwWIG5"/>
     </service>
     <service id="routing.resolver" class="Symfony\Component\Config\Loader\LoaderResolver">
       <call method="addLoader">
@@ -4034,7 +4054,7 @@
     <service id="doctrine.orm.configuration" class="Doctrine\ORM\Configuration" abstract="true"/>
     <service id="doctrine.orm.entity_manager.abstract" class="Doctrine\ORM\EntityManager" lazy="true" abstract="true"/>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory">
-      <argument type="service" id=".service_locator.I6FDPM4"/>
+      <argument type="service" id=".service_locator.RPeQXkI"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -4727,6 +4747,7 @@
         <argument key="annotated_app_entity_couches_api_platform_doctrine_orm_filter_search_filter" type="service_closure" id="annotated_app_entity_couches_api_platform_doctrine_orm_filter_search_filter"/>
         <argument key="annotated_app_entity_o_fs_api_platform_doctrine_orm_filter_search_filter" type="service_closure" id="annotated_app_entity_o_fs_api_platform_doctrine_orm_filter_search_filter"/>
         <argument key="annotated_app_entity_semaines_api_platform_doctrine_orm_filter_search_filter" type="service_closure" id="annotated_app_entity_semaines_api_platform_doctrine_orm_filter_search_filter"/>
+        <argument key="annotated_app_entity_surface_couches_api_platform_doctrine_orm_filter_search_filter" type="service_closure" id="annotated_app_entity_surface_couches_api_platform_doctrine_orm_filter_search_filter"/>
       </argument>
     </service>
     <service id="api_platform.symfony.uri_variables.transformer.ulid" class="ApiPlatform\Symfony\UriVariableTransformer\UlidUriVariableTransformer">
@@ -5851,6 +5872,24 @@
       <argument type="service" id="api_platform.api.identifiers_extractor" on-invalid="ignore"/>
       <argument type="service" id="api_platform.hydra.name_converter.hydra_prefix" on-invalid="ignore"/>
     </service>
+    <service id="annotated_app_entity_surface_couches_api_platform_doctrine_orm_filter_search_filter" class="ApiPlatform\Doctrine\Orm\Filter\SearchFilter" autowire="true">
+      <tag name="api_platform.filter"/>
+      <argument type="service" id="doctrine"/>
+      <argument type="service" id="api_platform.symfony.iri_converter"/>
+      <argument type="service" id="property_accessor"/>
+      <argument type="service" id="logger" on-invalid="ignore"/>
+      <argument type="collection">
+        <argument key="demande_surfaceCouche">exact</argument>
+      </argument>
+      <argument type="service" id="api_platform.api.identifiers_extractor" on-invalid="ignore"/>
+      <argument type="service" id="api_platform.hydra.name_converter.hydra_prefix" on-invalid="ignore"/>
+    </service>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AllAvancementDemandeController" class="App\Controller\AllAvancementDemandeController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AllAvancementDemandeController" class="App\Controller\AllAvancementDemandeController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\AllAvancementDemandeController" class="App\Controller\AllAvancementDemandeController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AllAvancementSemaineController" class="App\Controller\AllAvancementSemaineController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AllAvancementSemaineController" class="App\Controller\AllAvancementSemaineController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\AllAvancementSemaineController" class="App\Controller\AllAvancementSemaineController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ArticleCoucheByDemandeController" class="App\Controller\ArticleCoucheByDemandeController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ArticleCoucheByDemandeController" class="App\Controller\ArticleCoucheByDemandeController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\ArticleCoucheByDemandeController" class="App\Controller\ArticleCoucheByDemandeController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -5873,6 +5912,8 @@
     <service id=".abstract.instanceof.App\Repository\ArticleCoucheRepository" class="App\Repository\ArticleCoucheRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ArticlesRepository" class="App\Repository\ArticlesRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\ArticlesRepository" class="App\Repository\ArticlesRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\AvancementSurfaceCouchesRepository" class="App\Repository\AvancementSurfaceCouchesRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\AvancementSurfaceCouchesRepository" class="App\Repository\AvancementSurfaceCouchesRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\AvancementsRepository" class="App\Repository\AvancementsRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\AvancementsRepository" class="App\Repository\AvancementsRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CommandesRepository" class="App\Repository\CommandesRepository" autowire="true" abstract="true"/>
@@ -6451,6 +6492,18 @@
         <argument key="serializer" type="service_closure" id="serializer"/>
       </argument>
     </service>
+    <service id=".service_locator.GL345QQ.App\Controller\AllAvancementDemandeController::__invoke()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\AllAvancementDemandeController::__invoke()"/>
+      <argument>App\Controller\AllAvancementDemandeController::__invoke()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.GL345QQ" method="withContext"/>
+    </service>
+    <service id=".service_locator.GL345QQ.App\Controller\AllAvancementSemaineController::__invoke()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\AllAvancementSemaineController::__invoke()"/>
+      <argument>App\Controller\AllAvancementSemaineController::__invoke()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.GL345QQ" method="withContext"/>
+    </service>
     <service id=".service_locator.GL345QQ.App\Controller\ArticleCoucheDemandeController::__invoke()" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\ArticleCoucheDemandeController::__invoke()"/>
       <argument>App\Controller\ArticleCoucheDemandeController::__invoke()</argument>
@@ -6463,17 +6516,23 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.GL345QQ" method="withContext"/>
     </service>
-    <service id=".service_locator.xjcn0aJ" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.nBwWIG5" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.zHyJIs5.kernel::registerContainerConfiguration()"/>
         <argument key="App\Kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.zHyJIs5.kernel::registerContainerConfiguration()"/>
         <argument key="kernel::loadRoutes" type="service_closure" id=".service_locator.zHyJIs5.kernel::loadRoutes()"/>
         <argument key="App\Kernel::loadRoutes" type="service_closure" id=".service_locator.zHyJIs5.kernel::loadRoutes()"/>
+        <argument key="App\Controller\AllAvancementDemandeController::__invoke" type="service_closure" id=".service_locator.GL345QQ.App\Controller\AllAvancementDemandeController::__invoke()"/>
+        <argument key="App\Controller\AllAvancementSemaineController::__invoke" type="service_closure" id=".service_locator.GL345QQ.App\Controller\AllAvancementSemaineController::__invoke()"/>
         <argument key="App\Controller\ArticleCoucheDemandeController::__invoke" type="service_closure" id=".service_locator.GL345QQ.App\Controller\ArticleCoucheDemandeController::__invoke()"/>
         <argument key="App\Controller\ConsommationSemaineController::__invoke" type="service_closure" id=".service_locator.GL345QQ.App\Controller\ConsommationSemaineController::__invoke()"/>
         <argument key="kernel:registerContainerConfiguration" type="service_closure" id=".service_locator.zHyJIs5.kernel::registerContainerConfiguration()"/>
         <argument key="kernel:loadRoutes" type="service_closure" id=".service_locator.zHyJIs5.kernel::loadRoutes()"/>
+        <argument key="App\Controller\AllAvancementDemandeController:__invoke" type="service_closure" id=".service_locator.GL345QQ.App\Controller\AllAvancementDemandeController::__invoke()"/>
+        <argument key="App\Controller\AllAvancementDemandeController" type="service_closure" id=".service_locator.GL345QQ.App\Controller\AllAvancementDemandeController::__invoke()"/>
+        <argument key="App\Controller\AllAvancementSemaineController:__invoke" type="service_closure" id=".service_locator.GL345QQ.App\Controller\AllAvancementSemaineController::__invoke()"/>
+        <argument key="App\Controller\AllAvancementSemaineController" type="service_closure" id=".service_locator.GL345QQ.App\Controller\AllAvancementSemaineController::__invoke()"/>
         <argument key="App\Controller\ArticleCoucheDemandeController:__invoke" type="service_closure" id=".service_locator.GL345QQ.App\Controller\ArticleCoucheDemandeController::__invoke()"/>
         <argument key="App\Controller\ArticleCoucheDemandeController" type="service_closure" id=".service_locator.GL345QQ.App\Controller\ArticleCoucheDemandeController::__invoke()"/>
         <argument key="App\Controller\ConsommationSemaineController:__invoke" type="service_closure" id=".service_locator.GL345QQ.App\Controller\ConsommationSemaineController::__invoke()"/>
@@ -6604,12 +6663,13 @@
         <argument key="doctrine.orm.default_listeners.attach_entity_listeners" type="service_closure" id="doctrine.orm.default_listeners.attach_entity_listeners"/>
       </argument>
     </service>
-    <service id=".service_locator.I6FDPM4" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.RPeQXkI" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Repository\AffairesRepository" type="service_closure" id="App\Repository\AffairesRepository"/>
         <argument key="App\Repository\ArticleCoucheRepository" type="service_closure" id="App\Repository\ArticleCoucheRepository"/>
         <argument key="App\Repository\ArticlesRepository" type="service_closure" id="App\Repository\ArticlesRepository"/>
+        <argument key="App\Repository\AvancementSurfaceCouchesRepository" type="service_closure" id="App\Repository\AvancementSurfaceCouchesRepository"/>
         <argument key="App\Repository\AvancementsRepository" type="service_closure" id="App\Repository\AvancementsRepository"/>
         <argument key="App\Repository\CommandesRepository" type="service_closure" id="App\Repository\CommandesRepository"/>
         <argument key="App\Repository\ConsommationsRepository" type="service_closure" id="App\Repository\ConsommationsRepository"/>
@@ -6677,6 +6737,18 @@
         <argument key="parameter_bag" type="service_closure" id="parameter_bag" on-invalid="ignore"/>
         <argument key="web_link.http_header_serializer" type="service_closure" id="web_link.http_header_serializer" on-invalid="ignore"/>
       </argument>
+    </service>
+    <service id=".service_locator.ZyP9f7K.App\Controller\AllAvancementDemandeController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\AllAvancementDemandeController"/>
+      <argument>App\Controller\AllAvancementDemandeController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.ZyP9f7K" method="withContext"/>
+    </service>
+    <service id=".service_locator.ZyP9f7K.App\Controller\AllAvancementSemaineController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\AllAvancementSemaineController"/>
+      <argument>App\Controller\AllAvancementSemaineController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.ZyP9f7K" method="withContext"/>
     </service>
     <service id=".service_locator.ZyP9f7K.App\Controller\ArticleCoucheByDemandeController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\ArticleCoucheByDemandeController"/>
@@ -6895,6 +6967,8 @@
       <call method="allowControllers">
         <argument type="collection">
           <argument>App\Kernel</argument>
+          <argument>App\Controller\AllAvancementDemandeController</argument>
+          <argument>App\Controller\AllAvancementSemaineController</argument>
           <argument>App\Controller\ArticleCoucheByDemandeController</argument>
           <argument>App\Controller\ArticleCoucheDemandeController</argument>
           <argument>App\Controller\ConsommationSemaineController</argument>
@@ -7895,13 +7969,13 @@
     <service id="ApiPlatform\Symfony\Security\ResourceAccessCheckerInterface" alias="api_platform.security.resource_access_checker"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.pRu6x_4" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.xjcn0aJ"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.nBwWIG5"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.BxSdgVt"/>
     <service id="api_platform.name_converter" alias="api_platform.hydra.name_converter.hydra_prefix"/>
     <service id="Psr\Log\LoggerInterface" alias="logger"/>
     <service id=".service_locator.9LJrHhf" alias="api_platform.serializer_locator"/>
-    <service id=".service_locator.UICF3UK" alias="api_platform.filter_locator"/>
+    <service id=".service_locator.ZA7Wvnd" alias="api_platform.filter_locator"/>
     <service id=".service_locator.WLqw5Ek" alias=".service_locator.mJTctrn"/>
     <service id="api_platform.metadata.resource.metadata_collection_factory.parameter.inner" alias="api_platform.metadata.resource.metadata_collection_factory.attributes"/>
     <service id="api_platform.validator.metadata.resource.metadata_collection_factory.parameter.inner" alias="api_platform.metadata.resource.metadata_collection_factory.parameter"/>

@@ -5,6 +5,11 @@ namespace App\Entity;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Delete;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Patch;
+use ApiPlatform\Metadata\Post;
 use App\DTOs\OFsInput as OFsInputDTO;
 use App\Processors\OFsProcessor as OFsInputProcessor;
 use App\Repository\OFsRepository;
@@ -12,11 +17,25 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use phpDocumentor\Reflection\Types\Integer;
 use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Serializer\Attribute\SerializedName;
 
 #[ORM\Entity(repositoryClass: OFsRepository::class)]
 #[ApiResource(
+    operations:[
+      new Get(),
+      new GetCollection(),
+      new Post(),
+      new Patch(),
+      new Delete(),
+      new Patch(
+          uriTemplate: '/ofsOrder/{id}',
+          normalizationContext: ['groups' => ['ofs:read']],
+          denormalizationContext: ['groups' => ['ofsOrder:write']],
+          name: 'update order of',
+      ),
+    ],
     normalizationContext: ['groups' => ['ofs:read']],
     denormalizationContext: ['groups' => ['ofs:write']],
     paginationEnabled: false,
@@ -58,9 +77,16 @@ class OFs
     #[SerializedName('semaineOf')]
     private ?Semaines $semaine_of = null;
 
+    #[ORM\Column(type: Types::INTEGER, nullable: true)]
+    #[Groups(['ofs:read', 'ofs:write', 'ofsOrder:write'])]
+    #[SerializedName('orderOf')]
+    private ?int $order_of = null;
 
     #[ORM\OneToMany(targetEntity: Consommations::class, mappedBy: 'of_consommation')]
     private Collection $consommations_of;
+
+    #[ORM\OneToMany(targetEntity: AvancementSurfaceCouches::class, mappedBy: 'of_avancement')]
+    private Collection $avancementSurfaceCouches_of;
 
 
     public function getId(): ?int
@@ -148,5 +174,41 @@ class OFs
         }
 
         return $this;
+    }
+
+    public function getAvancementSurfaceCouchesOf(): Collection
+    {
+        return $this->avancementSurfaceCouches_of;
+    }
+
+    public function addAvancementSurfaceCouches(AvancementSurfaceCouches $avancementSurfaceCouches): static
+    {
+        if (!$this->avancementSurfaceCouches_of->contains($avancementSurfaceCouches)){
+            $this->avancementSurfaceCouches_of[] = $avancementSurfaceCouches;
+            $avancementSurfaceCouches->setOfAvancement($this);
+        }
+
+        return $this;
+    }
+
+    public function removeAvancementSurfaceCouches(AvancementSurfaceCouches $avancementSurfaceCouches): static
+    {
+        if ($this->avancementSurfaceCouches_of->removeElement($avancementSurfaceCouches)){
+            if ($avancementSurfaceCouches->getOfAvancement() === $this){
+                $avancementSurfaceCouches->setOfAvancement(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getOrderOf(): ?int
+    {
+        return $this->order_of;
+    }
+
+    public function setOrderOf(?int $order_of): void
+    {
+        $this->order_of = $order_of;
     }
 }
