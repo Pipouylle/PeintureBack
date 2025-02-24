@@ -8,6 +8,7 @@ use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Delete;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Put;
 use Doctrine\Common\Collections\Collection;
@@ -26,6 +27,7 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
         new Post(),
         new Put(),
         new Delete(),
+        new Patch(),
     ],
     normalizationContext: ['groups' => ['couches:read']],
     denormalizationContext: ['groups' => ['couches:write']],

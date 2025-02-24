@@ -23,7 +23,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 true,
             ],
             'writable' => [
-                false,
+                true,
             ],
             'readableLink' => [
                 null,
@@ -77,7 +77,6 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
             ],
             'schema' => [
                 [
-                    'readOnly' => true,
                     'type' => 'string',
                 ],
             ],
