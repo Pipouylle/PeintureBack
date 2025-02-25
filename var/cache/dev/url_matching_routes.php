@@ -33,150 +33,162 @@ return [
                             .')'
                         .')'
                         .'|co(?'
-                            .'|n(?'
-                                .'|texts/([^.]+)(?:\\.(jsonld))?(*:339)'
-                                .'|sommations(?'
-                                    .'|/([^/\\.]++)(?:\\.([^/]++))?(*:386)'
-                                    .'|(?:\\.([^/]++))?(?'
-                                        .'|(*:412)'
-                                    .')'
-                                    .'|/([^/\\.]++)(?:\\.([^/]++))?(?'
-                                        .'|(*:450)'
-                                    .')'
-                                    .'|Semaine/([^/]++)(*:475)'
-                                .')'
-                            .')'
+                            .'|ntexts/([^.]+)(?:\\.(jsonld))?(*:336)'
                             .'|mmandes(?'
-                                .'|(?:\\.([^/]++))?(*:510)'
-                                .'|/([^/\\.]++)(?:\\.([^/]++))?(*:544)'
-                                .'|(?:\\.([^/]++))?(*:567)'
-                                .'|/([^/\\.]++)(?:\\.([^/]++))?(*:601)'
+                                .'|(?:\\.([^/]++))?(*:369)'
+                                .'|/([^/\\.]++)(?:\\.([^/]++))?(*:403)'
+                                .'|(?:\\.([^/]++))?(*:426)'
+                                .'|/([^/\\.]++)(?:\\.([^/]++))?(*:460)'
                             .')'
                             .'|uches(?'
-                                .'|/([^/\\.]++)(?:\\.([^/]++))?(*:644)'
+                                .'|/([^/\\.]++)(?:\\.([^/]++))?(*:503)'
                                 .'|(?:\\.([^/]++))?(?'
-                                    .'|(*:670)'
+                                    .'|(*:529)'
                                 .')'
                                 .'|/([^/\\.]++)(?:\\.([^/]++))?(?'
-                                    .'|(*:708)'
+                                    .'|(*:567)'
                                 .')'
                             .')'
                         .')'
                         .'|validation_errors/([^/]++)(?'
-                            .'|(*:748)'
+                            .'|(*:607)'
                         .')'
                         .'|a(?'
                             .'|ffaires(?'
-                                .'|/([^/\\.]++)(?:\\.([^/]++))?(*:797)'
+                                .'|/([^/\\.]++)(?:\\.([^/]++))?(*:656)'
                                 .'|(?:\\.([^/]++))?(?'
-                                    .'|(*:823)'
+                                    .'|(*:682)'
                                 .')'
                                 .'|/([^/\\.]++)(?:\\.([^/]++))?(?'
-                                    .'|(*:861)'
+                                    .'|(*:720)'
                                 .')'
                             .')'
                             .'|rticle(?'
                                 .'|_couches(?'
-                                    .'|/([^/\\.]++)(?:\\.([^/]++))?(*:917)'
-                                    .'|(?:\\.([^/]++))?(*:940)'
-                                    .'|/([^/\\.]++)(?:\\.([^/]++))?(*:974)'
-                                    .'|(?:\\.([^/]++))?(*:997)'
-                                    .'|/([^/\\.]++)(?:\\.([^/]++))?(*:1031)'
+                                    .'|/([^/\\.]++)(?:\\.([^/]++))?(*:776)'
+                                    .'|(?:\\.([^/]++))?(*:799)'
+                                    .'|/([^/\\.]++)(?:\\.([^/]++))?(*:833)'
+                                    .'|(?:\\.([^/]++))?(*:856)'
+                                    .'|/([^/\\.]++)(?:\\.([^/]++))?(*:890)'
                                 .')'
                                 .'|s(?'
                                     .'|ArticleCouche/([^/]++)(?'
-                                        .'|(*:1070)'
+                                        .'|(*:928)'
                                     .')'
-                                    .'|/([^/\\.]++)(?:\\.([^/]++))?(*:1106)'
+                                    .'|/([^/\\.]++)(?:\\.([^/]++))?(*:963)'
                                     .'|(?:\\.([^/]++))?(?'
-                                        .'|(*:1133)'
+                                        .'|(*:989)'
                                     .')'
                                     .'|/([^/\\.]++)(?:\\.([^/]++))?(?'
-                                        .'|(*:1172)'
+                                        .'|(*:1027)'
                                     .')'
                                 .')'
                                 .'|Couche(?'
-                                    .'|Demande/([^/]++)(*:1208)'
-                                    .'|/([^/]++)(*:1226)'
+                                    .'|Demande/([^/]++)(*:1063)'
+                                    .'|/([^/]++)(*:1081)'
                                 .')'
                             .')'
                             .'|vancement_surface_couches(?'
-                                .'|/([^/\\.]++)(?:\\.([^/]++))?(*:1291)'
+                                .'|/([^/\\.]++)(?:\\.([^/]++))?(*:1146)'
                                 .'|(?:\\.([^/]++))?(?'
-                                    .'|(*:1318)'
+                                    .'|(*:1173)'
                                 .')'
                                 .'|/([^/\\.]++)(?:\\.([^/]++))?(?'
-                                    .'|(*:1357)'
+                                    .'|(*:1212)'
                                 .')'
                             .')'
                             .'|llAvancement(?'
-                                .'|Semaine/([^/]++)(*:1399)'
-                                .'|Demande/([^/]++)(*:1424)'
+                                .'|Semaine/([^/]++)(*:1254)'
+                                .'|Demande/([^/]++)(*:1279)'
                             .')'
                         .')'
-                        .'|modifAvancement/([^/]++)(*:1459)'
+                        .'|modifAvancement/([^/]++)(*:1314)'
                         .'|grenaillages(?'
-                            .'|/([^/\\.]++)(?:\\.([^/]++))?(*:1509)'
+                            .'|/([^/\\.]++)(?:\\.([^/]++))?(*:1364)'
                             .'|(?:\\.([^/]++))?(?'
-                                .'|(*:1536)'
+                                .'|(*:1391)'
                             .')'
                             .'|/([^/\\.]++)(?:\\.([^/]++))?(?'
-                                .'|(*:1575)'
+                                .'|(*:1430)'
                             .')'
                         .')'
                         .'|jours(?'
-                            .'|/([^/\\.]++)(?:\\.([^/]++))?(*:1620)'
+                            .'|/([^/\\.]++)(?:\\.([^/]++))?(*:1475)'
                             .'|(?:\\.([^/]++))?(?'
-                                .'|(*:1647)'
+                                .'|(*:1502)'
                             .')'
                             .'|/([^/\\.]++)(?:\\.([^/]++))?(?'
-                                .'|(*:1686)'
+                                .'|(*:1541)'
                             .')'
                         .')'
                         .'|o(?'
                             .'|_fs(?'
-                                .'|/([^/\\.]++)(?:\\.([^/]++))?(*:1733)'
+                                .'|/([^/\\.]++)(?:\\.([^/]++))?(*:1588)'
                                 .'|(?:\\.([^/]++))?(?'
-                                    .'|(*:1760)'
+                                    .'|(*:1615)'
                                 .')'
                                 .'|/([^/\\.]++)(?:\\.([^/]++))?(?'
-                                    .'|(*:1799)'
+                                    .'|(*:1654)'
                                 .')'
                             .')'
-                            .'|fsOrder/([^/]++)(*:1826)'
+                            .'|fs(?'
+                                .'|Order/([^/]++)(*:1684)'
+                                .'|Regie/([^/]++)(*:1707)'
+                            .')'
                         .')'
                         .'|s(?'
                             .'|emaines(?'
-                                .'|/([^/\\.]++)(?:\\.([^/]++))?(*:1876)'
+                                .'|/([^/\\.]++)(?:\\.([^/]++))?(*:1758)'
                                 .'|(?:\\.([^/]++))?(?'
-                                    .'|(*:1903)'
+                                    .'|(*:1785)'
                                 .')'
                                 .'|/([^/\\.]++)(?:\\.([^/]++))?(?'
-                                    .'|(*:1942)'
+                                    .'|(*:1824)'
                                 .')'
                             .')'
+                            .'|tock(?'
+                                .'|s(?'
+                                    .'|/([^/\\.]++)(?:\\.([^/]++))?(*:1872)'
+                                    .'|(?:\\.([^/]++))?(?'
+                                        .'|(*:1899)'
+                                    .')'
+                                    .'|/([^/\\.]++)(?:\\.([^/]++))?(?'
+                                        .'|(*:1938)'
+                                    .')'
+                                .')'
+                                .'|Sortie/([^/]++)(*:1964)'
+                            .')'
                             .'|urface_couches(?'
-                                .'|/([^/\\.]++)(?:\\.([^/]++))?(*:1996)'
+                                .'|/([^/\\.]++)(?:\\.([^/]++))?(*:2017)'
                                 .'|(?:\\.([^/]++))?(?'
-                                    .'|(*:2023)'
+                                    .'|(*:2044)'
                                 .')'
                                 .'|/([^/\\.]++)(?:\\.([^/]++))?(?'
-                                    .'|(*:2062)'
+                                    .'|(*:2083)'
                                 .')'
                             .')'
                             .'|ystemes(?'
-                                .'|/([^/\\.]++)(?:\\.([^/]++))?(*:2109)'
+                                .'|/([^/\\.]++)(?:\\.([^/]++))?(*:2130)'
                                 .'|(?:\\.([^/]++))?(?'
-                                    .'|(*:2136)'
+                                    .'|(*:2157)'
                                 .')'
                                 .'|/([^/\\.]++)(?:\\.([^/]++))?(?'
-                                    .'|(*:2175)'
+                                    .'|(*:2196)'
                                 .')'
+                            .')'
+                        .')'
+                        .'|users(?'
+                            .'|/([^/\\.]++)(?:\\.([^/]++))?(*:2242)'
+                            .'|(?:\\.([^/]++))?(?'
+                                .'|(*:2269)'
+                            .')'
+                            .'|/([^/\\.]++)(?:\\.([^/]++))?(?'
+                                .'|(*:2308)'
                             .')'
                         .')'
                     .')'
                 .')'
-                .'|/_error/(\\d+)(?:\\.([^/]++))?(*:2217)'
+                .'|/_error/(\\d+)(?:\\.([^/]++))?(*:2349)'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -189,134 +201,144 @@ return [
         235 => [[['_route' => '_api_/demandes/{id}{._format}_get', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Demandes', '_api_operation_name' => '_api_/demandes/{id}{._format}_get'], ['id', '_format'], ['GET' => 0], null, false, true, null]],
         258 => [[['_route' => '_api_/demandes{._format}_post', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Demandes', '_api_operation_name' => '_api_/demandes{._format}_post'], ['_format'], ['POST' => 0], null, false, true, null]],
         292 => [[['_route' => '_api_/demandes/{id}{._format}_delete', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Demandes', '_api_operation_name' => '_api_/demandes/{id}{._format}_delete'], ['id', '_format'], ['DELETE' => 0], null, false, true, null]],
-        339 => [[['_route' => 'api_jsonld_context', '_controller' => 'api_platform.jsonld.action.context', '_format' => 'jsonld', '_api_respond' => 'true'], ['shortName', '_format'], ['GET' => 0, 'HEAD' => 1], null, false, true, null]],
-        386 => [[['_route' => '_api_/consommations/{id}{._format}_get', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Consommations', '_api_operation_name' => '_api_/consommations/{id}{._format}_get'], ['id', '_format'], ['GET' => 0], null, false, true, null]],
-        412 => [
-            [['_route' => '_api_/consommations{._format}_get_collection', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Consommations', '_api_operation_name' => '_api_/consommations{._format}_get_collection'], ['_format'], ['GET' => 0], null, false, true, null],
-            [['_route' => '_api_/consommations{._format}_post', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Consommations', '_api_operation_name' => '_api_/consommations{._format}_post'], ['_format'], ['POST' => 0], null, false, true, null],
-        ],
-        450 => [
-            [['_route' => '_api_/consommations/{id}{._format}_put', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Consommations', '_api_operation_name' => '_api_/consommations/{id}{._format}_put'], ['id', '_format'], ['PUT' => 0], null, false, true, null],
-            [['_route' => '_api_/consommations/{id}{._format}_delete', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Consommations', '_api_operation_name' => '_api_/consommations/{id}{._format}_delete'], ['id', '_format'], ['DELETE' => 0], null, false, true, null],
-        ],
-        475 => [[['_route' => 'ConsommationsSemaine', '_controller' => 'App\\Controller\\ConsommationSemaineController', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Consommations', '_api_operation_name' => 'ConsommationsSemaine'], ['SemaineId'], ['GET' => 0], null, false, true, null]],
-        510 => [[['_route' => '_api_/commandes{._format}_get_collection', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Commandes', '_api_operation_name' => '_api_/commandes{._format}_get_collection'], ['_format'], ['GET' => 0], null, false, true, null]],
-        544 => [[['_route' => '_api_/commandes/{id}{._format}_get', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Commandes', '_api_operation_name' => '_api_/commandes/{id}{._format}_get'], ['id', '_format'], ['GET' => 0], null, false, true, null]],
-        567 => [[['_route' => '_api_/commandes{._format}_post', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Commandes', '_api_operation_name' => '_api_/commandes{._format}_post'], ['_format'], ['POST' => 0], null, false, true, null]],
-        601 => [[['_route' => '_api_/commandes/{id}{._format}_delete', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Commandes', '_api_operation_name' => '_api_/commandes/{id}{._format}_delete'], ['id', '_format'], ['DELETE' => 0], null, false, true, null]],
-        644 => [[['_route' => '_api_/couches/{id}{._format}_get', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Couches', '_api_operation_name' => '_api_/couches/{id}{._format}_get'], ['id', '_format'], ['GET' => 0], null, false, true, null]],
-        670 => [
+        336 => [[['_route' => 'api_jsonld_context', '_controller' => 'api_platform.jsonld.action.context', '_format' => 'jsonld', '_api_respond' => 'true'], ['shortName', '_format'], ['GET' => 0, 'HEAD' => 1], null, false, true, null]],
+        369 => [[['_route' => '_api_/commandes{._format}_get_collection', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Commandes', '_api_operation_name' => '_api_/commandes{._format}_get_collection'], ['_format'], ['GET' => 0], null, false, true, null]],
+        403 => [[['_route' => '_api_/commandes/{id}{._format}_get', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Commandes', '_api_operation_name' => '_api_/commandes/{id}{._format}_get'], ['id', '_format'], ['GET' => 0], null, false, true, null]],
+        426 => [[['_route' => '_api_/commandes{._format}_post', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Commandes', '_api_operation_name' => '_api_/commandes{._format}_post'], ['_format'], ['POST' => 0], null, false, true, null]],
+        460 => [[['_route' => '_api_/commandes/{id}{._format}_delete', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Commandes', '_api_operation_name' => '_api_/commandes/{id}{._format}_delete'], ['id', '_format'], ['DELETE' => 0], null, false, true, null]],
+        503 => [[['_route' => '_api_/couches/{id}{._format}_get', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Couches', '_api_operation_name' => '_api_/couches/{id}{._format}_get'], ['id', '_format'], ['GET' => 0], null, false, true, null]],
+        529 => [
             [['_route' => '_api_/couches{._format}_get_collection', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Couches', '_api_operation_name' => '_api_/couches{._format}_get_collection'], ['_format'], ['GET' => 0], null, false, true, null],
             [['_route' => '_api_/couches{._format}_post', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Couches', '_api_operation_name' => '_api_/couches{._format}_post'], ['_format'], ['POST' => 0], null, false, true, null],
         ],
-        708 => [
+        567 => [
             [['_route' => '_api_/couches/{id}{._format}_put', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Couches', '_api_operation_name' => '_api_/couches/{id}{._format}_put'], ['id', '_format'], ['PUT' => 0], null, false, true, null],
             [['_route' => '_api_/couches/{id}{._format}_delete', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Couches', '_api_operation_name' => '_api_/couches/{id}{._format}_delete'], ['id', '_format'], ['DELETE' => 0], null, false, true, null],
             [['_route' => '_api_/couches/{id}{._format}_patch', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Couches', '_api_operation_name' => '_api_/couches/{id}{._format}_patch'], ['id', '_format'], ['PATCH' => 0], null, false, true, null],
         ],
-        748 => [
+        607 => [
             [['_route' => '_api_validation_errors_problem', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'ApiPlatform\\Validator\\Exception\\ValidationException', '_api_operation_name' => '_api_validation_errors_problem'], ['id'], ['GET' => 0], null, false, true, null],
             [['_route' => '_api_validation_errors_hydra', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'ApiPlatform\\Validator\\Exception\\ValidationException', '_api_operation_name' => '_api_validation_errors_hydra'], ['id'], ['GET' => 0], null, false, true, null],
             [['_route' => '_api_validation_errors_jsonapi', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'ApiPlatform\\Validator\\Exception\\ValidationException', '_api_operation_name' => '_api_validation_errors_jsonapi'], ['id'], ['GET' => 0], null, false, true, null],
         ],
-        797 => [[['_route' => '_api_/affaires/{id}{._format}_get', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Affaires', '_api_operation_name' => '_api_/affaires/{id}{._format}_get'], ['id', '_format'], ['GET' => 0], null, false, true, null]],
-        823 => [
+        656 => [[['_route' => '_api_/affaires/{id}{._format}_get', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Affaires', '_api_operation_name' => '_api_/affaires/{id}{._format}_get'], ['id', '_format'], ['GET' => 0], null, false, true, null]],
+        682 => [
             [['_route' => '_api_/affaires{._format}_get_collection', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Affaires', '_api_operation_name' => '_api_/affaires{._format}_get_collection'], ['_format'], ['GET' => 0], null, false, true, null],
             [['_route' => '_api_/affaires{._format}_post', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Affaires', '_api_operation_name' => '_api_/affaires{._format}_post'], ['_format'], ['POST' => 0], null, false, true, null],
         ],
-        861 => [
+        720 => [
             [['_route' => '_api_/affaires/{id}{._format}_delete', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Affaires', '_api_operation_name' => '_api_/affaires/{id}{._format}_delete'], ['id', '_format'], ['DELETE' => 0], null, false, true, null],
             [['_route' => '_api_/affaires/{id}{._format}_patch', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Affaires', '_api_operation_name' => '_api_/affaires/{id}{._format}_patch'], ['id', '_format'], ['PATCH' => 0], null, false, true, null],
             [['_route' => '_api_/affaires/{id}{._format}_put', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Affaires', '_api_operation_name' => '_api_/affaires/{id}{._format}_put'], ['id', '_format'], ['PUT' => 0], null, false, true, null],
         ],
-        917 => [[['_route' => '_api_/article_couches/{id}{._format}_get', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\ArticleCouche', '_api_operation_name' => '_api_/article_couches/{id}{._format}_get'], ['id', '_format'], ['GET' => 0], null, false, true, null]],
-        940 => [[['_route' => '_api_/article_couches{._format}_get_collection', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\ArticleCouche', '_api_operation_name' => '_api_/article_couches{._format}_get_collection'], ['_format'], ['GET' => 0], null, false, true, null]],
-        974 => [[['_route' => '_api_/article_couches/{id}{._format}_patch', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\ArticleCouche', '_api_operation_name' => '_api_/article_couches/{id}{._format}_patch'], ['id', '_format'], ['PATCH' => 0], null, false, true, null]],
-        997 => [[['_route' => '_api_/article_couches{._format}_post', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\ArticleCouche', '_api_operation_name' => '_api_/article_couches{._format}_post'], ['_format'], ['POST' => 0], null, false, true, null]],
-        1031 => [[['_route' => '_api_/article_couches/{id}{._format}_delete', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\ArticleCouche', '_api_operation_name' => '_api_/article_couches/{id}{._format}_delete'], ['id', '_format'], ['DELETE' => 0], null, false, true, null]],
-        1070 => [
+        776 => [[['_route' => '_api_/article_couches/{id}{._format}_get', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\ArticleCouche', '_api_operation_name' => '_api_/article_couches/{id}{._format}_get'], ['id', '_format'], ['GET' => 0], null, false, true, null]],
+        799 => [[['_route' => '_api_/article_couches{._format}_get_collection', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\ArticleCouche', '_api_operation_name' => '_api_/article_couches{._format}_get_collection'], ['_format'], ['GET' => 0], null, false, true, null]],
+        833 => [[['_route' => '_api_/article_couches/{id}{._format}_patch', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\ArticleCouche', '_api_operation_name' => '_api_/article_couches/{id}{._format}_patch'], ['id', '_format'], ['PATCH' => 0], null, false, true, null]],
+        856 => [[['_route' => '_api_/article_couches{._format}_post', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\ArticleCouche', '_api_operation_name' => '_api_/article_couches{._format}_post'], ['_format'], ['POST' => 0], null, false, true, null]],
+        890 => [[['_route' => '_api_/article_couches/{id}{._format}_delete', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\ArticleCouche', '_api_operation_name' => '_api_/article_couches/{id}{._format}_delete'], ['id', '_format'], ['DELETE' => 0], null, false, true, null]],
+        928 => [
             [['_route' => 'articles articleCouche', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\ArticleCouche', '_api_operation_name' => 'articles articleCouche'], ['id'], ['GET' => 0], null, false, true, null],
             [['_route' => 'update articles articleCouche', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\ArticleCouche', '_api_operation_name' => 'update articles articleCouche'], ['id'], ['PATCH' => 0], null, false, true, null],
         ],
-        1106 => [[['_route' => '_api_/articles/{id}{._format}_get', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Articles', '_api_operation_name' => '_api_/articles/{id}{._format}_get'], ['id', '_format'], ['GET' => 0], null, false, true, null]],
-        1133 => [
+        963 => [[['_route' => '_api_/articles/{id}{._format}_get', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Articles', '_api_operation_name' => '_api_/articles/{id}{._format}_get'], ['id', '_format'], ['GET' => 0], null, false, true, null]],
+        989 => [
             [['_route' => '_api_/articles{._format}_get_collection', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Articles', '_api_operation_name' => '_api_/articles{._format}_get_collection'], ['_format'], ['GET' => 0], null, false, true, null],
             [['_route' => '_api_/articles{._format}_post', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Articles', '_api_operation_name' => '_api_/articles{._format}_post'], ['_format'], ['POST' => 0], null, false, true, null],
         ],
-        1172 => [
+        1027 => [
             [['_route' => '_api_/articles/{id}{._format}_delete', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Articles', '_api_operation_name' => '_api_/articles/{id}{._format}_delete'], ['id', '_format'], ['DELETE' => 0], null, false, true, null],
             [['_route' => '_api_/articles/{id}{._format}_patch', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Articles', '_api_operation_name' => '_api_/articles/{id}{._format}_patch'], ['id', '_format'], ['PATCH' => 0], null, false, true, null],
         ],
-        1208 => [[['_route' => 'articleCoucheDemande', '_controller' => 'App\\Controller\\ArticleCoucheDemandeController', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\ArticleCouche', '_api_operation_name' => 'articleCoucheDemande'], ['CommandeId'], ['GET' => 0], null, false, true, null]],
-        1226 => [[['_route' => 'articleCoucheByDemande', '_controller' => 'App\\Controller\\ArticleCoucheByDemandeController', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Articles', '_api_operation_name' => 'articleCoucheByDemande'], ['demandeId'], ['GET' => 0], null, false, true, null]],
-        1291 => [[['_route' => '_api_/avancement_surface_couches/{id}{._format}_get', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\AvancementSurfaceCouches', '_api_operation_name' => '_api_/avancement_surface_couches/{id}{._format}_get'], ['id', '_format'], ['GET' => 0], null, false, true, null]],
-        1318 => [
+        1063 => [[['_route' => 'articleCoucheDemande', '_controller' => 'App\\Controller\\ArticleCoucheDemandeController', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\ArticleCouche', '_api_operation_name' => 'articleCoucheDemande'], ['CommandeId'], ['GET' => 0], null, false, true, null]],
+        1081 => [[['_route' => 'articleCoucheByDemande', '_controller' => 'App\\Controller\\ArticleCoucheByDemandeController', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Articles', '_api_operation_name' => 'articleCoucheByDemande'], ['demandeId'], ['GET' => 0], null, false, true, null]],
+        1146 => [[['_route' => '_api_/avancement_surface_couches/{id}{._format}_get', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\AvancementSurfaceCouches', '_api_operation_name' => '_api_/avancement_surface_couches/{id}{._format}_get'], ['id', '_format'], ['GET' => 0], null, false, true, null]],
+        1173 => [
             [['_route' => '_api_/avancement_surface_couches{._format}_get_collection', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\AvancementSurfaceCouches', '_api_operation_name' => '_api_/avancement_surface_couches{._format}_get_collection'], ['_format'], ['GET' => 0], null, false, true, null],
             [['_route' => '_api_/avancement_surface_couches{._format}_post', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\AvancementSurfaceCouches', '_api_operation_name' => '_api_/avancement_surface_couches{._format}_post'], ['_format'], ['POST' => 0], null, false, true, null],
         ],
-        1357 => [
+        1212 => [
             [['_route' => '_api_/avancement_surface_couches/{id}{._format}_patch', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\AvancementSurfaceCouches', '_api_operation_name' => '_api_/avancement_surface_couches/{id}{._format}_patch'], ['id', '_format'], ['PATCH' => 0], null, false, true, null],
             [['_route' => '_api_/avancement_surface_couches/{id}{._format}_delete', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\AvancementSurfaceCouches', '_api_operation_name' => '_api_/avancement_surface_couches/{id}{._format}_delete'], ['id', '_format'], ['DELETE' => 0], null, false, true, null],
         ],
-        1399 => [[['_route' => 'all avancement surface couches by semaine', '_controller' => 'App\\Controller\\AllAvancementSemaineController', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\AvancementSurfaceCouches', '_api_operation_name' => 'all avancement surface couches by semaine'], ['semaineId'], ['GET' => 0], null, false, true, null]],
-        1424 => [[['_route' => 'all avancement surface couches by demande', '_controller' => 'App\\Controller\\AllAvancementDemandeController', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\AvancementSurfaceCouches', '_api_operation_name' => 'all avancement surface couches by demande'], ['demandeId'], ['GET' => 0], null, false, true, null]],
-        1459 => [[['_route' => 'update avancement surface couches', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\AvancementSurfaceCouches', '_api_operation_name' => 'update avancement surface couches'], ['id'], ['PATCH' => 0], null, false, true, null]],
-        1509 => [[['_route' => '_api_/grenaillages/{id}{._format}_get', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Grenaillage', '_api_operation_name' => '_api_/grenaillages/{id}{._format}_get'], ['id', '_format'], ['GET' => 0], null, false, true, null]],
-        1536 => [
+        1254 => [[['_route' => 'all avancement surface couches by semaine', '_controller' => 'App\\Controller\\AllAvancementSemaineController', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\AvancementSurfaceCouches', '_api_operation_name' => 'all avancement surface couches by semaine'], ['semaineId'], ['GET' => 0], null, false, true, null]],
+        1279 => [[['_route' => 'all avancement surface couches by demande', '_controller' => 'App\\Controller\\AllAvancementDemandeController', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\AvancementSurfaceCouches', '_api_operation_name' => 'all avancement surface couches by demande'], ['demandeId'], ['GET' => 0], null, false, true, null]],
+        1314 => [[['_route' => 'update avancement surface couches', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\AvancementSurfaceCouches', '_api_operation_name' => 'update avancement surface couches'], ['id'], ['PATCH' => 0], null, false, true, null]],
+        1364 => [[['_route' => '_api_/grenaillages/{id}{._format}_get', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Grenaillage', '_api_operation_name' => '_api_/grenaillages/{id}{._format}_get'], ['id', '_format'], ['GET' => 0], null, false, true, null]],
+        1391 => [
             [['_route' => '_api_/grenaillages{._format}_get_collection', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Grenaillage', '_api_operation_name' => '_api_/grenaillages{._format}_get_collection'], ['_format'], ['GET' => 0], null, false, true, null],
             [['_route' => '_api_/grenaillages{._format}_post', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Grenaillage', '_api_operation_name' => '_api_/grenaillages{._format}_post'], ['_format'], ['POST' => 0], null, false, true, null],
         ],
-        1575 => [
+        1430 => [
             [['_route' => '_api_/grenaillages/{id}{._format}_patch', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Grenaillage', '_api_operation_name' => '_api_/grenaillages/{id}{._format}_patch'], ['id', '_format'], ['PATCH' => 0], null, false, true, null],
             [['_route' => '_api_/grenaillages/{id}{._format}_delete', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Grenaillage', '_api_operation_name' => '_api_/grenaillages/{id}{._format}_delete'], ['id', '_format'], ['DELETE' => 0], null, false, true, null],
         ],
-        1620 => [[['_route' => '_api_/jours/{id}{._format}_get', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Jours', '_api_operation_name' => '_api_/jours/{id}{._format}_get'], ['id', '_format'], ['GET' => 0], null, false, true, null]],
-        1647 => [
+        1475 => [[['_route' => '_api_/jours/{id}{._format}_get', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Jours', '_api_operation_name' => '_api_/jours/{id}{._format}_get'], ['id', '_format'], ['GET' => 0], null, false, true, null]],
+        1502 => [
             [['_route' => '_api_/jours{._format}_get_collection', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Jours', '_api_operation_name' => '_api_/jours{._format}_get_collection'], ['_format'], ['GET' => 0], null, false, true, null],
             [['_route' => '_api_/jours{._format}_post', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Jours', '_api_operation_name' => '_api_/jours{._format}_post'], ['_format'], ['POST' => 0], null, false, true, null],
         ],
-        1686 => [
+        1541 => [
             [['_route' => '_api_/jours/{id}{._format}_patch', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Jours', '_api_operation_name' => '_api_/jours/{id}{._format}_patch'], ['id', '_format'], ['PATCH' => 0], null, false, true, null],
             [['_route' => '_api_/jours/{id}{._format}_delete', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Jours', '_api_operation_name' => '_api_/jours/{id}{._format}_delete'], ['id', '_format'], ['DELETE' => 0], null, false, true, null],
         ],
-        1733 => [[['_route' => '_api_/o_fs/{id}{._format}_get', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\OFs', '_api_operation_name' => '_api_/o_fs/{id}{._format}_get'], ['id', '_format'], ['GET' => 0], null, false, true, null]],
-        1760 => [
+        1588 => [[['_route' => '_api_/o_fs/{id}{._format}_get', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\OFs', '_api_operation_name' => '_api_/o_fs/{id}{._format}_get'], ['id', '_format'], ['GET' => 0], null, false, true, null]],
+        1615 => [
             [['_route' => '_api_/o_fs{._format}_get_collection', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\OFs', '_api_operation_name' => '_api_/o_fs{._format}_get_collection'], ['_format'], ['GET' => 0], null, false, true, null],
             [['_route' => '_api_/o_fs{._format}_post', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\OFs', '_api_operation_name' => '_api_/o_fs{._format}_post'], ['_format'], ['POST' => 0], null, false, true, null],
         ],
-        1799 => [
+        1654 => [
             [['_route' => '_api_/o_fs/{id}{._format}_patch', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\OFs', '_api_operation_name' => '_api_/o_fs/{id}{._format}_patch'], ['id', '_format'], ['PATCH' => 0], null, false, true, null],
             [['_route' => '_api_/o_fs/{id}{._format}_delete', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\OFs', '_api_operation_name' => '_api_/o_fs/{id}{._format}_delete'], ['id', '_format'], ['DELETE' => 0], null, false, true, null],
         ],
-        1826 => [[['_route' => 'update order of', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\OFs', '_api_operation_name' => 'update order of'], ['id'], ['PATCH' => 0], null, false, true, null]],
-        1876 => [[['_route' => '_api_/semaines/{id}{._format}_get', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Semaines', '_api_operation_name' => '_api_/semaines/{id}{._format}_get'], ['id', '_format'], ['GET' => 0], null, false, true, null]],
-        1903 => [
+        1684 => [[['_route' => 'update order of', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\OFs', '_api_operation_name' => 'update order of'], ['id'], ['PATCH' => 0], null, false, true, null]],
+        1707 => [[['_route' => 'update regie of', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\OFs', '_api_operation_name' => 'update regie of'], ['id'], ['PATCH' => 0], null, false, true, null]],
+        1758 => [[['_route' => '_api_/semaines/{id}{._format}_get', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Semaines', '_api_operation_name' => '_api_/semaines/{id}{._format}_get'], ['id', '_format'], ['GET' => 0], null, false, true, null]],
+        1785 => [
             [['_route' => '_api_/semaines{._format}_get_collection', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Semaines', '_api_operation_name' => '_api_/semaines{._format}_get_collection'], ['_format'], ['GET' => 0], null, false, true, null],
             [['_route' => '_api_/semaines{._format}_post', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Semaines', '_api_operation_name' => '_api_/semaines{._format}_post'], ['_format'], ['POST' => 0], null, false, true, null],
         ],
-        1942 => [
+        1824 => [
             [['_route' => '_api_/semaines/{id}{._format}_patch', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Semaines', '_api_operation_name' => '_api_/semaines/{id}{._format}_patch'], ['id', '_format'], ['PATCH' => 0], null, false, true, null],
             [['_route' => '_api_/semaines/{id}{._format}_delete', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Semaines', '_api_operation_name' => '_api_/semaines/{id}{._format}_delete'], ['id', '_format'], ['DELETE' => 0], null, false, true, null],
         ],
-        1996 => [[['_route' => '_api_/surface_couches/{id}{._format}_get', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\SurfaceCouches', '_api_operation_name' => '_api_/surface_couches/{id}{._format}_get'], ['id', '_format'], ['GET' => 0], null, false, true, null]],
-        2023 => [
+        1872 => [[['_route' => '_api_/stocks/{id}{._format}_get', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Stocks', '_api_operation_name' => '_api_/stocks/{id}{._format}_get'], ['id', '_format'], ['GET' => 0], null, false, true, null]],
+        1899 => [
+            [['_route' => '_api_/stocks{._format}_get_collection', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Stocks', '_api_operation_name' => '_api_/stocks{._format}_get_collection'], ['_format'], ['GET' => 0], null, false, true, null],
+            [['_route' => '_api_/stocks{._format}_post', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Stocks', '_api_operation_name' => '_api_/stocks{._format}_post'], ['_format'], ['POST' => 0], null, false, true, null],
+        ],
+        1938 => [
+            [['_route' => '_api_/stocks/{id}{._format}_delete', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Stocks', '_api_operation_name' => '_api_/stocks/{id}{._format}_delete'], ['id', '_format'], ['DELETE' => 0], null, false, true, null],
+            [['_route' => '_api_/stocks/{id}{._format}_patch', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Stocks', '_api_operation_name' => '_api_/stocks/{id}{._format}_patch'], ['id', '_format'], ['PATCH' => 0], null, false, true, null],
+        ],
+        1964 => [[['_route' => 'faire la sortie du stock', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Stocks', '_api_operation_name' => 'faire la sortie du stock'], ['id'], ['PATCH' => 0], null, false, true, null]],
+        2017 => [[['_route' => '_api_/surface_couches/{id}{._format}_get', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\SurfaceCouches', '_api_operation_name' => '_api_/surface_couches/{id}{._format}_get'], ['id', '_format'], ['GET' => 0], null, false, true, null]],
+        2044 => [
             [['_route' => '_api_/surface_couches{._format}_get_collection', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\SurfaceCouches', '_api_operation_name' => '_api_/surface_couches{._format}_get_collection'], ['_format'], ['GET' => 0], null, false, true, null],
             [['_route' => '_api_/surface_couches{._format}_post', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\SurfaceCouches', '_api_operation_name' => '_api_/surface_couches{._format}_post'], ['_format'], ['POST' => 0], null, false, true, null],
         ],
-        2062 => [
+        2083 => [
             [['_route' => '_api_/surface_couches/{id}{._format}_patch', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\SurfaceCouches', '_api_operation_name' => '_api_/surface_couches/{id}{._format}_patch'], ['id', '_format'], ['PATCH' => 0], null, false, true, null],
             [['_route' => '_api_/surface_couches/{id}{._format}_delete', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\SurfaceCouches', '_api_operation_name' => '_api_/surface_couches/{id}{._format}_delete'], ['id', '_format'], ['DELETE' => 0], null, false, true, null],
         ],
-        2109 => [[['_route' => '_api_/systemes/{id}{._format}_get', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Systemes', '_api_operation_name' => '_api_/systemes/{id}{._format}_get'], ['id', '_format'], ['GET' => 0], null, false, true, null]],
-        2136 => [
+        2130 => [[['_route' => '_api_/systemes/{id}{._format}_get', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Systemes', '_api_operation_name' => '_api_/systemes/{id}{._format}_get'], ['id', '_format'], ['GET' => 0], null, false, true, null]],
+        2157 => [
             [['_route' => '_api_/systemes{._format}_post', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Systemes', '_api_operation_name' => '_api_/systemes{._format}_post'], ['_format'], ['POST' => 0], null, false, true, null],
             [['_route' => '_api_/systemes{._format}_get_collection', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Systemes', '_api_operation_name' => '_api_/systemes{._format}_get_collection'], ['_format'], ['GET' => 0], null, false, true, null],
         ],
-        2175 => [
+        2196 => [
             [['_route' => '_api_/systemes/{id}{._format}_patch', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Systemes', '_api_operation_name' => '_api_/systemes/{id}{._format}_patch'], ['id', '_format'], ['PATCH' => 0], null, false, true, null],
             [['_route' => '_api_/systemes/{id}{._format}_delete', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Systemes', '_api_operation_name' => '_api_/systemes/{id}{._format}_delete'], ['id', '_format'], ['DELETE' => 0], null, false, true, null],
         ],
-        2217 => [
+        2242 => [[['_route' => '_api_/users/{id}{._format}_get', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Users', '_api_operation_name' => '_api_/users/{id}{._format}_get'], ['id', '_format'], ['GET' => 0], null, false, true, null]],
+        2269 => [
+            [['_route' => '_api_/users{._format}_get_collection', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Users', '_api_operation_name' => '_api_/users{._format}_get_collection'], ['_format'], ['GET' => 0], null, false, true, null],
+            [['_route' => '_api_/users{._format}_post', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Users', '_api_operation_name' => '_api_/users{._format}_post'], ['_format'], ['POST' => 0], null, false, true, null],
+        ],
+        2308 => [
+            [['_route' => '_api_/users/{id}{._format}_patch', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Users', '_api_operation_name' => '_api_/users/{id}{._format}_patch'], ['id', '_format'], ['PATCH' => 0], null, false, true, null],
+            [['_route' => '_api_/users/{id}{._format}_delete', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Users', '_api_operation_name' => '_api_/users/{id}{._format}_delete'], ['id', '_format'], ['DELETE' => 0], null, false, true, null],
+        ],
+        2349 => [
             [['_route' => '_preview_error', '_controller' => 'error_controller::preview', '_format' => 'html'], ['code', '_format'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],

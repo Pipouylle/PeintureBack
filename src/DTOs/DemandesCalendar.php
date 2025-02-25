@@ -25,6 +25,10 @@ class DemandesCalendar
     #[Groups(['demandesCalendar:read'])]
     public ?string $nom_affaire = null;
 
+    #[SerializedName('commentaireDemande')]
+    #[Groups(['demandesCalendar:read'])]
+    public ?string $commentaire_demande = null;
+
     #[SerializedName('idSysteme')]
     #[Groups(['demandesCalendar:read'])]
     public ?int $id_systeme = null;

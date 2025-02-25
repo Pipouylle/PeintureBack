@@ -35,6 +35,12 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
           denormalizationContext: ['groups' => ['ofsOrder:write']],
           name: 'update order of',
       ),
+       new Patch(
+           uriTemplate: '/ofsRegie/{id}',
+           normalizationContext: ['groups' => ['ofs:read']],
+          denormalizationContext: ['groups' => ['ofsRegie:write']],
+           name: 'update regie of',
+       )
     ],
     normalizationContext: ['groups' => ['ofs:read']],
     denormalizationContext: ['groups' => ['ofs:write']],
@@ -82,11 +88,26 @@ class OFs
     #[SerializedName('orderOf')]
     private ?int $order_of = null;
 
-    #[ORM\OneToMany(targetEntity: Consommations::class, mappedBy: 'of_consommation')]
-    private Collection $consommations_of;
+    #[ORM\Column(length: 100, nullable: true)]
+    #[Groups(['ofs:read', 'ofs:write'])]
+    #[SerializedName('tempOf')]
+    private ?string $temp_of = null;
+
+    #[ORM\Column(type: Types::BIGINT, nullable: true)]
+    #[Groups(['ofs:read', 'ofs:write', 'ofsRegie:write'])]
+    #[SerializedName('regieSFPOf')]
+    private ?string $regieSFP_of = null;
+
+    #[ORM\Column(type: Types::BIGINT, nullable: true)]
+    #[Groups(['ofs:read', 'ofs:write', 'ofsRegie:write'])]
+    #[SerializedName('regieFPOf')]
+    private ?string $regieFP_of = null;
 
     #[ORM\OneToMany(targetEntity: AvancementSurfaceCouches::class, mappedBy: 'of_avancement')]
     private Collection $avancementSurfaceCouches_of;
+
+    #[ORM\OneToMany(targetEntity: Stocks::class, mappedBy: 'of_stock')]
+    private Collection $stocks_of;
 
 
     public function getId(): ?int
@@ -150,32 +171,6 @@ class OFs
         $this->semaine_of = $semaine_of;
     }
 
-    public function getConsommationsOf(): Collection
-    {
-        return $this->consommations_of;
-    }
-
-    public function addConsommation(Consommations $consommation): static
-    {
-        if (!$this->consommations_of->contains($consommation)){
-            $this->consommations_of[] = $consommation;
-            $consommation->setOfConsommation($this);
-        }
-
-        return $this;
-    }
-
-    public function removeConsommation(Consommations $consommation): static
-    {
-        if ($this->consommations_of->removeElement($consommation)){
-            if ($consommation->getOfConsommation() === $this){
-                $consommation->setOfConsommation(null);
-            }
-        }
-
-        return $this;
-    }
-
     public function getAvancementSurfaceCouchesOf(): Collection
     {
         return $this->avancementSurfaceCouches_of;
@@ -210,5 +205,61 @@ class OFs
     public function setOrderOf(?int $order_of): void
     {
         $this->order_of = $order_of;
+    }
+
+    public function getStocksOf(): Collection
+    {
+        return $this->stocks_of;
+    }
+
+    public function addStock(Stocks $stock): static
+    {
+        if (!$this->stocks_of->contains($stock)){
+            $this->stocks_of[] = $stock;
+            $stock->setOfStock($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStock(Stocks $stock): static
+    {
+        $this->stocks_of->removeElement($stock);
+
+        return $this;
+    }
+
+    public function getTempOf(): ?string
+    {
+        return $this->temp_of;
+    }
+
+    public function setTempOf(?string $temp_of): void
+    {
+        $this->temp_of = $temp_of;
+    }
+
+    public function getRegieSFPOf(): ?string
+    {
+        return $this->regieSFP_of;
+    }
+
+    public function setRegieSFPOf(?string $regieSFP_of): static
+    {
+        $this->regieSFP_of = $regieSFP_of;
+
+        return $this;
+    }
+
+    public function getRegieFPOf(): ?string
+    {
+        return $this->regieFP_of;
+    }
+
+    public function setRegieFPOf(?string $regieFP_of): static
+    {
+        $this->regieFP_of = $regieFP_of;
+
+        return $this;
     }
 }
