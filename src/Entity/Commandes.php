@@ -75,16 +75,6 @@ class Commandes
     #[SerializedName('surfaceCommande')]
     private ?string $surface_commande = null;
 
-    #[ORM\Column(type: Types::BIGINT, nullable: true)]
-    #[Groups(['commandes:read', 'commandes:write', 'RecapSemaine:read'])]
-    #[SerializedName('regieSFPCommande')]
-    private ?string $regieSFP_commande = null;
-
-    #[ORM\Column(type: Types::BIGINT, nullable: true)]
-    #[Groups(['commandes:read', 'commandes:write', 'RecapSemaine:read'])]
-    #[SerializedName('regieFPCommande')]
-    private ?string $regieFP_commande = null;
-
     #[ORM\Column(type: Types::BOOLEAN, nullable: true)]
     #[Groups(['commandes:read', 'commandes:write', 'RecapSemaine:read'])]
     #[SerializedName('ficheHCommande')]
@@ -162,30 +152,6 @@ class Commandes
     public function setSurfaceCommande(?string $surface_commande): static
     {
         $this->surface_commande = $surface_commande;
-
-        return $this;
-    }
-
-    public function getRegieSFPCommande(): ?string
-    {
-        return $this->regieSFP_commande;
-    }
-
-    public function setRegieSFPCommande(?string $regieSFP_commande): static
-    {
-        $this->regieSFP_commande = $regieSFP_commande;
-
-        return $this;
-    }
-
-    public function getRegieFPCommande(): ?string
-    {
-        return $this->regieFP_commande;
-    }
-
-    public function setRegieFPCommande(?string $regieFP_commande): static
-    {
-        $this->regieFP_commande = $regieFP_commande;
 
         return $this;
     }

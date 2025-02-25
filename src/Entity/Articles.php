@@ -15,7 +15,6 @@ use App\Repository\ArticlesRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\SerializedName;
 use Symfony\Component\Serializer\Attribute\Groups;
 
@@ -50,13 +49,12 @@ class Articles
     #[SerializedName('designationArticle')]
     private ?string $designation_article = null;
 
-    #[ORM\OneToMany(targetEntity: Consommations::class, mappedBy: 'codeArticle_consommation', cascade: ['persist', 'remove'])]
-    private Collection $consommation_article;
-
-
     #[ORM\ManyToMany(targetEntity: ArticleCouche::class, inversedBy: 'articles_articleCouche')]
     #[ORM\JoinTable(name: 'articles_article_couche')]
     private Collection $articleCouches_article;
+
+    #[ORM\OneToMany(targetEntity: Stocks::class, mappedBy: 'article_stock')]
+    private Collection $stocks_article;
 
     public function getId(): ?int
     {
@@ -82,31 +80,6 @@ class Articles
         return $this;
     }
 
-    public function getConsommation(): Collection
-    {
-        return $this->consommation_article;
-    }
-
-    public function addConsommation(Consommations $consommations): static
-    {
-        if (!$this->consommation_article->contains($consommations)) {
-            $this->consommation_article[] = $consommations;
-            $consommations->setCodeArticleConsommation($this);
-        }
-        return $this;
-    }
-
-    public function removeConsommation(Consommations $consommations): static
-    {
-        if ($this->consommation_article->removeElement($consommations)) {
-            if ($consommations->getCodeArticleConsommation() === $this) {
-                $consommations->setCodeArticleConsommation(null);
-            }
-        }
-
-        return $this;
-    }
-
 
     public function getCouches(): ?Collection
     {
@@ -125,6 +98,28 @@ class Articles
     public function removeCouche(ArticleCouche $couches): static
     {
         $this->articleCouches_article->removeElement($couches);
+        return $this;
+    }
+
+    public function getStocksArticle(): Collection
+    {
+        return $this->stocks_article;
+    }
+
+    public function addStock(?Stocks $stock): static
+    {
+        if (!$this->stocks_article->contains($stock)) {
+            $this->stocks_article[] = $stock;
+            $stock->setArticleStock($this);
+        }
+
+        return $this;
+    }
+
+    public function removeStock(Stocks $stock): static
+    {
+        $this->stocks_article->removeElement($stock);
+
         return $this;
     }
 }

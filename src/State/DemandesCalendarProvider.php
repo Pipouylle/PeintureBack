@@ -17,7 +17,7 @@ class DemandesCalendarProvider implements ProviderInterface
     )
     {
     }
-
+    #TODO: faire le commentaire
     public function provide(Operation $operation, array $uriVariables = [], array $context = []): object|array|null
     {
         $demandes = $this->entityManager->getRepository(Demandes::class)->findDemandesForCalendar();
@@ -35,6 +35,7 @@ class DemandesCalendarProvider implements ProviderInterface
             $dto->surface_demande = $demande["surface_demande"];
             $dto->nombrePiece_demande = $demande["nombrePiece_demande"];
             $dto->etat_demande = $demande["etat_demande"];
+            $dto->commentaire_demande = $demande["commentaire_demande"];
             $of = $this->entityManager->getRepository(OFs::class)->findBy(["idDemande_of" => "/api/demandes/" . $demande["id"]]);
             $dto->avancementTotal = array_sum(array_map(fn($o) => $o->getAvancementOf(), $of));
             $dtos[] = $dto;

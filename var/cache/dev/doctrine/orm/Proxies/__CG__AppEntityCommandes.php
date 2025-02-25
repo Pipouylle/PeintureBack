@@ -30,8 +30,6 @@ class Commandes extends \App\Entity\Commandes implements \Doctrine\ORM\Proxy\Int
         "\0".parent::class."\0".'ficheH_commande' => [parent::class, 'ficheH_commande', null],
         "\0".parent::class."\0".'id' => [parent::class, 'id', null],
         "\0".parent::class."\0".'pvPeinture_commande' => [parent::class, 'pvPeinture_commande', null],
-        "\0".parent::class."\0".'regieFP_commande' => [parent::class, 'regieFP_commande', null],
-        "\0".parent::class."\0".'regieSFP_commande' => [parent::class, 'regieSFP_commande', null],
         "\0".parent::class."\0".'surface_commande' => [parent::class, 'surface_commande', null],
         "\0".parent::class."\0".'systeme_commande' => [parent::class, 'systeme_commande', null],
         'affaire_commande' => [parent::class, 'affaire_commande', null],
@@ -42,8 +40,6 @@ class Commandes extends \App\Entity\Commandes implements \Doctrine\ORM\Proxy\Int
         'ficheH_commande' => [parent::class, 'ficheH_commande', null],
         'id' => [parent::class, 'id', null],
         'pvPeinture_commande' => [parent::class, 'pvPeinture_commande', null],
-        'regieFP_commande' => [parent::class, 'regieFP_commande', null],
-        'regieSFP_commande' => [parent::class, 'regieSFP_commande', null],
         'surface_commande' => [parent::class, 'surface_commande', null],
         'systeme_commande' => [parent::class, 'systeme_commande', null],
     ];

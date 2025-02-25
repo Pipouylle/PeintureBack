@@ -82,6 +82,11 @@ class Demandes
     #[SerializedName('reservationPeintureDemande')]
     private ?bool $reservationPeinture_demande = null;
 
+    #[ORM\Column(length: 500, nullable: true)]
+    #[Groups(['demandes:read', 'demandes:write'])]
+    #[SerializedName('commentaireDemande')]
+    private ?string $commentaire_demande = null;
+
     #[ORM\OneToMany(targetEntity: OFs::class, mappedBy: 'idDemande_of', cascade: ['persist', 'remove'])]
     private Collection $Of_demande;
 
@@ -233,5 +238,15 @@ class Demandes
     public function setReservationPeintureDemande(?bool $reservationPeinture_demande): void
     {
         $this->reservationPeinture_demande = $reservationPeinture_demande;
+    }
+
+    public function getCommentaireDemande(): ?string
+    {
+        return $this->commentaire_demande;
+    }
+
+    public function setCommentaireDemande(?string $commentaire_demande): void
+    {
+        $this->commentaire_demande = $commentaire_demande;
     }
 }
