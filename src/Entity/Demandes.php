@@ -8,6 +8,7 @@ use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Delete;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use App\DTOs\DemandesCalendar;
 use App\Repository\DemandesRepository;
@@ -25,6 +26,13 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
         new Get(),
         new Post(),
         new Delete(),
+        new Patch(),
+        new Patch(
+            uriTemplate: '/demandeEtat/{id}',
+            normalizationContext: ['groups' => ['demandes:read']],
+            denormalizationContext: ['groups' => ['demandesEtat:write']],
+            name: 'patch demande etat',
+        ),
         new GetCollection(
             uriTemplate: '/demandesCalendar',
             normalizationContext: ['groups' => ['demandesCalendar:read']],
@@ -58,7 +66,7 @@ class Demandes
     private ?Commandes $commande_demande = null;
 
     #[ORM\Column(length: 50, nullable:  true)]
-    #[Groups(['demandes:read', 'demandes:write'])]
+    #[Groups(['demandes:read', 'demandes:write', 'demandesEtat:write'])]
     #[SerializedName('etatDemande')]
     private ?string $etat_demande = null;
 
@@ -108,16 +116,6 @@ class Demandes
         $this->numero_demande = $numero_demande;
 
         return $this;
-    }
-
-    public function getNumeroPhaseDemande(): ?string
-    {
-        return $this->numeroPhase_demande;
-    }
-
-    public function setNumeroPhaseDemande(?string $numeroPhase_demande): void
-    {
-        $this->numeroPhase_demande = $numeroPhase_demande;
     }
 
     public function getCommandeDemande(): ?Commandes

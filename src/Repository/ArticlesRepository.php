@@ -41,7 +41,7 @@ class ArticlesRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-    public function findArticleCoucheByIdDemande($demandeId): array
+    public function getArticleCoucheByIdDemande($demandeId): array
     {
         return $this->createQueryBuilder('a')
             ->select('a', 'ac')

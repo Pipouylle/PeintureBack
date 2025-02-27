@@ -11,6 +11,8 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 [
                     'id',
                     'designation_article',
+                    'ral_article',
+                    'fournisseur_article',
                 ],
             ],
         ],

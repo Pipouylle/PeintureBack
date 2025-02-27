@@ -10,7 +10,8 @@ use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
-use App\Controller\ArticleCoucheDemandeController;
+use App\Controller\ArticleCoucheBySystemeController;
+use App\Controller\ArticleCoucheByCommandeController;
 use App\Repository\ArticleCoucheRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
@@ -44,10 +45,16 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
         ),
         new GetCollection(
             uriTemplate: '/articleCoucheDemande/{CommandeId}',
-            controller: ArticleCoucheDemandeController::class,
+            controller: ArticleCoucheByCommandeController::class,
             normalizationContext: ['groups' => ['articleCoucheForDemande:read']],
             name: 'articleCoucheDemande',
-        )
+        ),
+        new GetCollection(
+            uriTemplate: '/articleCoucheBySystemeAndCommande/{systemeId}/{commandeId}',
+            controller: ArticleCoucheBySystemeController::class,
+            normalizationContext: ['groups' => ['articleCoucheBySystemeAndCommande:read']],
+            name: 'get All article by systeme id',
+        ),
     ],
     normalizationContext: ['groups' => ['article_couche:read']],
     denormalizationContext: ['groups' => ['article_couche:write']],
@@ -59,28 +66,28 @@ class ArticleCouche
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['article_couche:read' , 'articles_articleCouche:read', 'articleCoucheForDemande:read'])]
+    #[Groups(['article_couche:read' , 'articles_articleCouche:read', 'articleCoucheForDemande:read', 'articleCoucheBySystemeAndCommande:read'])]
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 15, scale: 2, nullable: true)]
-    #[Groups(['article_couche:read', 'article_couche:write', 'articleCoucheForDemande:read'])]
+    #[Groups(['article_couche:read', 'article_couche:write', 'articleCoucheForDemande:read', 'articleCoucheBySystemeAndCommande:read'])]
     #[SerializedName('tarifArticleCouche')]
     private ?string $tarif_articleCouche = null;
 
     #[ORM\ManyToMany(targetEntity: Articles::class, mappedBy: 'articleCouches_article')]
-    #[Groups(['articles_articleCouche:read', 'articles_articleCouche:write', 'articleCoucheForDemande:read'])]
+    #[Groups(['articles_articleCouche:read', 'articles_articleCouche:write', 'articleCoucheForDemande:read', 'articleCoucheBySystemeAndCommande:read'])]
     #[SerializedName('articlesArticleCouche')]
     private ?Collection $articles_articleCouche;
 
     #[ORM\ManyToOne(targetEntity: Couches::class, inversedBy: 'articleCouches_couche')]
     #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
-    #[Groups(['article_couche:read', 'article_couche:write', 'articleCoucheForDemande:read'])]
+    #[Groups(['article_couche:read', 'article_couche:write', 'articleCoucheForDemande:read', 'articleCoucheBySystemeAndCommande:read'])]
     #[SerializedName('coucheArticleCouche')]
     private ?Couches $couche_articleCouche = null;
 
     #[ORM\ManyToOne(targetEntity: Commandes::class, inversedBy: 'articleCouches_commande')]
     #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
-    #[Groups(['article_couche:read', 'article_couche:write', 'articleCoucheForDemande:read'])]
+    #[Groups(['article_couche:read', 'article_couche:write', 'articleCoucheForDemande:read', 'articleCoucheBySystemeAndCommande:read'])]
     #[SerializedName('commandeArticleCouche')]
     private ?Commandes $commande_articleCouche = null;
 

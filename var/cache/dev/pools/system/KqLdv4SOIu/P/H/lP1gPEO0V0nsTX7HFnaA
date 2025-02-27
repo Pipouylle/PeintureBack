@@ -9,12 +9,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
         clone ($p['ApiPlatform\\Metadata\\Link'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Metadata\\Link')),
         clone ($p['ApiPlatform\\Metadata\\GetCollection'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Metadata\\GetCollection')),
         clone $p['ApiPlatform\\Doctrine\\Orm\\State\\Options'],
-        clone ($p['ApiPlatform\\Metadata\\Post'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Metadata\\Post')),
-        clone $p['ApiPlatform\\Doctrine\\Orm\\State\\Options'],
         clone ($p['ApiPlatform\\Metadata\\Patch'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Metadata\\Patch')),
-        clone $p['ApiPlatform\\Doctrine\\Orm\\State\\Options'],
-        clone $p['ApiPlatform\\Metadata\\Link'],
-        clone ($p['ApiPlatform\\Metadata\\Delete'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('ApiPlatform\\Metadata\\Delete')),
         clone $p['ApiPlatform\\Doctrine\\Orm\\State\\Options'],
         clone $p['ApiPlatform\\Metadata\\Link'],
         clone $p['ApiPlatform\\Metadata\\Link'],
@@ -158,7 +153,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
             ],
             'uriVariables' => [
                 [
-                    'id' => $o[15],
+                    'id' => $o[10],
                 ],
             ],
             'routePrefix' => [
@@ -240,30 +235,22 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'middleware' => [
                 null,
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'rules' => [
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'queryParameterValidationEnabled' => [
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
         ],
         'ApiPlatform\\Metadata\\Operations' => [
@@ -278,16 +265,8 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                         $o[5],
                     ],
                     [
-                        '_api_/semaines{._format}_post',
+                        '_api_/semaines/{id}_patch',
                         $o[7],
-                    ],
-                    [
-                        '_api_/semaines/{id}{._format}_patch',
-                        $o[9],
-                    ],
-                    [
-                        '_api_/semaines/{id}{._format}_delete',
-                        $o[12],
                     ],
                 ],
             ],
@@ -297,36 +276,26 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 2 => 'Semaines',
                 5 => 'Semaines',
                 7 => 'Semaines',
-                9 => 'Semaines',
-                12 => 'Semaines',
             ],
             'class' => [
                 2 => 'App\\Entity\\Semaines',
                 5 => 'App\\Entity\\Semaines',
                 7 => 'App\\Entity\\Semaines',
-                9 => 'App\\Entity\\Semaines',
-                12 => 'App\\Entity\\Semaines',
             ],
             'description' => [
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'urlGenerationStrategy' => [
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'deprecationReason' => [
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'normalizationContext' => [
                 2 => [
@@ -340,16 +309,6 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                     ],
                 ],
                 7 => [
-                    'groups' => [
-                        'semaines:read',
-                    ],
-                ],
-                9 => [
-                    'groups' => [
-                        'semaines:read',
-                    ],
-                ],
-                12 => [
                     'groups' => [
                         'semaines:read',
                     ],
@@ -368,17 +327,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 ],
                 7 => [
                     'groups' => [
-                        'semaines:write',
-                    ],
-                ],
-                9 => [
-                    'groups' => [
-                        'semaines:write',
-                    ],
-                ],
-                12 => [
-                    'groups' => [
-                        'semaines:write',
+                        'semainesUpdate:write',
                     ],
                 ],
             ],
@@ -386,15 +335,11 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'validationContext' => [
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'filters' => [
                 2 => [
@@ -406,19 +351,11 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 7 => [
                     'annotated_app_entity_semaines_api_platform_doctrine_orm_filter_search_filter',
                 ],
-                9 => [
-                    'annotated_app_entity_semaines_api_platform_doctrine_orm_filter_search_filter',
-                ],
-                12 => [
-                    'annotated_app_entity_semaines_api_platform_doctrine_orm_filter_search_filter',
-                ],
             ],
             'elasticsearch' => [
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'input' => [
                 2 => [
@@ -433,234 +370,158 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                     'class' => 'App\\DTOs\\SemainesInput',
                     'name' => 'SemainesInput',
                 ],
-                9 => [
-                    'class' => 'App\\DTOs\\SemainesInput',
-                    'name' => 'SemainesInput',
-                ],
-                12 => [
-                    'class' => 'App\\DTOs\\SemainesInput',
-                    'name' => 'SemainesInput',
-                ],
             ],
             'order' => [
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'fetchPartial' => [
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'forceEager' => [
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'paginationEnabled' => [
                 2 => false,
                 5 => false,
                 7 => false,
-                9 => false,
-                12 => false,
             ],
             'paginationType' => [
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'paginationItemsPerPage' => [
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'paginationMaximumItemsPerPage' => [
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'paginationPartial' => [
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'paginationClientEnabled' => [
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'paginationClientItemsPerPage' => [
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'paginationClientPartial' => [
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'paginationFetchJoinCollection' => [
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'paginationUseOutputWalkers' => [
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'security' => [
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'securityMessage' => [
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'securityPostDenormalize' => [
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'securityPostDenormalizeMessage' => [
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'securityPostValidation' => [
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'securityPostValidationMessage' => [
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'provider' => [
                 2 => 'ApiPlatform\\Doctrine\\Orm\\State\\ItemProvider',
                 5 => 'ApiPlatform\\Doctrine\\Orm\\State\\CollectionProvider',
                 7 => 'ApiPlatform\\Doctrine\\Orm\\State\\ItemProvider',
-                9 => 'ApiPlatform\\Doctrine\\Orm\\State\\ItemProvider',
-                12 => 'ApiPlatform\\Doctrine\\Orm\\State\\ItemProvider',
             ],
             'processor' => [
                 2 => 'App\\Processors\\SemainesProcessor',
                 5 => 'App\\Processors\\SemainesProcessor',
                 7 => 'App\\Processors\\SemainesProcessor',
-                9 => 'App\\Processors\\SemainesProcessor',
-                12 => 'App\\Processors\\SemainesProcessor',
             ],
             'stateOptions' => [
                 2 => $o[3],
                 5 => $o[6],
                 7 => $o[8],
-                9 => $o[10],
-                12 => $o[13],
             ],
             'extraProperties' => [
-                2 => [
-                    'generated_operation' => true,
-                ],
-                5 => [
-                    'generated_operation' => true,
-                ],
+                2 => [],
+                5 => [],
                 7 => [
-                    'generated_operation' => true,
-                ],
-                9 => [
-                    'generated_operation' => true,
-                ],
-                12 => [
-                    'generated_operation' => true,
+                    'user_defined_uri_template' => true,
                 ],
             ],
             'read' => [
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'deserialize' => [
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'validate' => [
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'write' => [
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'serialize' => [
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'priority' => [
-                2 => null,
-                5 => null,
-                7 => null,
-                9 => null,
-                12 => null,
+                2 => 0,
+                5 => 1,
+                7 => 2,
             ],
             'name' => [
                 2 => '_api_/semaines/{id}{._format}_get',
                 5 => '_api_/semaines{._format}_get_collection',
-                7 => '_api_/semaines{._format}_post',
-                9 => '_api_/semaines/{id}{._format}_patch',
-                12 => '_api_/semaines/{id}{._format}_delete',
+                7 => '_api_/semaines/{id}_patch',
             ],
         ],
         'ApiPlatform\\Metadata\\HttpOperation' => [
@@ -668,29 +529,21 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'method' => [
                 2 => 'GET',
                 5 => 'GET',
-                7 => 'POST',
-                9 => 'PATCH',
-                12 => 'DELETE',
+                7 => 'PATCH',
             ],
             'uriTemplate' => [
                 2 => '/semaines/{id}{._format}',
                 5 => '/semaines{._format}',
-                7 => '/semaines{._format}',
-                9 => '/semaines/{id}{._format}',
-                12 => '/semaines/{id}{._format}',
+                7 => '/semaines/{id}',
             ],
             'types' => [
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'inputFormats' => [
                 2 => [
@@ -704,18 +557,8 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                     ],
                 ],
                 7 => [
-                    'jsonld' => [
-                        'application/ld+json',
-                    ],
-                ],
-                9 => [
                     'json' => [
                         'application/merge-patch+json',
-                    ],
-                ],
-                12 => [
-                    'jsonld' => [
-                        'application/ld+json',
                     ],
                 ],
             ],
@@ -735,119 +578,79 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                         'application/ld+json',
                     ],
                 ],
-                9 => [
-                    'jsonld' => [
-                        'application/ld+json',
-                    ],
-                ],
-                12 => [
-                    'jsonld' => [
-                        'application/ld+json',
-                    ],
-                ],
             ],
             'uriVariables' => [
                 2 => [
                     'id' => $o[4],
                 ],
-                7 => [],
-                9 => [
-                    'id' => $o[11],
-                ],
-                12 => [
-                    'id' => $o[14],
+                7 => [
+                    'id' => $o[9],
                 ],
             ],
             'routePrefix' => [
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'routeName' => [
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'defaults' => [
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'requirements' => [
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'options' => [
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'stateless' => [
                 2 => true,
                 5 => true,
                 7 => true,
-                9 => true,
-                12 => true,
             ],
             'sunset' => [
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'acceptPatch' => [
                 2 => 'application/merge-patch+json',
                 5 => null,
                 7 => 'application/merge-patch+json',
-                9 => 'application/merge-patch+json',
-                12 => 'application/merge-patch+json',
             ],
             'host' => [
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'schemes' => [
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'condition' => [
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'controller' => [
                 2 => 'api_platform.symfony.main_controller',
                 5 => 'api_platform.symfony.main_controller',
                 7 => 'api_platform.symfony.main_controller',
-                9 => 'api_platform.symfony.main_controller',
-                12 => 'api_platform.symfony.main_controller',
             ],
             'headers' => [
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'cacheHeaders' => [
                 2 => [
@@ -871,55 +674,31 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                         'Origin',
                     ],
                 ],
-                9 => [
-                    'vary' => [
-                        'Content-Type',
-                        'Authorization',
-                        'Origin',
-                    ],
-                ],
-                12 => [
-                    'vary' => [
-                        'Content-Type',
-                        'Authorization',
-                        'Origin',
-                    ],
-                ],
             ],
             'hydraContext' => [
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'openapi' => [
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'exceptionToStatus' => [
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'links' => [
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
             'errors' => [
                 2 => null,
                 5 => null,
                 7 => null,
-                9 => null,
-                12 => null,
             ],
         ],
         'ApiPlatform\\Doctrine\\Common\\State\\Options' => [
@@ -927,8 +706,6 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 3 => 'api_platform.doctrine.orm.links_handler',
                 6 => 'api_platform.doctrine.orm.links_handler',
                 8 => 'api_platform.doctrine.orm.links_handler',
-                10 => 'api_platform.doctrine.orm.links_handler',
-                13 => 'api_platform.doctrine.orm.links_handler',
             ],
         ],
         'ApiPlatform\\Doctrine\\Orm\\State\\Options' => [
@@ -936,141 +713,116 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 3 => null,
                 6 => null,
                 8 => null,
-                10 => null,
-                13 => null,
             ],
         ],
         'ApiPlatform\\Metadata\\Parameter' => [
             'key' => [
                 4 => null,
-                11 => null,
-                14 => null,
+                9 => null,
                 null,
             ],
             'schema' => [
                 4 => null,
-                11 => null,
-                14 => null,
+                9 => null,
                 null,
             ],
             'openApi' => [
                 4 => null,
-                11 => null,
-                14 => null,
+                9 => null,
                 null,
             ],
             'provider' => [
                 4 => null,
-                11 => null,
-                14 => null,
+                9 => null,
                 null,
             ],
             'filter' => [
                 4 => null,
-                11 => null,
-                14 => null,
+                9 => null,
                 null,
             ],
             'property' => [
                 4 => null,
-                11 => null,
-                14 => null,
+                9 => null,
                 null,
             ],
             'description' => [
                 4 => null,
-                11 => null,
-                14 => null,
+                9 => null,
                 null,
             ],
             'required' => [
                 4 => null,
-                11 => null,
-                14 => null,
+                9 => null,
                 null,
             ],
             'priority' => [
                 4 => null,
-                11 => null,
-                14 => null,
+                9 => null,
                 null,
             ],
             'hydra' => [
                 4 => null,
-                11 => null,
-                14 => null,
+                9 => null,
                 null,
             ],
             'constraints' => [
                 4 => null,
-                11 => null,
-                14 => null,
+                9 => null,
                 null,
             ],
             'security' => [
                 4 => null,
-                11 => null,
-                14 => null,
+                9 => null,
                 null,
             ],
             'securityMessage' => [
                 4 => null,
-                11 => null,
-                14 => null,
+                9 => null,
                 null,
             ],
             'extraProperties' => [
                 4 => [],
-                11 => [],
-                14 => [],
+                9 => [],
                 [],
             ],
             'filterContext' => [
                 4 => null,
-                11 => null,
-                14 => null,
+                9 => null,
                 null,
             ],
         ],
         'ApiPlatform\\Metadata\\Link' => [
             'parameterName' => [
                 4 => 'id',
-                11 => 'id',
-                14 => 'id',
+                9 => 'id',
                 'id',
             ],
             'fromProperty' => [
                 4 => null,
-                11 => null,
-                14 => null,
+                9 => null,
                 null,
             ],
             'toProperty' => [
                 4 => null,
-                11 => null,
-                14 => null,
+                9 => null,
                 null,
             ],
             'fromClass' => [
                 4 => 'App\\Entity\\Semaines',
-                11 => 'App\\Entity\\Semaines',
-                14 => 'App\\Entity\\Semaines',
+                9 => 'App\\Entity\\Semaines',
                 'App\\Entity\\Semaines',
             ],
             'toClass' => [
                 4 => null,
-                11 => null,
-                14 => null,
+                9 => null,
                 null,
             ],
             'identifiers' => [
                 4 => [
                     'id',
                 ],
-                11 => [
-                    'id',
-                ],
-                14 => [
+                9 => [
                     'id',
                 ],
                 [
@@ -1079,31 +831,23 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
             ],
             'compositeIdentifier' => [
                 4 => null,
-                11 => null,
-                14 => null,
+                9 => null,
                 null,
             ],
             'expandedValue' => [
                 4 => null,
-                11 => null,
-                14 => null,
+                9 => null,
                 null,
             ],
             'securityObjectName' => [
                 4 => null,
-                11 => null,
-                14 => null,
+                9 => null,
                 null,
             ],
         ],
         'ApiPlatform\\Metadata\\GetCollection' => [
             'itemUriTemplate' => [
                 5 => null,
-            ],
-        ],
-        'ApiPlatform\\Metadata\\Post' => [
-            'itemUriTemplate' => [
-                7 => null,
             ],
         ],
     ],

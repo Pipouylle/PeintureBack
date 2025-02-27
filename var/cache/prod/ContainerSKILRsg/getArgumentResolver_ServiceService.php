@@ -29,7 +29,7 @@ class getArgumentResolver_ServiceService extends App_KernelProdContainer
             'kernel:registerContainerConfiguration' => ['privates', '.service_locator.zHyJIs5.kernel::registerContainerConfiguration()', 'get_ServiceLocator_ZHyJIs5_KernelregisterContainerConfigurationService', true],
             'kernel:loadRoutes' => ['privates', '.service_locator.zHyJIs5.kernel::loadRoutes()', 'get_ServiceLocator_ZHyJIs5_KernelloadRoutesService', true],
             'App\\Controller\\ArticleCoucheDemandeController:__invoke' => ['privates', '.service_locator.GL345QQ.App\\Controller\\ArticleCoucheDemandeController::__invoke()', 'getArticleCoucheDemandeControllerInvokeService', true],
-            'App\\Controller\\ArticleCoucheDemandeController' => ['privates', '.service_locator.GL345QQ.App\\Controller\\ArticleCoucheDemandeController::__invoke()', 'getArticleCoucheDemandeControllerInvokeService', true],
+            'App\\Controller\\ArticleCoucheByCommandeController' => ['privates', '.service_locator.GL345QQ.App\\Controller\\ArticleCoucheDemandeController::__invoke()', 'getArticleCoucheDemandeControllerInvokeService', true],
             'App\\Controller\\ConsommationSemaineController:__invoke' => ['privates', '.service_locator.GL345QQ.App\\Controller\\ConsommationSemaineController::__invoke()', 'getConsommationSemaineControllerInvokeService', true],
             'App\\Controller\\ConsommationSemaineController' => ['privates', '.service_locator.GL345QQ.App\\Controller\\ConsommationSemaineController::__invoke()', 'getConsommationSemaineControllerInvokeService', true],
         ], [
@@ -42,7 +42,7 @@ class getArgumentResolver_ServiceService extends App_KernelProdContainer
             'kernel:registerContainerConfiguration' => '?',
             'kernel:loadRoutes' => '?',
             'App\\Controller\\ArticleCoucheDemandeController:__invoke' => '?',
-            'App\\Controller\\ArticleCoucheDemandeController' => '?',
+            'App\\Controller\\ArticleCoucheByCommandeController' => '?',
             'App\\Controller\\ConsommationSemaineController:__invoke' => '?',
             'App\\Controller\\ConsommationSemaineController' => '?',
         ]));

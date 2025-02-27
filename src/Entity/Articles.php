@@ -25,7 +25,12 @@ use Symfony\Component\Serializer\Attribute\Groups;
         new GetCollection(),
         new Post(),
         new Delete(),
-        new Patch(),
+        new Patch(
+            uriTemplate: '/articles/{id}',
+            normalizationContext: ['groups' => ['articles:read']],
+            denormalizationContext: ['groups' => ['articlesPatch:write']],
+            name: 'update articleCouche'
+        ),
         new GetCollection(
             uriTemplate: '/articleCouche/{demandeId}',
             controller: ArticleCoucheByDemandeController::class,
@@ -36,7 +41,7 @@ use Symfony\Component\Serializer\Attribute\Groups;
     denormalizationContext: ['groups' => ['articles:write']],
     paginationEnabled: false,
 )]
-#[ApiFilter(SearchFilter::class, properties: ['type_article' => 'exact','fournisseur_article' => 'exact'])]
+#[ApiFilter(SearchFilter::class, properties: ['type_article' => 'exact', 'fournisseur_article' => 'exact'])]
 class Articles
 {
     #[ORM\Id]
@@ -45,9 +50,20 @@ class Articles
     private ?int $id = null;
 
     #[ORM\Column(length: 200, nullable: true)]
-    #[Groups(['articles:read', 'articles:write', 'articleCoucheForDemande:read'])]
+    #[Groups(['articles:read', 'articles:write', 'articleCoucheForDemande:read', 'articlesPatch:write'])]
     #[SerializedName('designationArticle')]
     private ?string $designation_article = null;
+
+    #[ORM\Column(length: 50, nullable: true)]
+    #[Groups(['articles:read', 'articles:write', 'articleCoucheForDemande:read', 'articlesPatch:write'])]
+    #[SerializedName('RALArticle')]
+    private ?string $ral_article = null;
+
+    #[ORM\ManyToOne(targetEntity: Fournisseur::class, inversedBy: 'articles_fournisseur')]
+    #[ORM\JoinColumn(onDelete: 'CASCADE')]
+    #[Groups(['articles:read', 'articles:write', 'articleCoucheForDemande:read', 'articlesPatch:write'])]
+    #[SerializedName('fournisseurArticle')]
+    private ?Fournisseur $fournisseur_article = null;
 
     #[ORM\ManyToMany(targetEntity: ArticleCouche::class, inversedBy: 'articles_articleCouche')]
     #[ORM\JoinTable(name: 'articles_article_couche')]
@@ -121,5 +137,25 @@ class Articles
         $this->stocks_article->removeElement($stock);
 
         return $this;
+    }
+
+    public function getRalArticle(): ?string
+    {
+        return $this->ral_article;
+    }
+
+    public function setRalArticle(?string $ral_article): void
+    {
+        $this->ral_article = $ral_article;
+    }
+
+    public function getFournisseurArticle(): ?Fournisseur
+    {
+        return $this->fournisseur_article;
+    }
+
+    public function setFournisseurArticle(?Fournisseur $fournisseur_article): void
+    {
+        $this->fournisseur_article = $fournisseur_article;
     }
 }
