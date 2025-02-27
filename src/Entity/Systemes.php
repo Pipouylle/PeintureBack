@@ -46,10 +46,10 @@ class Systemes
     #[SerializedName('nomSysteme')]
     private ?string $nom_systeme = null;
 
-    #[ORM\Column(length: 50, nullable: true)]
+    #[ORM\ManyToOne(targetEntity: Fournisseur::class, inversedBy: 'systemes_fournisseur')]
     #[Groups(['systemes:read', 'systemes:write'])]
     #[SerializedName('fournisseurSysteme')]
-    private ?string $fournisseur_systeme = null;
+    private ?Fournisseur $fournisseur_systeme = null;
 
     #[ORM\Column(length: 50, nullable: true)]
     #[Groups(['systemes:read', 'systemes:write'])]
@@ -95,12 +95,12 @@ class Systemes
         return $this;
     }
 
-    public function getFournisseurSysteme(): ?string
+    public function getFournisseurSysteme(): ?Fournisseur
     {
         return $this->fournisseur_systeme;
     }
 
-    public function setFournisseurSysteme(?string $fournisseur_systeme): void
+    public function setFournisseurSysteme(?Fournisseur $fournisseur_systeme): void
     {
         $this->fournisseur_systeme = $fournisseur_systeme;
     }

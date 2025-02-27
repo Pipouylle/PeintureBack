@@ -52,7 +52,6 @@ class Stocks
     private ?\DateTimeInterface $dateSortie_stock = null;
 
     #[ORM\ManyToOne(targetEntity: Articles::class, inversedBy: 'stocks_article')]
-    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
     #[Groups(['stocks:read', 'stocks:write'])]
     #[SerializedName('articleStock')]
     private ?Articles $article_stock = null;
@@ -74,7 +73,7 @@ class Stocks
         return $this->id;
     }
 
-    public function setId(string $id): static
+    public function setId(int $id): static
     {
         $this->id = $id;
 

@@ -47,7 +47,7 @@ class App_KernelProdContainer extends Container
         ];
         $this->fileMap = [
             'App\\Controller\\ArticleCoucheByDemandeController' => 'getArticleCoucheByDemandeControllerService',
-            'App\\Controller\\ArticleCoucheDemandeController' => 'getArticleCoucheDemandeControllerService',
+            'App\\Controller\\ArticleCoucheByCommandeController' => 'getArticleCoucheDemandeControllerService',
             'App\\Controller\\ConsommationSemaineController' => 'getConsommationSemaineControllerService',
             'Symfony\\Bundle\\FrameworkBundle\\Controller\\RedirectController' => 'getRedirectControllerService',
             'Symfony\\Bundle\\FrameworkBundle\\Controller\\TemplateController' => 'getTemplateControllerService',
@@ -324,7 +324,7 @@ class App_KernelProdContainer extends Container
         }
         $b = new \Symfony\Bundle\FrameworkBundle\Controller\ControllerResolver($container, ($container->privates['logger'] ?? self::getLoggerService($container)));
         $b->allowControllers(['Symfony\\Bundle\\FrameworkBundle\\Controller\\AbstractController', 'Symfony\\Bundle\\FrameworkBundle\\Controller\\TemplateController']);
-        $b->allowControllers(['App\\Kernel', 'App\\Controller\\ArticleCoucheByDemandeController', 'App\\Controller\\ArticleCoucheDemandeController', 'App\\Controller\\ConsommationSemaineController', 'Doctrine\\Bundle\\DoctrineBundle\\Controller\\ProfilerController']);
+        $b->allowControllers(['App\\Kernel', 'App\\Controller\\ArticleCoucheByDemandeController', 'App\\Controller\\ArticleCoucheByCommandeController', 'App\\Controller\\ConsommationSemaineController', 'Doctrine\\Bundle\\DoctrineBundle\\Controller\\ProfilerController']);
 
         return $container->services['http_kernel'] = new \Symfony\Component\HttpKernel\HttpKernel($a, $b, ($container->services['request_stack'] ??= new \Symfony\Component\HttpFoundation\RequestStack()), new \Symfony\Component\HttpKernel\Controller\ArgumentResolver(new \Symfony\Component\HttpKernel\ControllerMetadata\ArgumentMetadataFactory(), new RewindableGenerator(function () use ($container) {
             yield 0 => ($container->privates['security.user_value_resolver'] ?? $container->load('getSecurity_UserValueResolverService'));
@@ -1342,7 +1342,8 @@ class App_KernelProdContainer extends Container
     }
 
     public function getParameter(string $name): array|bool|string|int|float|\UnitEnum|null
-    {
+    {
+
         if (isset($this->buildParameters[$name])) {
             return $this->buildParameters[$name];
         }

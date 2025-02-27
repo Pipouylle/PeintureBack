@@ -5,6 +5,11 @@ namespace App\Entity;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Delete;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Patch;
+use ApiPlatform\Metadata\Post;
 use App\DTOs\SemainesInput;
 use App\Processors\SemainesProcessor;
 use App\Repository\SemainesRepository;
@@ -17,6 +22,15 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
 
 #[ORM\Entity(repositoryClass: SemainesRepository::class)]
 #[ApiResource(
+    operations:[
+        new Get(),
+        new GetCollection(),
+        new Patch(
+            uriTemplate: '/semaines/{id}',
+            normalizationContext: ['groups' => ['semaines:read']],
+            denormalizationContext: ['groups' => ['semainesUpdate:write']],
+        ),
+    ],
     normalizationContext: ['groups' => ['semaines:read']],
     denormalizationContext: ['groups' => ['semaines:write']],
     input: SemainesInput::class,
@@ -33,12 +47,12 @@ class Semaines
     private ?int $id = null;
 
     #[ORM\Column]
-    #[Groups(['semaines:read', 'semaines:write'])]
+    #[Groups(['semaines:read', 'semaines:write', 'semainesUpdate:write'])]
     #[SerializedName('annees')]
     private ?int $annees = null;
 
     #[ORM\Column]
-    #[Groups(['semaines:read', 'semaines:write'])]
+    #[Groups(['semaines:read', 'semaines:write', 'semainesUpdate:write'])]
     #[SerializedName('mois')]
     private ?int $mois = null;
 

@@ -21,7 +21,6 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                     'Of_demande',
                     'surfaceCouches_demande',
                     'numeroDemande',
-                    'numeroPhaseDemande',
                     'commandeDemande',
                     'etatDemande',
                     'surfaceDemande',

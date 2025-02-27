@@ -284,7 +284,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                         $o[9],
                     ],
                     [
-                        '_api_/articles/{id}{._format}_patch',
+                        'update articleCouche',
                         $o[12],
                     ],
                     [
@@ -390,7 +390,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 ],
                 12 => [
                     'groups' => [
-                        'articles:write',
+                        'articlesPatch:write',
                     ],
                 ],
                 15 => [
@@ -624,7 +624,9 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 5 => [],
                 7 => [],
                 9 => [],
-                12 => [],
+                12 => [
+                    'user_defined_uri_template' => true,
+                ],
                 15 => [
                     'user_defined_uri_template' => true,
                 ],
@@ -682,7 +684,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 5 => '_api_/articles{._format}_get_collection',
                 7 => '_api_/articles{._format}_post',
                 9 => '_api_/articles/{id}{._format}_delete',
-                12 => '_api_/articles/{id}{._format}_patch',
+                12 => 'update articleCouche',
                 15 => 'articleCoucheByDemande',
             ],
         ],
@@ -708,7 +710,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 5 => '/articles{._format}',
                 7 => '/articles{._format}',
                 9 => '/articles/{id}{._format}',
-                12 => '/articles/{id}{._format}',
+                12 => '/articles/{id}',
                 15 => '/articleCouche/{demandeId}',
             ],
             'types' => [

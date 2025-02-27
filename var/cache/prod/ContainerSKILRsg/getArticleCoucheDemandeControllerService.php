@@ -19,9 +19,9 @@ class getArticleCoucheDemandeControllerService extends App_KernelProdContainer
      */
     public static function do($container, $lazyLoad = true)
     {
-        $container->services['App\\Controller\\ArticleCoucheDemandeController'] = $instance = new \App\Controller\ArticleCoucheDemandeController(($container->privates['App\\Repository\\ArticleCoucheRepository'] ?? $container->load('getArticleCoucheRepositoryService')));
+        $container->services['App\\Controller\\ArticleCoucheByCommandeController'] = $instance = new \App\Controller\ArticleCoucheByCommandeController(($container->privates['App\\Repository\\ArticleCoucheRepository'] ?? $container->load('getArticleCoucheRepositoryService')));
 
-        $instance->setContainer(($container->privates['.service_locator.ZyP9f7K'] ?? $container->load('get_ServiceLocator_ZyP9f7KService'))->withContext('App\\Controller\\ArticleCoucheDemandeController', $container));
+        $instance->setContainer(($container->privates['.service_locator.ZyP9f7K'] ?? $container->load('get_ServiceLocator_ZyP9f7KService'))->withContext('App\\Controller\\ArticleCoucheByCommandeController', $container));
 
         return $instance;
     }

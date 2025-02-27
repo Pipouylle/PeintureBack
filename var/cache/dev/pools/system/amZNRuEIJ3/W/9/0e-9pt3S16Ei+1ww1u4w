@@ -26,10 +26,10 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 true,
             ],
             'readableLink' => [
-                null,
+                false,
             ],
             'writableLink' => [
-                null,
+                false,
             ],
             'required' => [
                 false,
@@ -81,6 +81,8 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                         'string',
                         'null',
                     ],
+                    'format' => 'iri-reference',
+                    'example' => 'https://example.com/',
                 ],
             ],
             'initializable' => [
@@ -110,13 +112,13 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 1 => [],
             ],
             'builtinType' => [
-                1 => 'string',
+                1 => 'object',
             ],
             'nullable' => [
                 1 => true,
             ],
             'class' => [
-                1 => null,
+                1 => 'App\\Entity\\Fournisseur',
             ],
             'collection' => [
                 1 => false,

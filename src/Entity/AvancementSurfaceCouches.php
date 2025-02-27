@@ -48,6 +48,7 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
     denormalizationContext: ['groups' => ['avancement_surface_couches:write']],
     paginationEnabled: false,
 )]
+#[ApiFilter(SearchFilter::class, properties: ['of_avancement' => 'exact', 'surfaceCouches_avancement' => 'exact'])]
 class AvancementSurfaceCouches
 {
     #[ORM\Id]

@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\ArticleCouche;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use phpDocumentor\Reflection\Types\This;
 
 /**
  * @extends ServiceEntityRepository<ArticleCouche>
@@ -49,6 +50,21 @@ class ArticleCoucheRepository extends ServiceEntityRepository
             ->join('a.articles_articleCouche', 'article')
             ->join('a.couche_articleCouche', 'couche')
             ->andWhere('commande.id = :commandeId')
+            ->setParameter('commandeId', $commandeId)
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function getBySystemeIdAndCommandeId(int $systemeId, int $commandeId): array
+    {
+        return $this->createQueryBuilder('ac')
+            ->join('ac.commande_articleCouche', 'commande')
+            ->join('ac.articles_articleCouche', 'article')
+            ->join('ac.couche_articleCouche', 'couche')
+            ->join('couche.systeme_couche', 'systeme')
+            ->andWhere('systeme.id = :systemeId')
+            ->andWhere('commande.id = :commandeId')
+            ->setParameter('systemeId', $systemeId)
             ->setParameter('commandeId', $commandeId)
             ->getQuery()
             ->getResult();
