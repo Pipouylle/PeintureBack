@@ -257,7 +257,7 @@ return [
         923 => [[['_route' => '_api_/article_couches/{id}{._format}_delete', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\ArticleCouche', '_api_operation_name' => '_api_/article_couches/{id}{._format}_delete'], ['id', '_format'], ['DELETE' => 0], null, false, true, null]],
         961 => [
             [['_route' => 'articles articleCouche', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\ArticleCouche', '_api_operation_name' => 'articles articleCouche'], ['id'], ['GET' => 0], null, false, true, null],
-            [['_route' => 'update articles articleCouche', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\ArticleCouche', '_api_operation_name' => 'update articles articleCouche'], ['id'], ['PATCH' => 0], null, false, true, null],
+            [['_route' => 'update articles articleCouche', '_controller' => 'App\\Controller\\PatchArticlesArticleCoucheController', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\ArticleCouche', '_api_operation_name' => 'update articles articleCouche'], ['id'], ['PATCH' => 0], null, false, true, null],
         ],
         996 => [[['_route' => '_api_/articles/{id}{._format}_get', '_controller' => 'api_platform.symfony.main_controller', '_format' => null, '_stateless' => true, '_api_resource_class' => 'App\\Entity\\Articles', '_api_operation_name' => '_api_/articles/{id}{._format}_get'], ['id', '_format'], ['GET' => 0], null, false, true, null]],
         1022 => [

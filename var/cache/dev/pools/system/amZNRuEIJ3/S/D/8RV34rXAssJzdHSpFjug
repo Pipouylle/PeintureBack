@@ -77,7 +77,10 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
             ],
             'schema' => [
                 [
-                    'type' => 'unknown_type',
+                    'type' => [
+                        'unknown_type',
+                        'null',
+                    ],
                 ],
             ],
             'initializable' => [
@@ -110,7 +113,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 1 => 'object',
             ],
             'nullable' => [
-                1 => false,
+                1 => true,
             ],
             'class' => [
                 1 => 'Doctrine\\Common\\Collections\\Collection',

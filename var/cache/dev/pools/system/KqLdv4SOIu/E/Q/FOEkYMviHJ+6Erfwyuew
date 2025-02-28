@@ -1261,7 +1261,7 @@ return [PHP_INT_MAX, static fn () => \Symfony\Component\VarExporter\Internal\Hyd
                 12 => 'api_platform.symfony.main_controller',
                 15 => 'api_platform.symfony.main_controller',
                 17 => 'api_platform.symfony.main_controller',
-                20 => 'api_platform.symfony.main_controller',
+                20 => 'App\\Controller\\PatchArticlesArticleCoucheController',
                 23 => 'App\\Controller\\ArticleCoucheByCommandeController',
                 26 => 'App\\Controller\\ArticleCoucheBySystemeController',
             ],
