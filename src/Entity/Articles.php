@@ -114,6 +114,7 @@ class Articles
     public function removeCouche(ArticleCouche $couches): static
     {
         $this->articleCouches_article->removeElement($couches);
+
         return $this;
     }
 

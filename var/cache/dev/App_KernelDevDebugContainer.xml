@@ -433,6 +433,16 @@
         <argument type="service" id=".service_locator.ZyP9f7K.App\Controller\ArticleCoucheBySystemeController"/>
       </call>
     </service>
+    <service id="App\Controller\PatchArticlesArticleCoucheController" class="App\Controller\PatchArticlesArticleCoucheController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <argument type="service" id="App\Repository\ArticleCoucheRepository"/>
+      <argument type="service" id="App\Repository\ArticlesRepository"/>
+      <argument type="service" id="doctrine.orm.default_entity_manager"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.ZyP9f7K.App\Controller\PatchArticlesArticleCoucheController"/>
+      </call>
+    </service>
     <service id="App\DTOs\CommandeWithAffaire" class="App\DTOs\CommandeWithAffaire" autowire="true" autoconfigure="true"/>
     <service id="App\DTOs\DemandesCalendar" class="App\DTOs\DemandesCalendar" autowire="true" autoconfigure="true"/>
     <service id="App\DTOs\OFsInput" class="App\DTOs\OFsInput" autowire="true" autoconfigure="true"/>
@@ -558,7 +568,7 @@
     </service>
     <service id="argument_resolver.service" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
       <tag priority="-50" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">controller.argument_value_resolver</tag>
-      <argument type="service" id=".service_locator.vr1x91O"/>
+      <argument type="service" id=".service_locator.lh6aVC2"/>
     </service>
     <service id="argument_resolver.default" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">
       <tag priority="-100" name="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver">controller.argument_value_resolver</tag>
@@ -1945,7 +1955,7 @@
     </service>
     <service id="argument_resolver.not_tagged_controller" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
       <tag name="controller.argument_value_resolver" priority="-200"/>
-      <argument type="service" id=".service_locator.vr1x91O"/>
+      <argument type="service" id=".service_locator.lh6aVC2"/>
     </service>
     <service id="routing.resolver" class="Symfony\Component\Config\Loader\LoaderResolver">
       <call method="addLoader">
@@ -5934,6 +5944,9 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\ArticleCoucheBySystemeController" class="App\Controller\ArticleCoucheBySystemeController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\ArticleCoucheBySystemeController" class="App\Controller\ArticleCoucheBySystemeController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\ArticleCoucheBySystemeController" class="App\Controller\ArticleCoucheBySystemeController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\PatchArticlesArticleCoucheController" class="App\Controller\PatchArticlesArticleCoucheController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\PatchArticlesArticleCoucheController" class="App\Controller\PatchArticlesArticleCoucheController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\PatchArticlesArticleCoucheController" class="App\Controller\PatchArticlesArticleCoucheController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.ApiPlatform\Doctrine\Orm\Filter\AbstractFilter.0.App\Filter\SemaineFilter" class="App\Filter\SemaineFilter" autowire="true" abstract="true"/>
     <service id=".instanceof.ApiPlatform\Metadata\FilterInterface.0.App\Filter\SemaineFilter" class="App\Filter\SemaineFilter" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Filter\SemaineFilter" class="App\Filter\SemaineFilter" autowire="true" autoconfigure="true" abstract="true"/>
@@ -6561,7 +6574,13 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.GL345QQ" method="withContext"/>
     </service>
-    <service id=".service_locator.vr1x91O" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.GL345QQ.App\Controller\PatchArticlesArticleCoucheController::__invoke()" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\PatchArticlesArticleCoucheController::__invoke()"/>
+      <argument>App\Controller\PatchArticlesArticleCoucheController::__invoke()</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.GL345QQ" method="withContext"/>
+    </service>
+    <service id=".service_locator.lh6aVC2" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.zHyJIs5.kernel::registerContainerConfiguration()"/>
@@ -6573,6 +6592,7 @@
         <argument key="App\Controller\ArticleCoucheByCommandeController::__invoke" type="service_closure" id=".service_locator.GL345QQ.App\Controller\ArticleCoucheByCommandeController::__invoke()"/>
         <argument key="App\Controller\ArticleCoucheByDemandeController::__invoke" type="service_closure" id=".service_locator.GL345QQ.App\Controller\ArticleCoucheByDemandeController::__invoke()"/>
         <argument key="App\Controller\ArticleCoucheBySystemeController::__invoke" type="service_closure" id=".service_locator.GL345QQ.App\Controller\ArticleCoucheBySystemeController::__invoke()"/>
+        <argument key="App\Controller\PatchArticlesArticleCoucheController::__invoke" type="service_closure" id=".service_locator.GL345QQ.App\Controller\PatchArticlesArticleCoucheController::__invoke()"/>
         <argument key="kernel:registerContainerConfiguration" type="service_closure" id=".service_locator.zHyJIs5.kernel::registerContainerConfiguration()"/>
         <argument key="kernel:loadRoutes" type="service_closure" id=".service_locator.zHyJIs5.kernel::loadRoutes()"/>
         <argument key="App\Controller\AllAvancementDemandeController:__invoke" type="service_closure" id=".service_locator.GL345QQ.App\Controller\AllAvancementDemandeController::__invoke()"/>
@@ -6585,6 +6605,8 @@
         <argument key="App\Controller\ArticleCoucheByDemandeController" type="service_closure" id=".service_locator.GL345QQ.App\Controller\ArticleCoucheByDemandeController::__invoke()"/>
         <argument key="App\Controller\ArticleCoucheBySystemeController:__invoke" type="service_closure" id=".service_locator.GL345QQ.App\Controller\ArticleCoucheBySystemeController::__invoke()"/>
         <argument key="App\Controller\ArticleCoucheBySystemeController" type="service_closure" id=".service_locator.GL345QQ.App\Controller\ArticleCoucheBySystemeController::__invoke()"/>
+        <argument key="App\Controller\PatchArticlesArticleCoucheController:__invoke" type="service_closure" id=".service_locator.GL345QQ.App\Controller\PatchArticlesArticleCoucheController::__invoke()"/>
+        <argument key="App\Controller\PatchArticlesArticleCoucheController" type="service_closure" id=".service_locator.GL345QQ.App\Controller\PatchArticlesArticleCoucheController::__invoke()"/>
       </argument>
     </service>
     <service id=".service_locator.mJTctrn" class="Symfony\Component\DependencyInjection\ServiceLocator">
@@ -6818,6 +6840,12 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.ZyP9f7K" method="withContext"/>
     </service>
+    <service id=".service_locator.ZyP9f7K.App\Controller\PatchArticlesArticleCoucheController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\PatchArticlesArticleCoucheController"/>
+      <argument>App\Controller\PatchArticlesArticleCoucheController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.ZyP9f7K" method="withContext"/>
+    </service>
     <service id=".service_locator.RTjHFcp" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -7022,6 +7050,7 @@
           <argument>App\Controller\ArticleCoucheByCommandeController</argument>
           <argument>App\Controller\ArticleCoucheByDemandeController</argument>
           <argument>App\Controller\ArticleCoucheBySystemeController</argument>
+          <argument>App\Controller\PatchArticlesArticleCoucheController</argument>
           <argument>Doctrine\Bundle\DoctrineBundle\Controller\ProfilerController</argument>
         </argument>
       </call>
@@ -8019,7 +8048,7 @@
     <service id="ApiPlatform\Symfony\Security\ResourceAccessCheckerInterface" alias="api_platform.security.resource_access_checker"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.pRu6x_4" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.vr1x91O"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.lh6aVC2"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.BxSdgVt"/>
     <service id="api_platform.name_converter" alias="api_platform.hydra.name_converter.hydra_prefix"/>

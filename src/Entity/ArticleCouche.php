@@ -12,6 +12,7 @@ use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use App\Controller\ArticleCoucheBySystemeController;
 use App\Controller\ArticleCoucheByCommandeController;
+use App\Controller\PatchArticlesArticleCoucheController;
 use App\Repository\ArticleCoucheRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
@@ -39,6 +40,7 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
         ),
         new Patch(
             uriTemplate: '/articlesArticleCouche/{id}',
+            controller: PatchArticlesArticleCoucheController::class,
             normalizationContext: ['groups' => ['articles_articleCouche:read']],
             denormalizationContext: ['groups' => ['articles_articleCouche:write']],
             name: 'update articles articleCouche'
@@ -114,9 +116,9 @@ class ArticleCouche
         return $this->articles_articleCouche;
     }
 
-    public function setArticlesArticleCouche(Collection $articlesArticleCouche): static
+    public function setArticlesArticleCouche(?Collection $articles_articleCouche): static
     {
-        $this->articles_articleCouche = $articlesArticleCouche;
+        $this->articles_articleCouche = $articles_articleCouche;
 
         return $this;
     }
@@ -131,9 +133,11 @@ class ArticleCouche
         return $this;
     }
 
-    public function removeArticlesArticleCouche(Articles $articlesArticleCouche): static
+    public function removeArticlesArticleCouche(Articles $article): static
     {
-        $this->articles_articleCouche->removeElement($articlesArticleCouche);
+        if ($this->articles_articleCouche->removeElement($article)) {
+            $article->removeCouche($this);
+        }
 
         return $this;
     }
