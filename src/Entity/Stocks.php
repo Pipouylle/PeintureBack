@@ -2,12 +2,15 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Delete;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
+use App\Controller\CreateStockController;
 use App\Repository\StocksRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -29,11 +32,19 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
             denormalizationContext: ['groups' => ['stockSortie:write']],
             name: 'faire la sortie du stock'
         ),
+        new Post(
+            uriTemplate: '/stockCreate/{articleId}/{nombre}',
+            controller: CreateStockController::class,
+            normalizationContext: ['groups' => ['stocks:read']],
+            denormalizationContext: ['groups' => ['stocks:write']],
+            name: 'faire un nombre d entrees dans stock'
+        )
     ],
     normalizationContext: ['groups' => ['stocks:read']],
     denormalizationContext: ['groups' => ['stocks:write']],
     paginationEnabled: false,
 )]
+#[ApiFilter(SearchFilter::class, properties: ['id' => 'exact', 'article_stock' => 'exact', 'dateStock_stock' => 'exact', 'dateSortie_stock' => 'exact'])]
 class Stocks
 {
     #[ORM\Id]
@@ -42,28 +53,29 @@ class Stocks
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
-    #[Groups(['stocks:read', 'stocks:write'])]
+    #[Groups(['stocks:read'])]
     #[SerializedName('dateStockStock')]
     private ?\DateTimeInterface $dateStock_stock = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
-    #[Groups(['stocks:read', 'stockSortie:write'])]
+    #[Groups(['stocks:read'])]
     #[SerializedName('dateSortieStock')]
     private ?\DateTimeInterface $dateSortie_stock = null;
 
     #[ORM\ManyToOne(targetEntity: Articles::class, inversedBy: 'stocks_article')]
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
     #[Groups(['stocks:read', 'stocks:write'])]
     #[SerializedName('articleStock')]
     private ?Articles $article_stock = null;
 
     #[ORM\ManyToOne(targetEntity: Users::class, inversedBy: 'stocks_user')]
-    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
+    #[ORM\JoinColumn(nullable: true, onDelete: 'CASCADE')]
     #[Groups(['stocks:read', 'stockSortie:write'])]
     #[SerializedName('userStock')]
     private ?Users $user_stock = null;
 
     #[ORM\ManyToOne(targetEntity: OFs::class, inversedBy: 'stocks_of')]
-    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
+    #[ORM\JoinColumn(nullable: true, onDelete: 'CASCADE')]
     #[Groups(['stocks:read', 'stockSortie:write'])]
     #[SerializedName('ofStock')]
     private ?OFs $of_stock = null;
@@ -98,6 +110,15 @@ class Stocks
     {
         $this->dateStock_stock = $dateStock_stock;
 
+        return $this;
+    }
+
+    #[ORM\PreUpdate]
+    public function setDateSortieStockValue(): static
+    {
+        if ($thie->dateSortie_stock === null){
+            $this->dateSortie_stock = new \DateTime();
+        }
         return $this;
     }
 
