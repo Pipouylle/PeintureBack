@@ -47,7 +47,7 @@ class ArticleCoucheRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('a')
             ->select('a')
             ->join('a.commande_articleCouche', 'commande')
-            ->join('a.articles_articleCouche', 'article')
+            ->leftJoin('a.articles_articleCouche', 'article')
             ->join('a.couche_articleCouche', 'couche')
             ->andWhere('commande.id = :commandeId')
             ->setParameter('commandeId', $commandeId)
@@ -59,7 +59,7 @@ class ArticleCoucheRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('ac')
             ->join('ac.commande_articleCouche', 'commande')
-            ->join('ac.articles_articleCouche', 'article')
+            ->leftJoin('ac.articles_articleCouche', 'article')
             ->join('ac.couche_articleCouche', 'couche')
             ->join('couche.systeme_couche', 'systeme')
             ->andWhere('systeme.id = :systemeId')

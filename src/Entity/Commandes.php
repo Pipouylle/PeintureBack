@@ -87,6 +87,26 @@ class Commandes
     #[SerializedName('pvPeintureCommande')]
     private ?bool $pvPeinture_commande = null;
 
+    #[ORM\Column(type: Types::DECIMAL, precision: 15, scale: 2, nullable: true)]
+    #[Groups(['commandes:read', 'commandes:write', 'RecapSemaine:read'])]
+    #[SerializedName('regieSFPCommande')]
+    private ?string $regieSFP_commande = null;
+
+    #[ORM\Column(type: Types::DECIMAL, precision: 15, scale: 2, nullable: true)]
+    #[Groups(['commandes:read', 'commandes:write', 'RecapSemaine:read'])]
+    #[SerializedName('regieFPCommande')]
+    private ?string $regieFP_commande = null;
+
+    #[ORM\Column(type: Types::DECIMAL, precision: 15, scale: 2, nullable: true)]
+    #[Groups(['commandes:read', 'commandes:write', 'RecapSemaine:read'])]
+    #[SerializedName('grenaillageCommande')]
+    private ?string $grenaillage_commande = null;
+
+    #[ORM\Column(type: Types::INTEGER, nullable: true)]
+    #[Groups(['commandes:read', 'commandes:write', 'RecapSemaine:read'])]
+    #[SerializedName('ralCommande')]
+    private ?int $ral_commande = null;
+
     #[ORM\OneToMany(targetEntity: Demandes::class, mappedBy: 'commande_demande', cascade: ['persist', 'remove'])]
     private Collection $demandes_commande;
 
@@ -227,5 +247,45 @@ class Commandes
             }
         }
         return $this;
+    }
+
+    public function getRegieSFPCommande(): ?string
+    {
+        return $this->regieSFP_commande;
+    }
+
+    public function setRegieSFPCommande(?string $regieSFP_commande): void
+    {
+        $this->regieSFP_commande = $regieSFP_commande;
+    }
+
+    public function getRegieFPCommande(): ?string
+    {
+        return $this->regieFP_commande;
+    }
+
+    public function setRegieFPCommande(?string $regieFP_commande): void
+    {
+        $this->regieFP_commande = $regieFP_commande;
+    }
+
+    public function getGrenaillageCommande(): ?string
+    {
+        return $this->grenaillage_commande;
+    }
+
+    public function setGrenaillageCommande(?string $grenaillage_commande): void
+    {
+        $this->grenaillage_commande = $grenaillage_commande;
+    }
+
+    public function getRalCommande(): ?int
+    {
+        return $this->ral_commande;
+    }
+
+    public function setRalCommande(?int $ral_commande): void
+    {
+        $this->ral_commande = $ral_commande;
     }
 }
