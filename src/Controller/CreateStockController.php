@@ -73,7 +73,7 @@ final class CreateStockController extends AbstractController
     private function generateUniqueId(): int
     {
         do {
-            $id = random_int(1, PHP_INT_MAX);
+            $id = random_int(1, 9007199254740991);
             $existingStock = $this->entityManager->getRepository(Stocks::class)->find($id);
         } while ($existingStock !== null);
 
@@ -96,6 +96,8 @@ final class CreateStockController extends AbstractController
                 $barcodeBase64 = base64_encode($generator->getBarcode($uuid, $generator::TYPE_CODE_128, 1, 50, $color));
 
                 $pdfPath = $this->generatePdfForBarCode($stock->getId(), $barcodeBase64, $barcodeDirectory);
+
+                //TODO: imprimer
             }
         } catch (\Exception $e) {
             throw new \Error('Error while generating barcode: ' . $e->getMessage());

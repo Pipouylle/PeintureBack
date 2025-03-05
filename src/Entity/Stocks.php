@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Doctrine\Orm\Filter\ExistsFilter;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiResource;
@@ -10,6 +11,7 @@ use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
+use ApiPlatform\Metadata\Put;
 use App\Controller\CreateStockController;
 use App\Repository\StocksRepository;
 use Doctrine\DBAL\Types\Types;
@@ -38,13 +40,14 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
             normalizationContext: ['groups' => ['stocks:read']],
             denormalizationContext: ['groups' => ['stocks:write']],
             name: 'faire un nombre d entrees dans stock'
-        )
+        ),
     ],
     normalizationContext: ['groups' => ['stocks:read']],
     denormalizationContext: ['groups' => ['stocks:write']],
     paginationEnabled: false,
 )]
-#[ApiFilter(SearchFilter::class, properties: ['id' => 'exact', 'article_stock' => 'exact', 'dateStock_stock' => 'exact', 'dateSortie_stock' => 'exact'])]
+#[ApiFilter(SearchFilter::class, properties: ['id' => 'exact', 'article_stock' => 'exact', 'dateStock_stock' => 'exact'])]
+#[ApiFilter(ExistsFilter::class, properties: ['dateSortie_stock'])]
 class Stocks
 {
     #[ORM\Id]
@@ -116,7 +119,7 @@ class Stocks
     #[ORM\PreUpdate]
     public function setDateSortieStockValue(): static
     {
-        if ($thie->dateSortie_stock === null){
+        if ($this->dateSortie_stock === null){
             $this->dateSortie_stock = new \DateTime();
         }
         return $this;
