@@ -46,7 +46,7 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
     denormalizationContext: ['groups' => ['ofs:write']],
     paginationEnabled: false,
 )]
-#[ApiFilter(SearchFilter::class, properties: ['semaine_of' => 'exact'])]
+#[ApiFilter(SearchFilter::class, properties: ['semaine_of' => 'exact', 'jour_of' => 'exact'])]
 class OFs
 {
     #[ORM\Id]
