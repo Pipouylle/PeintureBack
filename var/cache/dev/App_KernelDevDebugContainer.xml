@@ -5910,6 +5910,7 @@
       <argument type="service" id="logger" on-invalid="ignore"/>
       <argument type="collection">
         <argument key="semaine_of">exact</argument>
+        <argument key="jour_of">exact</argument>
       </argument>
       <argument type="service" id="api_platform.api.identifiers_extractor" on-invalid="ignore"/>
       <argument type="service" id="api_platform.hydra.name_converter.hydra_prefix" on-invalid="ignore"/>
