@@ -43,10 +43,11 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
         ),
         new Patch(
             uriTemplate: '/ofsAvancement/{id}',
+            //TODO: faire en sorte que les demandes passe en en cour
             normalizationContext: ['groups' => ['ofs:read']],
             denormalizationContext: ['groups' => ['ofsAvancement:write']],
             name: 'update avancement of',
-        )
+        ),
     ],
     normalizationContext: ['groups' => ['ofs:read']],
     denormalizationContext: ['groups' => ['ofs:write']],

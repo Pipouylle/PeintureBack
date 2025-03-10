@@ -10,6 +10,8 @@ use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
+use App\Controller\DemandeNotFinishController;
+use App\Controller\GetPreviousAvancementController;
 use App\DTOs\DemandesCalendar;
 use App\Repository\DemandesRepository;
 use App\State\DemandesCalendarProvider;
@@ -40,11 +42,23 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
             name: 'DemandesOf',
             provider: DemandesCalendarProvider::class
         ),
+        new Get(
+            uriTemplate: '/previousAvancement/{demandeId}/{ofId}',
+            controller: GetPreviousAvancementController::class,
+            name: 'getPreviousAvancement',
+        ),
+        new GetCollection(
+            uriTemplate: '/demandeNotFinish',
+            controller: DemandeNotFinishController::class,
+            normalizationContext: ['groups' => ['demandes:read']],
+            name: 'demandeNotFinish',
+        )
     ],
     normalizationContext: ['groups' => ['demandes:read']],
     denormalizationContext: ['groups' => ['demandes:write']],
     paginationEnabled: false,
 )]
+#[ApiFilter(SearchFilter::class, properties:['numero_demande' => 'exact', 'etat_demande' => 'exact'])]
 class Demandes
 {
     #[ORM\Id]
