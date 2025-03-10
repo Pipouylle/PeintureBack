@@ -83,6 +83,7 @@ final class CreateStockController extends AbstractController
     private function generateBarCodes($listStocks): void
     {
         $barcodeDirectory = $_ENV['BARCODE_PATH'] ?? 'C:\Users\timot\Documents\barcodes';
+        $namePrinter = $_ENV['NAME_PRINTER'] ?? 'Microsoft Print to PDF';
 
         if (!is_dir($barcodeDirectory)) {
             mkdir($barcodeDirectory, 0777, true);
@@ -96,6 +97,28 @@ final class CreateStockController extends AbstractController
                 $barcodeBase64 = base64_encode($generator->getBarcode($uuid, $generator::TYPE_CODE_128, 1, 50, $color));
 
                 $pdfPath = $this->generatePdfForBarCode($stock->getId(), $barcodeBase64, $barcodeDirectory);
+
+                $commande = "lp -d " . escapeshellarg($namePrinter) . " -o page-ranges=1 " . escapeshellarg($pdfPath);
+
+                /*
+                $output = exec($commande);
+
+                if ($output !== null) {
+                    echo "Impression lancée avec succès.<br>";
+                    if (file_exists($fichier)) {
+                        if (unlink($fichier)) {
+                            echo "Fichier supprimé avec succès.";
+                        } else {
+                            echo "Erreur lors de la suppression du fichier.";
+                        }
+                    } else {
+                        echo "Le fichier n'existe pas.";
+                    }
+                } else {
+                    echo "Erreur lors de l'impression.";
+                }
+                */
+
 
                 //TODO: imprimer
             }
