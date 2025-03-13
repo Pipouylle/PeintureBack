@@ -52,17 +52,14 @@ class DemandesRepository extends ServiceEntityRepository
             ->getArrayResult();
     }
 
-    public function getPreviousAvancement(int $idDemande, int $jourId, int $semaineId): array
+    public function getPreviousAvancement(int $idDemande): array
     {
         return $this->createQueryBuilder('d')
-            ->select('d.id as demandeId','SUM(o.avancement_of) as avancement')
-            ->join('d.Of_demande', 'o')
+            ->select('d.id as demandeId','COALESCE(SUM(o.avancement_of),0) as avancement')
+            ->leftJoin('d.Of_demande', 'o')
             ->where('d.id = :idDemande')
-            ->andWhere('o.semaine_of < :semaineId OR (o.semaine_of = :semaineId AND o.jour_of < :jourId)')
-            ->setParameter('idDemande', $idDemande)
-            ->setParameter('semaineId', $semaineId)
-            ->setParameter('jourId', $jourId)
             ->groupBy('d.id')
+            ->setParameter('idDemande', $idDemande)
             ->getQuery()
             ->getOneOrNullResult();
     }

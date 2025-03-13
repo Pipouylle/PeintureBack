@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Doctrine\Orm\Filter\DateFilter;
 use ApiPlatform\Doctrine\Orm\Filter\ExistsFilter;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 use ApiPlatform\Metadata\ApiFilter;
@@ -46,8 +47,9 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
     denormalizationContext: ['groups' => ['stocks:write']],
     paginationEnabled: false,
 )]
-#[ApiFilter(SearchFilter::class, properties: ['id' => 'exact', 'article_stock' => 'exact', 'dateStock_stock' => 'exact'])]
+#[ApiFilter(SearchFilter::class, properties: ['id' => 'exact', 'article_stock' => 'exact'])]
 #[ApiFilter(ExistsFilter::class, properties: ['dateSortie_stock'])]
+#[ApiFilter(DateFilter::class, properties: ['dateSortie_stock'])]
 class Stocks
 {
     #[ORM\Id]
@@ -60,7 +62,7 @@ class Stocks
     #[SerializedName('dateStockStock')]
     private ?\DateTimeInterface $dateStock_stock = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     #[Groups(['stocks:read'])]
     #[SerializedName('dateSortieStock')]
     private ?\DateTimeInterface $dateSortie_stock = null;

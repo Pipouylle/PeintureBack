@@ -10,14 +10,11 @@ use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
-use App\DTOs\OFsInput as OFsInputDTO;
-use App\Processors\OFsProcessor as OFsInputProcessor;
+use App\Controller\OfForSortieStockController;
 use App\Repository\OFsRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\Common\Collections\ArrayCollection;
-use phpDocumentor\Reflection\Types\Integer;
 use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Serializer\Attribute\SerializedName;
 
@@ -43,10 +40,15 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
         ),
         new Patch(
             uriTemplate: '/ofsAvancement/{id}',
-            //TODO: faire en sorte que les demandes passe en en cour
             normalizationContext: ['groups' => ['ofs:read']],
             denormalizationContext: ['groups' => ['ofsAvancement:write']],
             name: 'update avancement of',
+        ),
+        new GetCollection(
+            uriTemplate: '/ofsForSortieStock',
+            controller: OfForSortieStockController::class,
+            normalizationContext: ['groups' => ['ofs:read']],
+            name: 'get all of before 7 month'
         ),
     ],
     normalizationContext: ['groups' => ['ofs:read']],
@@ -54,6 +56,7 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
     paginationEnabled: false,
 )]
 #[ApiFilter(SearchFilter::class, properties: ['semaine_of' => 'exact', 'jour_of' => 'exact'])]
+#[ORM\HasLifecycleCallbacks]
 class OFs
 {
     #[ORM\Id]
@@ -268,5 +271,19 @@ class OFs
         $this->regieFP_of = $regieFP_of;
 
         return $this;
+    }
+
+    #[ORM\PrePersist]
+    public function updateDemandeStatusToEnCours(): void
+    {
+        $this->idDemande_of?->setEtatDemande('en cours');
+    }
+
+    #[ORM\PreRemove]
+    public function onPreRemove(): void
+    {
+        if ($this->idDemande_of && $this->idDemande_of->getOfs()->count() === 1) {
+            $this->idDemande_of->setEtatDemande('pas terminé');
+        }
     }
 }
