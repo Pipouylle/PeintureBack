@@ -31,3 +31,11 @@ services:
   App\Processors\SemainesProcessor:
     arguments:
       $persistProcessor: '@api_platform.doctrine.orm.state.persist_processor'
+
+  App\EventListener\OFsListener:
+    tags:
+      - { name: doctrine.event_listener, event: preRemove }
+
+  App\EventListener\EntityDeletionListener:
+    tags:
+      - { name: doctrine.event_listener, event: preRemove }

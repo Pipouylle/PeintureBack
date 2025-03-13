@@ -43,7 +43,7 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
             provider: DemandesCalendarProvider::class
         ),
         new Get(
-            uriTemplate: '/previousAvancement/{demandeId}/{ofId}',
+            uriTemplate: '/previousAvancement/{demandeId}',
             controller: GetPreviousAvancementController::class,
             name: 'getPreviousAvancement',
         ),

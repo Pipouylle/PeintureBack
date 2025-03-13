@@ -40,4 +40,18 @@ class OFsRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+    public function findBeforSixMonth(): array
+    {
+        $date = new \DateTime();
+        $date->modify("-7 months");
+
+        return $this->createQueryBuilder('ofs')
+            ->select('ofs')
+            ->join('ofs.semaine_of', 'semaine')
+            ->where('semaine.dateDebut_semaine >= :date')
+            ->setParameter('date', $date)
+            ->getQuery()
+            ->getResult();
+    }
+
 }

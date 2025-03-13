@@ -8,6 +8,7 @@ use App\Repository\StocksRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Dompdf\Dompdf;
 use Dompdf\Options;
+use Picqer\Barcode\BarcodeGeneratorHTML;
 use Picqer\Barcode\Renderers\HtmlRenderer;
 use Picqer\Barcode\Renderers\PngRenderer;
 use Picqer\Barcode\Types\TypeCode128;
@@ -90,13 +91,14 @@ final class CreateStockController extends AbstractController
         }
 
         try {
+            $article = $this->entityManager->getRepository(Articles::class)->findOneBy(['id' => $listStocks[0]->getArticleStock()->getId()]);
             $generator = new BarcodeGeneratorPNG();
             foreach ($listStocks as $stock) {
-                $color = [255, 127, 0];
+                $color = [0, 0, 0];
                 $uuid = $stock->getId();
-                $barcodeBase64 = base64_encode($generator->getBarcode($uuid, $generator::TYPE_CODE_128, 1, 50, $color));
+                $barcodeBase64 = base64_encode($generator->getBarcode($uuid, $generator::TYPE_CODE_128, 23, 500, $color));
 
-                $pdfPath = $this->generatePdfForBarCode($stock->getId(), $barcodeBase64, $barcodeDirectory);
+                $pdfPath = $this->generatePdfForBarCode($stock->getId(),$article, $barcodeBase64, $barcodeDirectory);
 
                 $commande = "lp -d " . escapeshellarg($namePrinter) . " -o page-ranges=1 " . escapeshellarg($pdfPath);
 
@@ -127,7 +129,7 @@ final class CreateStockController extends AbstractController
         }
     }
 
-    private function generatePdfForBarCode(string $uuid, string $barcodeBase64, string $pdfDirectory): string
+    private function generatePdfForBarCode(string $uuid,Articles $articles, string $barcodeBase64, string $pdfDirectory): string
     {
         $options = new Options();
         $options->set('defaultFont', 'Arial');
@@ -140,29 +142,30 @@ final class CreateStockController extends AbstractController
 
         $html = "
         <style>
-            @page { margin: 0; }
+            @page { margin: 0; size: A4; }
             body { margin: 0; padding: 0; }
             .container {
-                padding-top: 20px;
-                padding-left: 10px;
-                width: 8cm;
-                height: 5cm;
+                margin-top: 500px;
+                margin-right: 500px;
+                height: 2500px;
+                width: 3400px;
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                overflow: hidden; /* Évite les débordements */
-                background-color: black;
+                background-color: #ff0000;
+                transform: rotate(90deg);
             }
         </style>
         <div class='container'>
-            <img src='data:image/png;base64,$barcodeBase64' style='width: 100%; max-width: 7.8cm; height: auto; max-height: 4cm;' />
-            <p style='font-size: 1em; margin-top: 0.5cm; text-align: center; color: #ff7f00'>$uuid</p>
+        <img src='data:image/png;base64,$barcodeBase64' style='width: auto; height: auto; margin-top: 1em'/>
+            <p style='font-size: 4em; margin-top: 0.2cm; text-align: center; color: rgb(0,0,0)'>$uuid</p>
+            <p style='font-size: 3em; text-align: center; color: rgb(0,0,0)'>{$articles->getDesignationArticle()}</p>
+            <p style='font-size: 3em; text-align: center; color: rgb(0,0,0)'>{$articles->getRalArticle()}</p>
         </div>
     ";
 
-
+        //
         $dompdf->loadHtml($html);
-        $dompdf->setPaper([0, 0, 226.77, 141.73]);
 
         $dompdf->render();
 
