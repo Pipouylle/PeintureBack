@@ -69,9 +69,8 @@ class DemandesRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('d')
             ->select('d')
             ->where('d.etat_demande != :etat')
-            ->setParameter('etat', 'terminé')
+            ->setParameter('etat', 'Terminée')
             ->getQuery()
             ->getResult();
     }
-
 }
