@@ -276,14 +276,14 @@ class OFs
     #[ORM\PrePersist]
     public function updateDemandeStatusToEnCours(): void
     {
-        $this->idDemande_of?->setEtatDemande('en cours');
+        $this->idDemande_of?->setEtatDemande('En cours');
     }
 
     #[ORM\PreRemove]
     public function onPreRemove(): void
     {
         if ($this->idDemande_of && $this->idDemande_of->getOfs()->count() === 1) {
-            $this->idDemande_of->setEtatDemande('pas terminé');
+            $this->idDemande_of->setEtatDemande('Créée');
         }
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Doctrine\Orm\Filter\BooleanFilter;
 use ApiPlatform\Doctrine\Orm\Filter\DateFilter;
 use ApiPlatform\Doctrine\Orm\Filter\ExistsFilter;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
@@ -50,6 +51,7 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
 #[ApiFilter(SearchFilter::class, properties: ['id' => 'exact', 'article_stock' => 'exact'])]
 #[ApiFilter(ExistsFilter::class, properties: ['dateSortie_stock'])]
 #[ApiFilter(DateFilter::class, properties: ['dateSortie_stock'])]
+#[ApiFilter(BooleanFilter::class, properties: ['isUnique_stock'])]
 class Stocks
 {
     #[ORM\Id]
@@ -84,6 +86,11 @@ class Stocks
     #[Groups(['stocks:read', 'stockSortie:write'])]
     #[SerializedName('ofStock')]
     private ?OFs $of_stock = null;
+
+    #[ORM\Column(type: Types::BOOLEAN, nullable: true)]
+    #[Groups(['stocks:read', 'stocks:write'])]
+    #[SerializedName('isUniqueStock')]
+    private ?bool $isUnique_stock = null;
 
     public function getId(): ?int
     {
@@ -171,5 +178,15 @@ class Stocks
     public function setOfStock(?OFs $of_stock): void
     {
         $this->of_stock = $of_stock;
+    }
+
+    public function getIsUniqueStock(): ?bool
+    {
+        return $this->isUnique_stock;
+    }
+
+    public function setIsUniqueStock(?bool $isUnique_stock): void
+    {
+        $this->isUnique_stock = $isUnique_stock;
     }
 }

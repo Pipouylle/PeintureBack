@@ -58,8 +58,8 @@ final class CreateStockController extends AbstractController
         }
 
         try {
-            $this->entityManager->flush();
             $this->generateBarCodes($stocks);
+            $this->entityManager->flush();
         } catch (\Error $e) {
             $this->entityManager->clear();
             return $this->json(['message' => 'Error while saving stocks', $e], Response::HTTP_INTERNAL_SERVER_ERROR);
