@@ -20,7 +20,6 @@ use Symfony\Component\Serializer\SerializerInterface;
 use Picqer\Barcode\BarcodeGeneratorPNG;
 
 
-//TODO: activer gd dans php.ini
 final class CreateStockController extends AbstractController
 {
     private $repository;
@@ -47,8 +46,9 @@ final class CreateStockController extends AbstractController
 
         for ($i = 0; $i < $nombre; $i++) {
             $newStock = new Stocks();
+            $generatedId = $this->generateUniqueId();
+            $newStock->setId($generatedId);
             $newStock->setArticleStock($article);
-            $newStock->setId($this->generateUniqueId());
             $stocks[$i] = $newStock;
             try {
                 $this->entityManager->persist($newStock);
@@ -58,8 +58,8 @@ final class CreateStockController extends AbstractController
         }
 
         try {
-            $this->generateBarCodes($stocks);
             $this->entityManager->flush();
+            $this->generateBarCodes($stocks);
         } catch (\Error $e) {
             $this->entityManager->clear();
             return $this->json(['message' => 'Error while saving stocks', $e], Response::HTTP_INTERNAL_SERVER_ERROR);
@@ -92,23 +92,19 @@ final class CreateStockController extends AbstractController
 
         try {
             $article = $this->entityManager->getRepository(Articles::class)->findOneBy(['id' => $listStocks[0]->getArticleStock()->getId()]);
-            $generator = new BarcodeGeneratorPNG();
             foreach ($listStocks as $stock) {
-                $color = [0, 0, 0];
                 $uuid = $stock->getId();
-                $barcodeBase64 = base64_encode($generator->getBarcode($uuid, $generator::TYPE_CODE_128, 23, 500, $color));
 
-                $pdfPath = $this->generatePdfForBarCode($stock->getId(),$article, $barcodeBase64, $barcodeDirectory);
+                $pdfPath = $this->generateZplForBarCode($uuid,$article, $barcodeDirectory);
 
-                $commande = "lp -d " . escapeshellarg($namePrinter) . " -o page-ranges=1 " . escapeshellarg($pdfPath);
+                $commande = "lp -d " . escapeshellarg($namePrinter) . " -o raw " . escapeshellarg($pdfPath);
 
-                /*
                 $output = exec($commande);
 
                 if ($output !== null) {
                     echo "Impression lancée avec succès.<br>";
-                    if (file_exists($fichier)) {
-                        if (unlink($fichier)) {
+                    if (file_exists($pdfPath)) {
+                        if (unlink($pdfPath)) {
                             echo "Fichier supprimé avec succès.";
                         } else {
                             echo "Erreur lors de la suppression du fichier.";
@@ -119,59 +115,28 @@ final class CreateStockController extends AbstractController
                 } else {
                     echo "Erreur lors de l'impression.";
                 }
-                */
-
-
-                //TODO: imprimer
             }
         } catch (\Exception $e) {
             throw new \Error('Error while generating barcode: ' . $e->getMessage());
         }
     }
 
-    private function generatePdfForBarCode(string $uuid,Articles $articles, string $barcodeBase64, string $pdfDirectory): string
+    private function generateZplForBarCode(string $uuid, Articles $articles, string $pdfDirectory): string
     {
-        $options = new Options();
-        $options->set('defaultFont', 'Arial');
-        $options->set('isHtml5ParserEnabled', true);
-        $options->set('isRemoteEnabled', true);
-        $options->set('defaultPaperSize', 'custom');
-        $options->set('dpi', 300);
+        $articleId = $articles->getId();
+        $articleDesignation = $articles->getDesignationArticle();
+        $articleRal = $articles->getRalArticle();
+        $zpl = "^XA
+        ^FO180,30^BCN,80,Y,N,N^FD$uuid^FS
+        ^FO100,130^A0N,50,50^FD$uuid^FS
+        ^FO300,190^A0N,50,50^FD$articleId^FS
+        ^FO100,250^A0N,50,50^FD$articleDesignation^FS
+        ^FO200,310^A0N,50,50^FD$articleRal^FS
+    ^XZ";
 
-        $dompdf = new Dompdf($options);
+        $pdfPath = rtrim($pdfDirectory, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . "barcode_$uuid.zpl";
 
-        $html = "
-        <style>
-            @page { margin: 0; size: A4; }
-            body { margin: 0; padding: 0; }
-            .container {
-                margin-top: 500px;
-                margin-right: 500px;
-                height: 2500px;
-                width: 3400px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background-color: #ff0000;
-                transform: rotate(90deg);
-            }
-        </style>
-        <div class='container'>
-        <img src='data:image/png;base64,$barcodeBase64' style='width: auto; height: auto; margin-top: 1em'/>
-            <p style='font-size: 4em; margin-top: 0.2cm; text-align: center; color: rgb(0,0,0)'>$uuid</p>
-            <p style='font-size: 3em; text-align: center; color: rgb(0,0,0)'>{$articles->getDesignationArticle()}</p>
-            <p style='font-size: 3em; text-align: center; color: rgb(0,0,0)'>{$articles->getRalArticle()}</p>
-        </div>
-    ";
-
-        //
-        $dompdf->loadHtml($html);
-
-        $dompdf->render();
-
-        $pdfPath = rtrim($pdfDirectory, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . "barcode_$uuid.pdf";
-
-        file_put_contents($pdfPath, $dompdf->output());
+        file_put_contents($pdfPath, $zpl);
 
         return $pdfPath;
     }
