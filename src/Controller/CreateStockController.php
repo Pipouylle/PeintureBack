@@ -37,6 +37,7 @@ final class CreateStockController extends AbstractController
     public function __invoke(int $articleId, int $nombre, Request $request, SerializerInterface $serializer): Response
     {
         $article = $this->entityManager->getRepository(Articles::class)->findOneBy(['id' => $articleId]);
+        $isBarCode = $_ENV['BARCODE'] ?? true;
 
         if (!$article) {
             return $this->json(['message' => 'Article not found'], Response::HTTP_NOT_FOUND);
@@ -58,7 +59,9 @@ final class CreateStockController extends AbstractController
         }
 
         try {
-            $this->generateBarCodes($stocks);
+            if ($isBarCode) {
+                $this->generateBarCodes($stocks);
+            }
             $this->entityManager->flush();
         } catch (\Error $e) {
             $this->entityManager->clear();
@@ -102,18 +105,9 @@ final class CreateStockController extends AbstractController
                 $output = exec($commande);
 
                 if ($output !== null) {
-                    echo "Impression lancée avec succès.<br>";
                     if (file_exists($pdfPath)) {
-                        if (unlink($pdfPath)) {
-                            echo "Fichier supprimé avec succès.";
-                        } else {
-                            echo "Erreur lors de la suppression du fichier.";
-                        }
-                    } else {
-                        echo "Le fichier n'existe pas.";
+                        unlink($pdfPath);
                     }
-                } else {
-                    echo "Erreur lors de l'impression.";
                 }
             }
         } catch (\Exception $e) {
@@ -130,8 +124,8 @@ final class CreateStockController extends AbstractController
         ^FO180,30^BCN,80,Y,N,N^FD$uuid^FS
         ^FO100,130^A0N,50,50^FD$uuid^FS
         ^FO300,190^A0N,50,50^FD$articleId^FS
-        ^FO100,250^A0N,50,50^FD$articleDesignation^FS
-        ^FO200,310^A0N,50,50^FD$articleRal^FS
+        ^FO100,250^A0N,50,50^FD$articleDesignation $articleRal^FS
+        ^FO200,310^A0N,50,50^FD^FS
     ^XZ";
 
         $pdfPath = rtrim($pdfDirectory, DIRECTORY_SEPARATOR) . DIRECTORY_SEPARATOR . "barcode_$uuid.zpl";
