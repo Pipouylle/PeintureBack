@@ -59,7 +59,7 @@ class Stocks
     #[Groups(['stocks:read'])]
     private ?int $id = null;
 
-    #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
     #[Groups(['stocks:read'])]
     #[SerializedName('dateStockStock')]
     private ?\DateTimeInterface $dateStock_stock = null;
@@ -88,7 +88,7 @@ class Stocks
     private ?OFs $of_stock = null;
 
     #[ORM\Column(type: Types::BOOLEAN, nullable: true)]
-    #[Groups(['stocks:read', 'stocks:write'])]
+    #[Groups(['stocks:read'])]
     #[SerializedName('isUniqueStock')]
     private ?bool $isUnique_stock = null;
 
