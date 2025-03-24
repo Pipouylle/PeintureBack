@@ -34,7 +34,7 @@ final class CreateStockController extends AbstractController
     /**
      * @throws RandomException
      */
-    public function __invoke(int $articleId, int $nombre, Request $request, SerializerInterface $serializer): Response
+    public function __invoke(int $articleId, int $nombre, SerializerInterface $serializer): Response
     {
         $article = $this->entityManager->getRepository(Articles::class)->findOneBy(['id' => $articleId]);
         $isBarCode = $_ENV['BARCODE'] ?? true;
@@ -62,7 +62,7 @@ final class CreateStockController extends AbstractController
             if ($isBarCode) {
                 $this->generateBarCodes($stocks);
             }
-            $this->entityManager->flush();
+            $this->entityManager->clear();
         } catch (\Error $e) {
             $this->entityManager->clear();
             return $this->json(['message' => 'Error while saving stocks', $e], Response::HTTP_INTERNAL_SERVER_ERROR);

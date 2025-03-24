@@ -30,17 +30,17 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
         new Post(),
         new Delete(),
         new Patch(),
+        new Post(),
         new Patch(
             uriTemplate: '/stockSortie/{id}',
             normalizationContext: ['groups' => ['stocks:read']],
             denormalizationContext: ['groups' => ['stockSortie:write']],
             name: 'faire la sortie du stock'
         ),
-        new Post(
+        new GetCollection(
             uriTemplate: '/stockCreate/{articleId}/{nombre}',
             controller: CreateStockController::class,
             normalizationContext: ['groups' => ['stocks:read']],
-            denormalizationContext: ['groups' => ['stocks:write']],
             name: 'faire un nombre d entrees dans stock'
         ),
     ],
@@ -56,7 +56,7 @@ class Stocks
 {
     #[ORM\Id]
     #[ORM\Column(type: Types::BIGINT)]
-    #[Groups(['stocks:read'])]
+    #[Groups(['stocks:read', 'stocks:write'])]
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
@@ -97,7 +97,7 @@ class Stocks
         return $this->id;
     }
 
-    public function setId(int $id): static
+    public function setId(string $id): static
     {
         $this->id = $id;
 
@@ -188,5 +188,14 @@ class Stocks
     public function setIsUniqueStock(?bool $isUnique_stock): void
     {
         $this->isUnique_stock = $isUnique_stock;
+    }
+
+    #[ORM\PrePersist]
+    public function setValueIsUniqueStock(): void
+    {
+        if ($this->isUnique_stock === null){
+            $isUnique = $_ENV["BARCODE"] ?? true;
+            $this->isUnique_stock = $isUnique;
+        }
     }
 }
