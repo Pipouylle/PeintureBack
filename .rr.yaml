@@ -9,6 +9,7 @@ http:
     num_workers: 4
     max_jobs: 64
 
+
 server:
   command: "php worker.php"
   relay: pipes
