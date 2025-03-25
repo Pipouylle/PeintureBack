@@ -1,0 +1,18 @@
+version: "3"
+
+rpc:
+  listen: tcp://127.0.0.1:6001
+
+http:
+  address: 127.0.0.1:8000
+  pool:
+    num_workers: 4
+    max_jobs: 64
+
+server:
+  command: "php worker.php"
+  relay: pipes
+
+static:
+  dir: "public"
+  forbid: [".php"]
