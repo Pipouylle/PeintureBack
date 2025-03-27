@@ -15,6 +15,8 @@ use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Put;
 use App\Controller\CreateStockController;
+use App\Controller\StockLeaveController;
+use App\Controller\StockUnLeaveController;
 use App\Repository\StocksRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -32,10 +34,16 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
         new Patch(),
         new Post(),
         new Patch(
-            uriTemplate: '/stockSortie/{id}',
-            normalizationContext: ['groups' => ['stocks:read']],
-            denormalizationContext: ['groups' => ['stockSortie:write']],
+            uriTemplate: '/stockLeave/{id}',
+            controller: StockLeaveController::class,
+            normalizationContext: ['groups' => 'stocks:read'],
+            denormalizationContext: ['groups' => 'stockSortie:write'],
             name: 'faire la sortie du stock'
+        ),
+        new Get(
+            uriTemplate: '/stockUnLeave/{id}',
+            controller: StockUnLeaveController::class,
+            name: 'annuler la sortie'
         ),
         new GetCollection(
             uriTemplate: '/stockCreate/{articleId}/{nombre}',
@@ -65,7 +73,7 @@ class Stocks
     private ?\DateTimeInterface $dateStock_stock = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
-    #[Groups(['stocks:read'])]
+    #[Groups(['stocks:read', 'stockUnLeave:write'])]
     #[SerializedName('dateSortieStock')]
     private ?\DateTimeInterface $dateSortie_stock = null;
 
@@ -122,15 +130,6 @@ class Stocks
     {
         $this->dateStock_stock = $dateStock_stock;
 
-        return $this;
-    }
-
-    #[ORM\PreUpdate]
-    public function setDateSortieStockValue(): static
-    {
-        if ($this->dateSortie_stock === null){
-            $this->dateSortie_stock = new \DateTime();
-        }
         return $this;
     }
 
