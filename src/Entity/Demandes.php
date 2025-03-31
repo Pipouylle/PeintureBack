@@ -10,6 +10,7 @@ use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
+use App\Controller\DemandeAllAvancementController;
 use App\Controller\DemandeNotFinishController;
 use App\Controller\GetPreviousAvancementController;
 use App\DTOs\DemandesCalendar;
@@ -52,6 +53,11 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
             controller: DemandeNotFinishController::class,
             normalizationContext: ['groups' => ['demandes:read']],
             name: 'demandeNotFinish',
+        ),
+        new GetCollection(
+            uriTemplate: '/allAvancements',
+            controller: DemandeAllAvancementController::class,
+            name: 'get avancement of all demandes'
         )
     ],
     normalizationContext: ['groups' => ['demandes:read']],

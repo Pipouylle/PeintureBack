@@ -14,33 +14,41 @@ class EntityDeletionListener
     public function preRemove(PreRemoveEventArgs $event): void
     {
         $entity = $event->getObject();
-        $entityManager = $event->getObjectManager();
 
         if ($entity instanceof Affaires) {
-            $this->checkRelatedEntities($entity, ['commandes'], $entityManager);
+            $this->checkCommandes($entity->getCommandes());
         } elseif ($entity instanceof Commandes) {
-            $this->checkRelatedEntities($entity, ['demandes'], $entityManager);
+            $this->checkDemandes($entity->getDemandes());
         } elseif ($entity instanceof Demandes) {
-            $this->checkRelatedEntities($entity, ['ofs'], $entityManager);
+            $this->checkOfs($entity->getOfs());
         } elseif ($entity instanceof Systemes) {
-            $this->checkRelatedEntities($entity, ['ofs'], $entityManager);
+            $this->checkCommandes($entity->getCommandes());
         }
     }
 
-    private function checkRelatedEntities($entity, array $relations, $entityManager): void
+    private function checkCommandes(iterable $commandes): void
     {
-        foreach ($relations as $relation) {
-            $relatedEntities = $entity->{'get' . ucfirst($relation)}();
+        foreach ($commandes as $commande) {
+            if ($commande instanceof Commandes) {
+                $this->checkDemandes($commande->getDemandes());
+            }
+        }
+    }
 
-            foreach ($relatedEntities as $relatedEntity) {
-                if ($relatedEntity instanceof OFs && $relatedEntity->getAvancementOf() > 0) {
-                    throw new \Exception("Impossible de supprimer cette entité car un OF lié a un avancement supérieur à 0.");
-                }
+    private function checkDemandes(iterable $demandes): void
+    {
+        foreach ($demandes as $demande) {
+            if ($demande Instanceof Demandes) {
+                $this->checkOfs($demande->getOfs());
+            }
+        }
+    }
 
-                // Vérification récursive pour les entités intermédiaires
-                if (!($relatedEntity instanceof OFs)) {
-                    $this->checkRelatedEntities($relatedEntity, ['ofs'], $entityManager);
-                }
+    private function checkOfs(iterable $ofs): void
+    {
+        foreach ($ofs as $of) {
+            if ($of instanceof OFs && $of->getAvancementOf() > 0) {
+                throw new \RuntimeException("Impossible de supprimer : un OF a un avancement > 0.");
             }
         }
     }
