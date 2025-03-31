@@ -64,55 +64,57 @@ class Demandes
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['demandes:read'])]
+    #[Groups(['demandes:read', 'ofsOperateurView:read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 50, nullable: true)]
-    #[Groups(['demandes:read', 'demandes:write'])]
+    #[Groups(['demandes:read', 'demandes:write', 'ofsOperateurView:read'])]
     #[SerializedName('numeroDemande')]
     private ?string $numero_demande = null;
 
 
     #[ORM\ManyToOne(targetEntity: Commandes::class, inversedBy: 'demandes_commande')]
     #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
-    #[Groups(['demandes:read', 'demandes:write'])]
+    #[Groups(['demandes:read', 'demandes:write', 'ofsOperateurView:read'])]
     #[SerializedName('commandeDemande')]
     private ?Commandes $commande_demande = null;
 
     #[ORM\Column(length: 50, nullable:  true)]
-    #[Groups(['demandes:read', 'demandes:write', 'demandesEtat:write'])]
+    #[Groups(['demandes:read', 'demandes:write', 'demandesEtat:write', 'ofsOperateurView:read'])]
     #[SerializedName('etatDemande')]
     private ?string $etat_demande = null;
 
     #[ORM\Column(type: Types::BIGINT, nullable: true)]
-    #[Groups(['demandes:read', 'demandes:write'])]
+    #[Groups(['demandes:read', 'demandes:write', 'ofsOperateurView:read'])]
     #[SerializedName('surfaceDemande')]
     private ?string $surface_demande = null;
 
     #[ORM\Column(type: Types::INTEGER, nullable: true)]
-    #[Groups(['demandes:read', 'demandes:write'])]
+    #[Groups(['demandes:read', 'demandes:write', 'ofsOperateurView:read'])]
     #[SerializedName('nombrePieceDemande')]
     private ?int $nombrePiece_demande = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
-    #[Groups(['demandes:read', 'demandes:write'])]
+    #[Groups(['demandes:read', 'demandes:write', 'ofsOperateurView:read'])]
     #[SerializedName('dateDemande')]
     private ?\DateTimeInterface $date_demande = null;
 
     #[ORM\Column(type: Types::BOOLEAN, nullable: true)]
-    #[Groups(['demandes:read', 'demandes:write'])]
+    #[Groups(['demandes:read', 'demandes:write', 'ofsOperateurView:read'])]
     #[SerializedName('reservationPeintureDemande')]
     private ?bool $reservationPeinture_demande = null;
 
     #[ORM\Column(length: 500, nullable: true)]
-    #[Groups(['demandes:read', 'demandes:write'])]
+    #[Groups(['demandes:read', 'demandes:write', 'ofsOperateurView:read'])]
     #[SerializedName('commentaireDemande')]
     private ?string $commentaire_demande = null;
 
     #[ORM\OneToMany(targetEntity: OFs::class, mappedBy: 'idDemande_of', cascade: ['persist', 'remove'])]
+    #[SerializedName('OfDemande')]
     private Collection $Of_demande;
 
     #[ORM\OneToMany(targetEntity: SurfaceCouches::class, mappedBy: 'demande_surfaceCouche', cascade: ['persist', 'remove'])]
+    #[SerializedName('surfaceCouchesDemande')]
     private Collection $surfaceCouches_demande;
 
     public function getId(): ?int

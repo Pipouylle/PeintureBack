@@ -21,26 +21,27 @@ class Grenaillage
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['grenaillage:read'])]
+    #[Groups(['grenaillage:read', 'ofsOperateurView:read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 50, nullable: true)]
-    #[Groups(['grenaillage:read', 'grenaillage:write'])]
+    #[Groups(['grenaillage:read', 'grenaillage:write', 'ofsOperateurView:read'])]
     #[SerializedName('nomGrenaillage')]
     private ?string $nom_grenaillage = null;
 
     #[ORM\Column(length: 50, nullable: true)]
-    #[Groups(['grenaillage:read', 'grenaillage:write'])]
+    #[Groups(['grenaillage:read', 'grenaillage:write', 'ofsOperateurView:read'])]
     #[SerializedName('typeChantierGrenaillage')]
     private ?string $typeChantier_grenaillage = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 5, scale: 2, nullable: true)]
-    #[Groups(['grenaillage:read', 'grenaillage:write'])]
+    #[Groups(['grenaillage:read', 'grenaillage:write', 'ofsOperateurView:read'])]
     #[SerializedName('tarifGrenaillage')]
     private ?string $tarif_grenaillage = null;
 
     #[ORM\OneToMany(targetEntity: Systemes::class, mappedBy: 'grenaillage_systeme', cascade: ['persist', 'remove'])]
     #[Groups(['grenaillage:read'])]
+    #[SerializedName('systemesGrenaillage')]
     private ?Collection $systemes_grenaillage = null;
 
     public function getId(): ?int

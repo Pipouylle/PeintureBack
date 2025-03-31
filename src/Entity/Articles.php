@@ -46,30 +46,32 @@ class Articles
 {
     #[ORM\Id]
     #[ORM\Column(type: Types::BIGINT)]
-    #[Groups(['articles:read', 'articles:write', 'articleCoucheForDemande:read'])]
+    #[Groups(['articles:read', 'articles:write', 'articleCoucheForDemande:read', 'ofsOperateurView:read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 200, nullable: true)]
-    #[Groups(['articles:read', 'articles:write', 'articleCoucheForDemande:read', 'articlesPatch:write'])]
+    #[Groups(['articles:read', 'articles:write', 'articleCoucheForDemande:read', 'articlesPatch:write', 'ofsOperateurView:read'])]
     #[SerializedName('designationArticle')]
     private ?string $designation_article = null;
 
     #[ORM\Column(length: 50, nullable: true)]
-    #[Groups(['articles:read', 'articles:write', 'articleCoucheForDemande:read', 'articlesPatch:write'])]
+    #[Groups(['articles:read', 'articles:write', 'articleCoucheForDemande:read', 'articlesPatch:write', 'ofsOperateurView:read'])]
     #[SerializedName('RALArticle')]
     private ?string $ral_article = null;
 
     #[ORM\ManyToOne(targetEntity: Fournisseur::class, inversedBy: 'articles_fournisseur')]
     #[ORM\JoinColumn(onDelete: 'CASCADE')]
-    #[Groups(['articles:read', 'articles:write', 'articleCoucheForDemande:read', 'articlesPatch:write'])]
+    #[Groups(['articles:read', 'articles:write', 'articleCoucheForDemande:read', 'articlesPatch:write', 'ofsOperateurView:read'])]
     #[SerializedName('fournisseurArticle')]
     private ?Fournisseur $fournisseur_article = null;
 
     #[ORM\ManyToMany(targetEntity: ArticleCouche::class, inversedBy: 'articles_articleCouche')]
     #[ORM\JoinTable(name: 'articles_article_couche')]
+    #[SerializedName('articleCouchesArticle')]
     private Collection $articleCouches_article;
 
     #[ORM\OneToMany(targetEntity: Stocks::class, mappedBy: 'article_stock')]
+    #[SerializedName('stocksArticle')]
     private Collection $stocks_article;
 
     public function getId(): ?int

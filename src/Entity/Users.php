@@ -52,6 +52,7 @@ class Users
     private ?bool $archive_user = null;
 
     #[ORM\OneToMany(targetEntity: Stocks::class, mappedBy: 'user_stock')]
+    #[SerializedName('stocksUser')]
     private Collection $stocks_user;
 
 

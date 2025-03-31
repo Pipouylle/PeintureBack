@@ -38,44 +38,46 @@ class Systemes
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['systemes:read', 'commandesAffairesSystemes:read'])]
+    #[Groups(['systemes:read', 'commandesAffairesSystemes:read', 'ofsOperateurView:read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
-    #[Groups(['systemes:read', 'systemes:write', 'commandesAffairesSystemes:read'])]
+    #[Groups(['systemes:read', 'systemes:write', 'commandesAffairesSystemes:read', 'ofsOperateurView:read'])]
     #[SerializedName('nomSysteme')]
     private ?string $nom_systeme = null;
 
     #[ORM\ManyToOne(targetEntity: Fournisseur::class, inversedBy: 'systemes_fournisseur')]
-    #[Groups(['systemes:read', 'systemes:write'])]
+    #[Groups(['systemes:read', 'systemes:write', 'ofsOperateurView:read'])]
     #[SerializedName('fournisseurSysteme')]
     private ?Fournisseur $fournisseur_systeme = null;
 
     #[ORM\Column(length: 50, nullable: true)]
-    #[Groups(['systemes:read', 'systemes:write'])]
+    #[Groups(['systemes:read', 'systemes:write', 'ofsOperateurView:read'])]
     #[SerializedName('typeSysteme')]
     private ?string $type_systeme = null;
 
     #[ORM\ManyToOne(targetEntity: Grenaillage::class, inversedBy: 'systemes_grenaillage')]
     #[ORM\JoinColumn(nullable: true, onDelete: 'CASCADE')]
-    #[Groups(['systemes:read', 'systemes:write'])]
+    #[Groups(['systemes:read', 'systemes:write', 'ofsOperateurView:read'])]
     #[SerializedName('grenaillageSysteme')]
     private ?Grenaillage $grenaillage_systeme = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 15, scale: 2, nullable: true)]
     #[SerializedName('refieFPSysteme')]
-    #[Groups(['systemes:read', 'systemes:write'])]
+    #[Groups(['systemes:read', 'systemes:write', 'ofsOperateurView:read'])]
     private ?string $regieFP_Systeme = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 15, scale: 2, nullable: true)]
-    #[Groups(['systemes:read', 'systemes:write'])]
+    #[Groups(['systemes:read', 'systemes:write', 'ofsOperateurView:read'])]
     #[SerializedName('regieSFPSysteme')]
     private ?string $regieSFP_systeme = null;
 
     #[ORM\OneToMany(targetEntity: Commandes::class, mappedBy: 'systeme_commande', cascade: ['persist', 'remove'])]
+    #[SerializedName('commandesSysteme')]
     private Collection $commande_systeme;
 
     #[ORM\OneToMany(targetEntity: Couches::class, mappedBy: 'systeme_couche', cascade: ['persist', 'remove'])]
+    #[SerializedName('couchesSysteme')]
     private Collection $Couches_syteme;
 
     public function getId(): ?int

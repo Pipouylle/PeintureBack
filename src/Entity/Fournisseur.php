@@ -43,9 +43,11 @@ class Fournisseur
     private ?string $nom_fournisseur = null;
 
     #[ORM\OneToMany(targetEntity: Systemes::class, mappedBy: 'fournisseur_systeme')]
+    #[SerializedName('systemesFournisseur')]
     private Collection $systemes_fournisseur;
 
     #[ORM\OneToMany(targetEntity: Articles::class, mappedBy: 'fournisseur_article')]
+    #[SerializedName('articlesFournisseur')]
     private Collection $articles_fournisseur;
 
     public function getId(): ?int

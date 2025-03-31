@@ -54,4 +54,16 @@ class OFsRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    public function getForOperateurView(int $semaineId, int $jourId): array
+    {
+        return $this->createQueryBuilder('ofs')
+            ->leftJoin('ofs.semaine_of', 'semaine')
+            ->leftJoin('ofs.jour_of', 'jour')
+            ->where('semaine.id = :semaineId')
+            ->andWhere('jour.id = :jourId')
+            ->setParameter('semaineId', $semaineId)
+            ->setParameter('jourId', $jourId)
+            ->getQuery()
+            ->getResult();
+    }
 }

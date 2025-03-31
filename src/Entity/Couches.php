@@ -39,32 +39,33 @@ class Couches
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['couches:read', 'articleCoucheForDemande:read'])]
+    #[Groups(['couches:read', 'articleCoucheForDemande:read', 'ofsOperateurView:read'])]
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 15, scale: 2, nullable: true)]
-    #[Groups(['couches:read', 'couches:write', 'articleCoucheForDemande:read'])]
+    #[Groups(['couches:read', 'couches:write', 'articleCoucheForDemande:read', 'ofsOperateurView:read'])]
     #[SerializedName('epaisseurCouche')]
     private ?string $epaisseur_couche = null;
 
     #[ORM\Column(length: 50,nullable: true)]
-    #[Groups(['couches:read', 'couches:write', 'articleCoucheForDemande:read'])]
+    #[Groups(['couches:read', 'couches:write', 'articleCoucheForDemande:read', 'ofsOperateurView:read'])]
     #[SerializedName('nomCouche')]
     private ?string $nom_couche = null;
 
 
     #[ORM\Column(type: Types::DECIMAL, precision: 15, scale: 2, nullable: true)]
-    #[Groups(['couches:read', 'couches:write', 'articleCoucheForDemande:read'])]
+    #[Groups(['couches:read', 'couches:write', 'articleCoucheForDemande:read', 'ofsOperateurView:read'])]
     #[SerializedName('tarifCouche')]
     private ?string $tarif_couche = null;
 
     #[ORM\ManyToOne(targetEntity: Systemes::class, inversedBy: 'Couches_syteme')]
     #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
-    #[Groups(['couches:read', 'couches:write', 'articleCoucheForDemande:read'])]
+    #[Groups(['couches:read', 'couches:write', 'articleCoucheForDemande:read', 'ofsOperateurView:read'])]
     #[SerializedName('systemeCouche')]
     private ?Systemes $systeme_couche;
 
     #[ORM\OneToMany(targetEntity: ArticleCouche::class, mappedBy: 'couche_articleCouche')]
+    #[SerializedName('articleCouchesCouche')]
     private ?Collection $articleCouches_couche = null;
 
     public function getId(): ?int

@@ -43,32 +43,32 @@ class Semaines
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['semaines:read'])]
+    #[Groups(['semaines:read', 'ofsOperateurView:read'])]
     private ?int $id = null;
 
     #[ORM\Column]
-    #[Groups(['semaines:read', 'semaines:write', 'semainesUpdate:write'])]
+    #[Groups(['semaines:read', 'semaines:write', 'semainesUpdate:write', 'ofsOperateurView:read'])]
     #[SerializedName('annees')]
     private ?int $annees = null;
 
     #[ORM\Column]
-    #[Groups(['semaines:read', 'semaines:write', 'semainesUpdate:write'])]
+    #[Groups(['semaines:read', 'semaines:write', 'semainesUpdate:write', 'ofsOperateurView:read'])]
     #[SerializedName('mois')]
     private ?int $mois = null;
 
     #[ORM\Column]
-    #[Groups(['semaines:read', 'semaines:write'])]
+    #[Groups(['semaines:read', 'semaines:write', 'ofsOperateurView:read'])]
     #[SerializedName('semaine')]
     private ?int $semaine = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
-    #[Groups(['semaines:read', 'semaines:write'])]
+    #[Groups(['semaines:read', 'semaines:write', 'ofsOperateurView:read'])]
     #[SerializedName('dateDebutSemaine')]
     private ?\DateTimeInterface $dateDebut_semaine = null;
 
     #[ORM\OneToMany(targetEntity: OFs::class, mappedBy: 'semaine_of')]
     #[Groups(['semaines:read'])]
-    #[SerializedName('ofs_semaine')]
+    #[SerializedName('ofsSemaine')]
     private Collection $ofs_semaine;
 
     public function getId(): ?int

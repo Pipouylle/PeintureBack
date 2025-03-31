@@ -68,32 +68,33 @@ class ArticleCouche
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['article_couche:read' , 'articles_articleCouche:read', 'articleCoucheForDemande:read', 'articleCoucheBySystemeAndCommande:read'])]
+    #[Groups(['article_couche:read' , 'articles_articleCouche:read', 'articleCoucheForDemande:read', 'articleCoucheBySystemeAndCommande:read', 'ofsOperateurView:read'])]
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 15, scale: 2, nullable: true)]
-    #[Groups(['article_couche:read', 'article_couche:write', 'articleCoucheForDemande:read', 'articleCoucheBySystemeAndCommande:read'])]
+    #[Groups(['article_couche:read', 'article_couche:write', 'articleCoucheForDemande:read', 'articleCoucheBySystemeAndCommande:read', 'ofsOperateurView:read'])]
     #[SerializedName('tarifArticleCouche')]
     private ?string $tarif_articleCouche = null;
 
     #[ORM\ManyToMany(targetEntity: Articles::class, mappedBy: 'articleCouches_article')]
-    #[Groups(['articles_articleCouche:read', 'articles_articleCouche:write', 'articleCoucheForDemande:read', 'articleCoucheBySystemeAndCommande:read'])]
+    #[Groups(['articles_articleCouche:read', 'articles_articleCouche:write', 'articleCoucheForDemande:read', 'articleCoucheBySystemeAndCommande:read', 'ofsOperateurView:read'])]
     #[SerializedName('articlesArticleCouche')]
     private ?Collection $articles_articleCouche;
 
     #[ORM\ManyToOne(targetEntity: Couches::class, inversedBy: 'articleCouches_couche')]
     #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
-    #[Groups(['article_couche:read', 'article_couche:write', 'articleCoucheForDemande:read', 'articleCoucheBySystemeAndCommande:read'])]
+    #[Groups(['article_couche:read', 'article_couche:write', 'articleCoucheForDemande:read', 'articleCoucheBySystemeAndCommande:read', 'ofsOperateurView:read'])]
     #[SerializedName('coucheArticleCouche')]
     private ?Couches $couche_articleCouche = null;
 
     #[ORM\ManyToOne(targetEntity: Commandes::class, inversedBy: 'articleCouches_commande')]
     #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
-    #[Groups(['article_couche:read', 'article_couche:write', 'articleCoucheForDemande:read', 'articleCoucheBySystemeAndCommande:read'])]
+    #[Groups(['article_couche:read', 'article_couche:write', 'articleCoucheForDemande:read', 'articleCoucheBySystemeAndCommande:read', 'ofsOperateurView:read'])]
     #[SerializedName('commandeArticleCouche')]
     private ?Commandes $commande_articleCouche = null;
 
     #[ORM\OneToMany(targetEntity: SurfaceCouches::class, mappedBy: 'articleCouche_surfaceCouche')]
+    #[SerializedName('surfaceCouchesArticleCouche')]
     private Collection $surfaceCouches_articleCouche;
 
     public function getId(): ?int
