@@ -16,6 +16,12 @@ class ExcelOfOutput
     public string $numeroAffaire;
 
     #[Groups(['excel:read'])]
+    public string $numeroDemande;
+
+    #[Groups(['excel:read'])]
+    public string $eurekaCommande;
+
+    #[Groups(['excel:read'])]
     public string $nomSysteme;
 
     #[Groups(['excel:read'])]

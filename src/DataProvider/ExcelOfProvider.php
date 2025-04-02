@@ -27,6 +27,8 @@ class ExcelOfProvider implements ProviderInterface
             $dto = new ExcelOfOutput();
             $dto->id = $of->getId();
             $dto->jour = $of->getJourOf()->getJour();
+            $dto->numeroDemande = $of->getIdDemandeOf()->getNumeroDemande();
+            $dto->eurekaCommande = $of->getIdDemandeOf()->getCommandeDemande()->getEurekaCommande();
             $dto->nomAffaire = $of->getIdDemandeOf()->getCommandeDemande()->getAffaireCommande()->getNomAffaire();
             $dto->numeroAffaire = $of->getIdDemandeOf()->getCommandeDemande()->getAffaireCommande()->getNumeroAffaire();
             $dto->nomSysteme = $of->getIdDemandeOf()->getCommandeDemande()->getSystemeCommande()->getNomSysteme();

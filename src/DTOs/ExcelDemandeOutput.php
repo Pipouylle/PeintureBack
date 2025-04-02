@@ -10,6 +10,12 @@ class ExcelDemandeOutput
     public string $numero;
 
     #[Groups(['excel:read'])]
+    public string $numeroAffaire;
+
+    #[Groups(['excel:read'])]
+    public string $nomAffaire;
+
+    #[Groups(['excel:read'])]
     public string $numeroEureka;
 
     #[Groups(['excel:read'])]
@@ -23,4 +29,7 @@ class ExcelDemandeOutput
 
     #[Groups(['excel:read'])]
     public string $etat;
+
+    #[Groups(['excel:read'])]
+    public int $avancement;
 }

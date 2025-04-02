@@ -25,12 +25,19 @@ class ExcelDemandeProvider implements ProviderInterface
         foreach ($demandes as $demande) {
             $dto = new ExcelDemandeOutput();
             $dto->numero = $demande->getNumeroDemande();
+            $dto->numeroAffaire = $demande->getCommandeDemande()->getAffaireCommande()->getNumeroAffaire();
+            $dto->nomAffaire = $demande->getCommandeDemande()->getAffaireCommande()->getNomAffaire();
             $dto->numeroEureka = $demande->getCommandeDemande()->getEurekaCommande();
-            $dto->surface = $demande->getSurfaceDemande();
+            $dto->surface =  $demande->getSurfaceDemande();
             $dto->etat = $demande->getEtatDemande();
             $dto->commentaire = $demande->getCommentaireDemande();
             $dto->nombrePieces = $demande->getNombrePieceDemande();
-            // Add other fields as needed
+            $avancement = 0;
+            $ofs = $demande->getOfs();
+            foreach ($ofs as $of) {
+                $avancement += $of->getAvancementOf();
+            }
+            $dto->avancement = $avancement;
 
             $dtos[] = $dto;
         }
