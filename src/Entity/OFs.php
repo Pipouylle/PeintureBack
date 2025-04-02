@@ -42,9 +42,9 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
             name: 'update regie of',
         ),
         new Patch(
-            uriTemplate: '/ofsAvancement/{id}',
+            uriTemplate: '/avancement/ofs/{id}',
             normalizationContext: ['groups' => ['ofs:read']],
-            denormalizationContext: ['groups' => ['ofsAvancement:write']],
+            denormalizationContext: ['groups' => ['avancement:write']],
             name: 'update avancement of',
         ),
         new GetCollection(
@@ -65,7 +65,12 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
             output: ExcelOfOutput::class,
             name: 'sortie des ofs pour les excels',
             provider: ExcelOfProvider::class
-        )
+        ),
+        new GetCollection(
+          uriTemplate: '/avancement/ofs',
+          normalizationContext: ['groups' => ['avancement:read']],
+          name: 'get all of for avancement',
+        ),
     ],
     normalizationContext: ['groups' => ['ofs:read']],
     denormalizationContext: ['groups' => ['ofs:write']],
@@ -78,59 +83,59 @@ class OFs
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['ofs:read', 'ofsOperateurView:read'])]
+    #[Groups(['ofs:read', 'ofsOperateurView:read', 'avancement:read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 50, nullable: true)]
-    #[Groups(['ofs:read', 'ofs:write', 'ofsOperateurView:read'])]
+    #[Groups(['ofs:read', 'ofs:write', 'ofsOperateurView:read', 'avancement:read'])]
     #[SerializedName('cabineOf')]
     private ?string $cabine_of = null;
 
     #[ORM\Column(type: Types::INTEGER, nullable: true)]
-    #[Groups(['ofs:read', 'ofs:write', 'ofsAvancement:write', 'ofsOperateurView:read'])]
+    #[Groups(['ofs:read', 'ofs:write', 'ofsAvancement:write', 'ofsOperateurView:read', 'avancement:read'])]
     #[SerializedName('avancementOf')]
     private ?int $avancement_of = null;
 
     #[ORM\ManyToOne(targetEntity: Demandes::class, inversedBy: 'Of_demande')]
     #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
-    #[Groups(['ofs:read', 'ofs:write', 'ofsOperateurView:read'])]
+    #[Groups(['ofs:read', 'ofs:write', 'ofsOperateurView:read', 'avancement:read'])]
     #[SerializedName('demandeOf')]
     private ?Demandes $idDemande_of = null;
 
     #[ORM\ManyToOne(targetEntity: Jours::class, inversedBy: 'ofs_jour',)]
     #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
-    #[Groups(['ofs:read', 'ofs:write', 'ofsOperateurView:read'])]
+    #[Groups(['ofs:read', 'ofs:write', 'ofsOperateurView:read', 'avancement:read'])]
     #[SerializedName('jourOf')]
     private ?Jours $jour_of = null;
 
     #[ORM\ManyToOne(targetEntity: Semaines::class, inversedBy: 'ofs_semaine',)]
     #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
-    #[Groups(['ofs:read', 'ofs:write', 'ofsOperateurView:read'])]
+    #[Groups(['ofs:read', 'ofs:write', 'ofsOperateurView:read', 'avancement:read'])]
     #[SerializedName('semaineOf')]
     private ?Semaines $semaine_of = null;
 
     #[ORM\Column(type: Types::INTEGER, nullable: true)]
-    #[Groups(['ofs:read', 'ofs:write', 'ofsOrder:write', 'ofsOperateurView:read'])]
+    #[Groups(['ofs:read', 'ofs:write', 'ofsOrder:write', 'ofsOperateurView:read', 'avancement:read'])]
     #[SerializedName('orderOf')]
     private ?int $order_of = null;
 
     #[ORM\Column(length: 100, nullable: true)]
-    #[Groups(['ofs:read', 'ofs:write', 'ofsOperateurView:read'])]
+    #[Groups(['ofs:read', 'ofs:write', 'ofsOperateurView:read', 'avancement:read'])]
     #[SerializedName('tempOf')]
     private ?string $temp_of = null;
 
     #[ORM\Column(type: Types::INTEGER, nullable: true)]
-    #[Groups(['ofs:read', 'ofs:write', 'ofsRegie:write', 'ofsAvancement:write', 'ofsOperateurView:read'])]
+    #[Groups(['ofs:read', 'ofs:write', 'ofsRegie:write', 'avancement:write', 'ofsOperateurView:read', 'avancement:read'])]
     #[SerializedName('regieSFPOf')]
     private ?int $regieSFP_of = null;
 
     #[ORM\Column(type: Types::INTEGER, nullable: true)]
-    #[Groups(['ofs:read', 'ofs:write', 'ofsRegie:write', 'ofsAvancement:write', 'ofsOperateurView:read'])]
+    #[Groups(['ofs:read', 'ofs:write', 'ofsRegie:write', 'avancement:write', 'ofsOperateurView:read', 'avancement:read'])]
     #[SerializedName('regieFPOf')]
     private ?int $regieFP_of = null;
 
     #[ORM\OneToMany(targetEntity: AvancementSurfaceCouches::class, mappedBy: 'of_avancement')]
-    #[Groups(['ofsOperateurView:read'])]
+    #[Groups(['ofsOperateurView:read', 'avancement:read', 'avancement:write'])]
     #[SerializedName('avancementSurfaceCouchesOf')]
     private Collection $avancementSurfaceCouches_of;
 

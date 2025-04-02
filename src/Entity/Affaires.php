@@ -49,16 +49,16 @@ class Affaires
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['affaires:read', 'RecapSemaine:read', 'ofsOperateurView:read'])]
+    #[Groups(['affaires:read', 'RecapSemaine:read', 'ofsOperateurView:read', 'avancement:read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 50, nullable: true)]
-    #[Groups(['affaires:read', 'affaires:write', 'RecapSemaine:read', 'ofsOperateurView:read'])]
+    #[Groups(['affaires:read', 'affaires:write', 'RecapSemaine:read', 'ofsOperateurView:read', 'avancement:read'])]
     #[SerializedName('numeroAffaire')]
     private ?string $numero_affaire = null;
 
     #[ORM\Column(length: 50, nullable: true)]
-    #[Groups(['affaires:read', 'affaires:write', 'RecapSemaine:read', 'ofsOperateurView:read'])]
+    #[Groups(['affaires:read', 'affaires:write', 'RecapSemaine:read', 'ofsOperateurView:read', 'avancement:read'])]
     #[SerializedName('nomAffaire')]
     private ?string $nom_affaire = null;
 

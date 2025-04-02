@@ -24,12 +24,12 @@ class SurfaceCouches
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['surface_couches:read', 'ofsOperateurView:read'])]
+    #[Groups(['surface_couches:read', 'ofsOperateurView:read', 'avancement:read'])]
     private ?int $id = null;
 
     #[ORM\ManyToOne(targetEntity: ArticleCouche::class, inversedBy: 'surfaceCouches_articleCouche')]
     #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
-    #[Groups(['surface_couches:read', 'surface_couches:write', 'ofsOperateurView:read'])]
+    #[Groups(['surface_couches:read', 'surface_couches:write', 'ofsOperateurView:read', 'avancement:read'])]
     #[SerializedName('articleCoucheSurfaceCouche')]
     private ?ArticleCouche $articleCouche_surfaceCouche = null;
 
@@ -40,7 +40,7 @@ class SurfaceCouches
     private ?Demandes $demande_surfaceCouche = null;
 
     #[ORM\Column(type: Types::BIGINT, nullable: true)]
-    #[Groups(['surface_couches:read', 'surface_couches:write', 'ofsOperateurView:read'])]
+    #[Groups(['surface_couches:read', 'surface_couches:write', 'ofsOperateurView:read', 'avancement:read'])]
     #[SerializedName('surface')]
     private ?string $surface = null;
 

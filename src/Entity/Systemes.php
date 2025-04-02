@@ -42,7 +42,7 @@ class Systemes
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
-    #[Groups(['systemes:read', 'systemes:write', 'commandesAffairesSystemes:read', 'ofsOperateurView:read'])]
+    #[Groups(['systemes:read', 'systemes:write', 'commandesAffairesSystemes:read', 'ofsOperateurView:read', 'avancement:read'])]
     #[SerializedName('nomSysteme')]
     private ?string $nom_systeme = null;
 

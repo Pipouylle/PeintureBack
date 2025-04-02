@@ -55,22 +55,22 @@ class Articles
 {
     #[ORM\Id]
     #[ORM\Column(type: Types::BIGINT)]
-    #[Groups(['articles:read', 'articles:write', 'articleCoucheForDemande:read', 'ofsOperateurView:read'])]
+    #[Groups(['articles:read', 'articles:write', 'articleCoucheForDemande:read', 'ofsOperateurView:read', 'avancement:read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 200, nullable: true)]
-    #[Groups(['articles:read', 'articles:write', 'articleCoucheForDemande:read', 'articlesPatch:write', 'ofsOperateurView:read'])]
+    #[Groups(['articles:read', 'articles:write', 'articleCoucheForDemande:read', 'articlesPatch:write', 'ofsOperateurView:read', 'avancement:read'])]
     #[SerializedName('designationArticle')]
     private ?string $designation_article = null;
 
     #[ORM\Column(length: 50, nullable: true)]
-    #[Groups(['articles:read', 'articles:write', 'articleCoucheForDemande:read', 'articlesPatch:write', 'ofsOperateurView:read'])]
+    #[Groups(['articles:read', 'articles:write', 'articleCoucheForDemande:read', 'articlesPatch:write', 'ofsOperateurView:read', 'avancement:read'])]
     #[SerializedName('RALArticle')]
     private ?string $ral_article = null;
 
     #[ORM\ManyToOne(targetEntity: Fournisseur::class, inversedBy: 'articles_fournisseur')]
     #[ORM\JoinColumn(onDelete: 'CASCADE')]
-    #[Groups(['articles:read', 'articles:write', 'articleCoucheForDemande:read', 'articlesPatch:write', 'ofsOperateurView:read'])]
+    #[Groups(['articles:read', 'articles:write', 'articleCoucheForDemande:read', 'articlesPatch:write', 'ofsOperateurView:read', 'avancement:read'])]
     #[SerializedName('fournisseurArticle')]
     private ?Fournisseur $fournisseur_article = null;
 

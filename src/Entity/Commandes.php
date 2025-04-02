@@ -56,63 +56,63 @@ class Commandes
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['commandes:read', 'commandesAffaires:read', 'RecapSemaine:read', 'ofsOperateurView:read'])]
+    #[Groups(['commandes:read', 'commandesAffaires:read', 'RecapSemaine:read', 'ofsOperateurView:read', 'avancement:read'])]
     private ?int $id = null;
 
     #[ORM\ManyToOne(targetEntity: Affaires::class, inversedBy: 'commandes_affaire')]
     #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
-    #[Groups(['commandes:read', 'commandes:write', 'RecapSemaine:read', 'ofsOperateurView:read'])]
+    #[Groups(['commandes:read', 'commandes:write', 'RecapSemaine:read', 'ofsOperateurView:read', 'avancement:read'])]
     #[SerializedName('affaireCommande')]
     private ?Affaires $affaire_commande = null;
 
     #[ORM\ManyToOne(targetEntity: Systemes::class, inversedBy: 'commande_systeme')]
     #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
-    #[Groups(['commandes:read', 'commandes:write', 'RecapSemaine:read', 'ofsOperateurView:read'])]
+    #[Groups(['commandes:read', 'commandes:write', 'RecapSemaine:read', 'ofsOperateurView:read', 'avancement:read'])]
     #[SerializedName('systemeCommande')]
     private ?Systemes $systeme_commande = null;
 
     #[ORM\Column(length: 50)]
-    #[Groups(['commandes:read', 'commandes:write', 'RecapSemaine:read', 'ofsOperateurView:read'])]
+    #[Groups(['commandes:read', 'commandes:write', 'RecapSemaine:read', 'ofsOperateurView:read', 'avancement:read'])]
     #[SerializedName('eurekaCommande')]
     private ?string $eureka_commande = null;
 
     #[ORM\Column(length: 100, nullable: true)]
-    #[Groups(['commandes:read', 'commandes:write', 'RecapSemaine:read', 'ofsOperateurView:read'])]
+    #[Groups(['commandes:read', 'commandes:write', 'RecapSemaine:read', 'ofsOperateurView:read', 'avancement:read'])]
     #[SerializedName('commentaireCommande')]
     private ?string $commentaire_commande = null;
 
     #[ORM\Column(type: Types::BIGINT, nullable: true)]
-    #[Groups(['commandes:read', 'commandes:write', 'RecapSemaine:read', 'ofsOperateurView:read'])]
+    #[Groups(['commandes:read', 'commandes:write', 'RecapSemaine:read', 'ofsOperateurView:read', 'avancement:read'])]
     #[SerializedName('surfaceCommande')]
     private ?string $surface_commande = null;
 
     #[ORM\Column(type: Types::BOOLEAN, nullable: true)]
-    #[Groups(['commandes:read', 'commandes:write', 'RecapSemaine:read', 'ofsOperateurView:read'])]
+    #[Groups(['commandes:read', 'commandes:write', 'RecapSemaine:read', 'ofsOperateurView:read', 'avancement:read'])]
     #[SerializedName('ficheHCommande')]
     private ?bool $ficheH_commande = null;
 
     #[ORM\Column(type: Types::BOOLEAN, nullable: true)]
-    #[Groups(['commandes:read', 'commandes:write', 'RecapSemaine:read', 'ofsOperateurView:read'])]
+    #[Groups(['commandes:read', 'commandes:write', 'RecapSemaine:read', 'ofsOperateurView:read', 'avancement:read'])]
     #[SerializedName('pvPeintureCommande')]
     private ?bool $pvPeinture_commande = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 15, scale: 2, nullable: true)]
-    #[Groups(['commandes:read', 'commandes:write', 'RecapSemaine:read', 'ofsOperateurView:read'])]
+    #[Groups(['commandes:read', 'commandes:write', 'RecapSemaine:read', 'ofsOperateurView:read', 'avancement:read'])]
     #[SerializedName('regieSFPCommande')]
     private ?string $regieSFP_commande = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 15, scale: 2, nullable: true)]
-    #[Groups(['commandes:read', 'commandes:write', 'RecapSemaine:read', 'ofsOperateurView:read'])]
+    #[Groups(['commandes:read', 'commandes:write', 'RecapSemaine:read', 'ofsOperateurView:read', 'avancement:read'])]
     #[SerializedName('regieFPCommande')]
     private ?string $regieFP_commande = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 15, scale: 2, nullable: true)]
-    #[Groups(['commandes:read', 'commandes:write', 'RecapSemaine:read', 'ofsOperateurView:read'])]
+    #[Groups(['commandes:read', 'commandes:write', 'RecapSemaine:read', 'ofsOperateurView:read', 'avancement:read'])]
     #[SerializedName('grenaillageCommande')]
     private ?string $grenaillage_commande = null;
 
     #[ORM\Column(type: Types::INTEGER, nullable: true)]
-    #[Groups(['commandes:read', 'commandes:write', 'RecapSemaine:read', 'ofsOperateurView:read'])]
+    #[Groups(['commandes:read', 'commandes:write', 'RecapSemaine:read', 'ofsOperateurView:read', 'avancement:read'])]
     #[SerializedName('ralCommande')]
     private ?int $ral_commande = null;
 
