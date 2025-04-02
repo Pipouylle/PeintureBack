@@ -17,6 +17,8 @@ use ApiPlatform\Metadata\Put;
 use App\Controller\CreateStockController;
 use App\Controller\StockLeaveController;
 use App\Controller\StockUnLeaveController;
+use App\DataProvider\ExcelStockProvider;
+use App\DTOs\ExcelStockOutput;
 use App\Repository\StocksRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -51,6 +53,13 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
             normalizationContext: ['groups' => ['stocks:read']],
             name: 'faire un nombre d entrees dans stock'
         ),
+        new GetCollection(
+            uriTemplate: '/excel/stocks',
+            normalizationContext: ['groups' => ['excel:read']],
+            output: ExcelStockOutput::class,
+            name: 'sortie des stocks pour les excels',
+            provider: ExcelStockProvider::class,
+        )
     ],
     normalizationContext: ['groups' => ['stocks:read']],
     denormalizationContext: ['groups' => ['stocks:write']],

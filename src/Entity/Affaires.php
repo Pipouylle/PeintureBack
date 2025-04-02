@@ -9,6 +9,8 @@ use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Put;
+use App\DataProvider\ExcelAffaireProvider;
+use App\DTOs\ExcelAffaireOutput;
 use App\Repository\AffairesRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
@@ -30,6 +32,13 @@ use Symfony\Component\Serializer\Annotation\SerializedName;
             normalizationContext: ['groups' => ['RecapSemaine:read']],
             name: 'RecapSemaine'
         ),
+        new GetCollection(
+            uriTemplate: '/excel/affaires',
+            normalizationContext: ['groups' => ['excel:read']],
+            output: ExcelAffaireOutput::class,
+            name: 'sortie eds affaires pour les excels',
+            provider: ExcelAffaireProvider::class,
+        )
     ],
     normalizationContext: ['groups' => ['affaires:read']],
     denormalizationContext: ['groups' => ['affaires:write']],
@@ -53,7 +62,7 @@ class Affaires
     #[SerializedName('nomAffaire')]
     private ?string $nom_affaire = null;
 
-    #[ORM\OneToMany(targetEntity: Commandes::class, mappedBy: 'affaire_commande', fetch: 'EAGER')]
+    #[ORM\OneToMany(targetEntity: Commandes::class, mappedBy: 'affaire_commande')]
     #[Groups(['RecapSemaine:read'])]
     #[SerializedName('commandesAffaire')]
     private Collection $commandes_affaire;

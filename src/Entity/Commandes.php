@@ -11,7 +11,9 @@ use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use App\Controller\CommandesAffaireController;
+use App\DataProvider\ExcelCommandeProvider;
 use App\DTOs\CommandeWithAffaire;
+use App\DTOs\ExcelCommandeOutput;
 use App\Repository\CommandesRepository;
 use App\State\CommandeAffairesSystemesProvider;
 use Doctrine\Common\Collections\Collection;
@@ -36,6 +38,13 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
             name: 'CommandesCategories',
             provider: CommandeAffairesSystemesProvider::class
         ),
+        new GetCollection(
+            uriTemplate: '/excel/commandes',
+            normalizationContext: ['groups' => ['excel:read']],
+            output: ExcelCommandeOutput::class,
+            name: 'sortie des commandes pour les excels',
+            provider: ExcelCommandeProvider::class,
+        )
     ],
     normalizationContext: ['groups' => ['commandes:read']],
     denormalizationContext: ['groups' => ['commandes:write']],

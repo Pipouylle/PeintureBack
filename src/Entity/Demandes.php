@@ -13,7 +13,9 @@ use ApiPlatform\Metadata\Post;
 use App\Controller\DemandeAllAvancementController;
 use App\Controller\DemandeNotFinishController;
 use App\Controller\GetPreviousAvancementController;
+use App\DataProvider\ExcelDemandeProvider;
 use App\DTOs\DemandesCalendar;
+use App\DTOs\ExcelDemandeOutput;
 use App\Repository\DemandesRepository;
 use App\State\DemandesCalendarProvider;
 use Doctrine\DBAL\Types\Types;
@@ -58,6 +60,13 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
             uriTemplate: '/allAvancements',
             controller: DemandeAllAvancementController::class,
             name: 'get avancement of all demandes'
+        ),
+        new GetCollection(
+            uriTemplate: '/excel/demandes',
+            normalizationContext: ['groups' => ['excel:read']],
+            output: ExcelDemandeOutput::class,
+            name: 'sortie des demandes pour les excels',
+            provider: ExcelDemandeProvider::class
         )
     ],
     normalizationContext: ['groups' => ['demandes:read']],

@@ -11,6 +11,8 @@ use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use App\Controller\ArticleCoucheByDemandeController;
+use App\DataProvider\ExcelArticleProvider;
+use App\DTOs\ExcelArticleOutput;
 use App\Repository\ArticlesRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -35,6 +37,13 @@ use Symfony\Component\Serializer\Attribute\Groups;
             uriTemplate: '/articleCouche/{demandeId}',
             controller: ArticleCoucheByDemandeController::class,
             name: 'articleCoucheByDemande'
+        ),
+        new GetCollection(
+            uriTemplate: '/excel/articles',
+            normalizationContext: ['groups' => ['excel:read']],
+            output: ExcelArticleOutput::class,
+            name: 'sortie des articles pour les excels',
+            provider: ExcelArticleProvider::class,
         )
     ],
     normalizationContext: ['groups' => ['articles:read']],

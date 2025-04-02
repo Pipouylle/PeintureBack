@@ -12,6 +12,8 @@ use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use App\Controller\OfForSortieStockController;
 use App\Controller\OfOperateurViewController;
+use App\DataProvider\ExcelOfProvider;
+use App\DTOs\ExcelOfOutput;
 use App\Repository\OFsRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
@@ -57,6 +59,13 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
             normalizationContext: ['groups' => ['ofsOperateurView:read']],
             name: 'get all of for operateur view'
         ),
+        new GetCollection(
+            uriTemplate: '/excel/ofs',
+            normalizationContext: ['groups' => ['excel:read']],
+            output: ExcelOfOutput::class,
+            name: 'sortie des ofs pour les excels',
+            provider: ExcelOfProvider::class
+        )
     ],
     normalizationContext: ['groups' => ['ofs:read']],
     denormalizationContext: ['groups' => ['ofs:write']],
