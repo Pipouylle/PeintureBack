@@ -19,6 +19,15 @@ class ExcelCommandeOutput
     public string $nomSysteme;
 
     #[Groups(['excel:read'])]
+    public string $typeSyteme;
+
+    #[Groups(['excel:read'])]
+    public int $surface;
+
+    #[Groups(['excel:read'])]
+    public int $avancementSurface;
+
+    #[Groups(['excel:read'])]
     public float $tarifGrenaillage;
 
     #[Groups(['excel:read'])]
@@ -38,7 +47,4 @@ class ExcelCommandeOutput
 
     #[Groups(['excel:read'])]
     public float $tarifRegieFP;
-
-    #[Groups(['excel:read'])]
-    public int $surface;
 }

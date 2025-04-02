@@ -19,7 +19,22 @@ class ExcelDemandeOutput
     public string $numeroEureka;
 
     #[Groups(['excel:read'])]
+    public string $nomSysteme;
+
+    #[Groups(['excel:read'])]
+    public string $typeSysteme;
+
+    #[Groups(['excel:read'])]
+    public string $date;
+
+    #[Groups(['excel:read'])]
     public int $surface;
+
+    #[Groups(['excel:read'])]
+    public int $avancement;
+
+    #[Groups(['excel:read'])]
+    public int $avancementSurface;
 
     #[Groups(['excel:read'])]
     public int $nombrePieces;
@@ -29,7 +44,4 @@ class ExcelDemandeOutput
 
     #[Groups(['excel:read'])]
     public string $etat;
-
-    #[Groups(['excel:read'])]
-    public int $avancement;
 }

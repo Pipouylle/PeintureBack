@@ -25,7 +25,16 @@ class ExcelOfOutput
     public string $nomSysteme;
 
     #[Groups(['excel:read'])]
+    public string $typeSysteme;
+
+    #[Groups(['excel:read'])]
+    public int $surface;
+
+    #[Groups(['excel:read'])]
     public int $avancement;
+
+    #[Groups(['excel:read'])]
+    public int $surfaceAvancement;
 
     #[Groups(['excel:read'])]
     public int $regieSFP;
@@ -37,5 +46,11 @@ class ExcelOfOutput
     public string $jour;
 
     #[Groups(['excel:read'])]
-    public int $idSemaine;
+    public int $anne;
+
+    #[Groups(['excel:read'])]
+    public int $mois;
+
+    #[Groups(['excel:read'])]
+    public int $semaine;
 }

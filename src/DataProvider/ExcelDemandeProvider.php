@@ -28,6 +28,8 @@ class ExcelDemandeProvider implements ProviderInterface
             $dto->numeroAffaire = $demande->getCommandeDemande()->getAffaireCommande()->getNumeroAffaire();
             $dto->nomAffaire = $demande->getCommandeDemande()->getAffaireCommande()->getNomAffaire();
             $dto->numeroEureka = $demande->getCommandeDemande()->getEurekaCommande();
+            $dto->nomSysteme = $demande->getCommandeDemande()->getSystemeCommande()->getNomSysteme();
+            $dto->typeSysteme = $demande->getCommandeDemande()->getSystemeCommande()->getTypeSysteme();
             $dto->surface =  $demande->getSurfaceDemande();
             $dto->etat = $demande->getEtatDemande();
             $dto->commentaire = $demande->getCommentaireDemande();
@@ -38,6 +40,8 @@ class ExcelDemandeProvider implements ProviderInterface
                 $avancement += $of->getAvancementOf();
             }
             $dto->avancement = $avancement;
+            $dto->avancementSurface = (int) (($dto->avancement * $dto->surface) / 100);
+            $dto->date = $demande->getDateDemande()->format('Y-m-d');
 
             $dtos[] = $dto;
         }

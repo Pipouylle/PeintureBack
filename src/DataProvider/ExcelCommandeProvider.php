@@ -29,7 +29,19 @@ class ExcelCommandeProvider implements ProviderInterface
             $dto->nomAffaire = $commande->getAffaireCommande()->getNomAffaire();
             $dto->numeroAffaire = $commande->getAffaireCommande()->getNumeroAffaire();
             $dto->nomSysteme = $commande->getSystemeCommande()->getNomSysteme();
+            $dto->typeSyteme = $commande->getSystemeCommande()->getTypeSysteme();
             $dto->surface = $commande->getSurfaceCommande();
+            $demandes = $commande->getDemandes();
+            $avancementsCommande = 0;
+            foreach ($demandes as $demande) {
+                $ofs = $demande->getOfs();
+                $avancementsDemande = 0;
+                foreach ($ofs as $of) {
+                    $avancementsDemande += $of->getAvancementOf();
+                }
+                $avancementsCommande += (int) (($avancementsDemande * $demande->getSurfaceDemande()) / 100);
+            }
+            $dto->avancementSurface = $avancementsCommande;
             $dto->tarifGrenaillage =  Floatval($commande->getGrenaillageCommande());
             $dto->tarifRegieFP =  Floatval($commande->getRegieFPCommande());
             $dto->tarifRegieSFP = Floatval($commande->getRegieSFPCommande());

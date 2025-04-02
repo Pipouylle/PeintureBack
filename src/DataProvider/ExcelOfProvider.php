@@ -32,8 +32,13 @@ class ExcelOfProvider implements ProviderInterface
             $dto->nomAffaire = $of->getIdDemandeOf()->getCommandeDemande()->getAffaireCommande()->getNomAffaire();
             $dto->numeroAffaire = $of->getIdDemandeOf()->getCommandeDemande()->getAffaireCommande()->getNumeroAffaire();
             $dto->nomSysteme = $of->getIdDemandeOf()->getCommandeDemande()->getSystemeCommande()->getNomSysteme();
-            $dto->idSemaine = $of->getSemaineOf()->getId();
+            $dto->typeSysteme = $of->getIdDemandeOf()->getCommandeDemande()->getSystemeCommande()->getTypeSysteme();
+            $dto->anne = $of->getSemaineOf()->getAnnees();
+            $dto->mois = $of->getSemaineOf()->getMois();
+            $dto->semaine = $of->getSemaineOf()->getSemaine();
+            $dto->surface = $of->getIdDemandeOf()->getSurfaceDemande();
             $dto->avancement = $of->getAvancementOf();
+            $dto->surfaceAvancement = (int)(($dto->avancement * $dto->surface) / 100);
             $dto->regieSFP = $of->getRegieSFPOf();
             $dto->regieFP = $of->getRegieFPOf();
 
