@@ -10,6 +10,8 @@ use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
+use App\DataProvider\ExcelFournisseurProvider;
+use App\DTOs\ExcelFournisseurOutput;
 use App\Repository\FournisseurRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -24,6 +26,13 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
         new Patch(),
         new Post(),
         new Delete(),
+        new GetCollection(
+            uriTemplate: '/excel/fournisseurs',
+            normalizationContext: ['groups' => ['excel:read']],
+            output: ExcelFournisseurOutput::class,
+            name: 'sortie des fournisseurs pour les excels',
+            provider: ExcelFournisseurProvider::class,
+        )
     ],
     normalizationContext: ['groups' => ['fournisseur:read']],
     denormalizationContext: ['groups' => ['fournisseur:write']],
@@ -43,9 +52,11 @@ class Fournisseur
     private ?string $nom_fournisseur = null;
 
     #[ORM\OneToMany(targetEntity: Systemes::class, mappedBy: 'fournisseur_systeme')]
+    #[SerializedName('systemesFournisseur')]
     private Collection $systemes_fournisseur;
 
     #[ORM\OneToMany(targetEntity: Articles::class, mappedBy: 'fournisseur_article')]
+    #[SerializedName('articlesFournisseur')]
     private Collection $articles_fournisseur;
 
     public function getId(): ?int

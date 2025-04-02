@@ -73,4 +73,14 @@ class DemandesRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+
+    public function getAllAvancements(): array
+    {
+        return $this->createQueryBuilder('d')
+            ->select('d.id as demandeId','COALESCE(SUM(o.avancement_of),0) as avancement')
+            ->leftJoin('d.Of_demande', 'o')
+            ->groupBy('d.id')
+            ->getQuery()
+            ->getArrayResult();
+    }
 }

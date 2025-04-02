@@ -54,7 +54,7 @@ class AvancementSurfaceCouches
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['avancement_surface_couches:read'])]
+    #[Groups(['avancement_surface_couches:read', 'ofsOperateurView:read'])]
     private ?int $id = null;
 
     #[ORM\ManyToOne(targetEntity: OFs::class, inversedBy: 'avancementSurfaceCouches_of')]
@@ -66,12 +66,12 @@ class AvancementSurfaceCouches
 
     #[ORM\ManyToOne(targetEntity: SurfaceCouches::class, inversedBy: 'avancementSurfaceCouches_surfaceCouches')]
     #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
-    #[Groups(['avancement_surface_couches:read', 'avancement_surface_couches:write'])]
+    #[Groups(['avancement_surface_couches:read', 'avancement_surface_couches:write', 'ofsOperateurView:read'])]
     #[SerializedName('surfaceCouchesAvancement')]
     private ?SurfaceCouches $surfaceCouches_avancement = null;
 
     #[ORM\Column(type: 'integer', nullable: true)]
-    #[Groups(['avancement_surface_couches:read', 'avancement_surface_couches:write', 'modifAvancement:write'])]
+    #[Groups(['avancement_surface_couches:read', 'avancement_surface_couches:write', 'modifAvancement:write', 'ofsOperateurView:read'])]
     #[SerializedName('avancementAvancement')]
     private ?int $avancement_avancement = null;
 

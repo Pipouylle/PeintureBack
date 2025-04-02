@@ -27,6 +27,7 @@ class ApiLoggerSubscriber implements EventSubscriberInterface
                 'method' => $request->getMethod(),
                 'status' => $response->getStatusCode(),
                 'body' => $response->getContent(),
+                'ip' => $request->getClientIp(),
             ]);
         }
     }

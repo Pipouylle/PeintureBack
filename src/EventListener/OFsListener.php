@@ -17,7 +17,7 @@ class OFsListener
         }
 
         if ($entity->getAvancementOf() > 0) {
-            throw new \Exception('Impossible de supprimer un OF dont l\'avancement est supérieur à 0.');
+            throw new \Exception('Impossible de supprimer un OF dont l\'avancement est supérieur à 0. ofIf = ' , $entity->getAvancementOf());
         }
     }
 }
