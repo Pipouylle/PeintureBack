@@ -58,7 +58,7 @@ class Systemes
 
     #[ORM\ManyToOne(targetEntity: Grenaillage::class, inversedBy: 'systemes_grenaillage')]
     #[ORM\JoinColumn(nullable: true, onDelete: 'CASCADE')]
-    #[Groups(['systemes:read', 'systemes:write', 'ofsOperateurView:read'])]
+    #[Groups(['systemes:read', 'systemes:write', 'ofsOperateurView:read', 'avancement:read'])]
     #[SerializedName('grenaillageSysteme')]
     private ?Grenaillage $grenaillage_systeme = null;
 

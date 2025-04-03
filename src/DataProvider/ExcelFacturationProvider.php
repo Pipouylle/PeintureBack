@@ -94,7 +94,7 @@ class ExcelFacturationProvider implements ProviderInterface
                     }
                     $avancementGreCommande += (($avancementGreDemande * $demande->getSurfaceDemande()) /100);
                     for ($i = 0; $i < $nbCouche; $i++) {
-                        $avancementCoucheCommande[$i] += (($avancementCoucheDemande[$i] * $demande->getSurfaceDemande()) / 100);
+                        $avancementCoucheCommande[$i] += (($avancementCoucheDemande[$i] * $demande->getSurfaceCouchesDemande()[0]->getSurface()) / 100);
                     }
                 }
 

@@ -14,8 +14,10 @@ use App\Controller\DemandeAllAvancementController;
 use App\Controller\DemandeNotFinishController;
 use App\Controller\GetPreviousAvancementController;
 use App\DataProvider\ExcelDemandeProvider;
+use App\DataProvider\PreviousAvancementProvider;
 use App\DTOs\DemandesCalendar;
 use App\DTOs\ExcelDemandeOutput;
+use App\DTOs\PreviousAvancementOutput;
 use App\Repository\DemandesRepository;
 use App\State\DemandesCalendarProvider;
 use Doctrine\DBAL\Types\Types;
@@ -46,9 +48,11 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
             provider: DemandesCalendarProvider::class
         ),
         new Get(
-            uriTemplate: '/previousAvancement/{demandeId}',
-            controller: GetPreviousAvancementController::class,
-            name: 'getPreviousAvancement',
+            uriTemplate: '/previousAvancement/{demandeId}/{ofId}',
+            normalizationContext: ['groups' => ['previousAvancement:read']],
+            output: PreviousAvancementOutput::class,
+            name: 'previous avancement',
+            provider: PreviousAvancementProvider::class
         ),
         new GetCollection(
             uriTemplate: '/demandeNotFinish',
