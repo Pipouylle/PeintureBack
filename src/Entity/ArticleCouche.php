@@ -68,7 +68,7 @@ class ArticleCouche
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['article_couche:read' , 'articles_articleCouche:read', 'articleCoucheForDemande:read', 'articleCoucheBySystemeAndCommande:read', 'ofsOperateurView:read'])]
+    #[Groups(['article_couche:read' , 'articles_articleCouche:read', 'articleCoucheForDemande:read', 'articleCoucheBySystemeAndCommande:read', 'ofsOperateurView:read', 'avancement:read'])]
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 15, scale: 2, nullable: true)]
@@ -83,7 +83,7 @@ class ArticleCouche
 
     #[ORM\ManyToOne(targetEntity: Couches::class, inversedBy: 'articleCouches_couche')]
     #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
-    #[Groups(['article_couche:read', 'article_couche:write', 'articleCoucheForDemande:read', 'articleCoucheBySystemeAndCommande:read', 'ofsOperateurView:read'])]
+    #[Groups(['article_couche:read', 'article_couche:write', 'articleCoucheForDemande:read', 'articleCoucheBySystemeAndCommande:read', 'ofsOperateurView:read', 'avancement:read'])]
     #[SerializedName('coucheArticleCouche')]
     private ?Couches $couche_articleCouche = null;
 

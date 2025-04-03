@@ -39,7 +39,7 @@ class Couches
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['couches:read', 'articleCoucheForDemande:read', 'ofsOperateurView:read'])]
+    #[Groups(['couches:read', 'articleCoucheForDemande:read', 'ofsOperateurView:read', 'avancement:read'])]
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 15, scale: 2, nullable: true)]
@@ -48,7 +48,7 @@ class Couches
     private ?string $epaisseur_couche = null;
 
     #[ORM\Column(length: 50,nullable: true)]
-    #[Groups(['couches:read', 'couches:write', 'articleCoucheForDemande:read', 'ofsOperateurView:read'])]
+    #[Groups(['couches:read', 'couches:write', 'articleCoucheForDemande:read', 'ofsOperateurView:read', 'avancement:read'])]
     #[SerializedName('nomCouche')]
     private ?string $nom_couche = null;
 
