@@ -14,6 +14,7 @@ use App\Controller\AllAvancementDemandeController;
 use App\Controller\AllAvancementSemaineController;
 use App\Repository\AvancementSurfaceCouchesRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Svg\Tag\Path;
 use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Serializer\Attribute\SerializedName;
 
@@ -31,6 +32,12 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
             denormalizationContext: ['groups' => ['modifAvancement:write']],
             name: 'update avancement surface couches'
         ),
+        new Patch(
+            uriTemplate: '/avancement/avancementSurfaceCouches/{id}',
+            normalizationContext: ['groups' => ['avancement_surface_couches:read']],
+            denormalizationContext: ['groups' => ['avancement:write']],
+            name: 'update avancement des avancement surface couches'
+        ),
         new GetCollection(
             uriTemplate: '/allAvancementSemaine/{semaineId}',
             controller: AllAvancementSemaineController::class,
@@ -42,7 +49,7 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
             controller: AllAvancementDemandeController::class,
             normalizationContext: ['groups' => ['avancement_surface_couches:read']],
             name: 'all avancement surface couches by demande'
-        )
+        ),
     ],
     normalizationContext: ['groups' => ['avancement_surface_couches:read']],
     denormalizationContext: ['groups' => ['avancement_surface_couches:write']],

@@ -38,7 +38,7 @@ class Systemes
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['systemes:read', 'commandesAffairesSystemes:read', 'ofsOperateurView:read'])]
+    #[Groups(['systemes:read', 'commandesAffairesSystemes:read', 'ofsOperateurView:read', 'avancement:read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]

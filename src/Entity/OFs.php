@@ -69,7 +69,6 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
         new GetCollection(
           uriTemplate: '/avancement/ofs',
           normalizationContext: ['groups' => ['avancement:read']],
-          name: 'get all of for avancement',
         ),
     ],
     normalizationContext: ['groups' => ['ofs:read']],
@@ -92,7 +91,7 @@ class OFs
     private ?string $cabine_of = null;
 
     #[ORM\Column(type: Types::INTEGER, nullable: true)]
-    #[Groups(['ofs:read', 'ofs:write', 'ofsAvancement:write', 'ofsOperateurView:read', 'avancement:read'])]
+    #[Groups(['ofs:read', 'ofs:write', 'ofsOperateurView:read', 'avancement:read', 'avancement:write'])]
     #[SerializedName('avancementOf')]
     private ?int $avancement_of = null;
 
@@ -135,7 +134,7 @@ class OFs
     private ?int $regieFP_of = null;
 
     #[ORM\OneToMany(targetEntity: AvancementSurfaceCouches::class, mappedBy: 'of_avancement')]
-    #[Groups(['ofsOperateurView:read', 'avancement:read', 'avancement:write'])]
+    #[Groups(['ofsOperateurView:read', 'avancement:read'])]
     #[SerializedName('avancementSurfaceCouchesOf')]
     private Collection $avancementSurfaceCouches_of;
 

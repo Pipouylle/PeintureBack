@@ -79,48 +79,48 @@ class Demandes
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['demandes:read', 'ofsOperateurView:read'])]
+    #[Groups(['demandes:read', 'ofsOperateurView:read', 'avancement:read'])]
     private ?int $id = null;
 
     #[ORM\Column(length: 50, nullable: true)]
-    #[Groups(['demandes:read', 'demandes:write', 'ofsOperateurView:read'])]
+    #[Groups(['demandes:read', 'demandes:write', 'ofsOperateurView:read', 'avancement:read'])]
     #[SerializedName('numeroDemande')]
     private ?string $numero_demande = null;
 
 
     #[ORM\ManyToOne(targetEntity: Commandes::class, inversedBy: 'demandes_commande')]
     #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
-    #[Groups(['demandes:read', 'demandes:write', 'ofsOperateurView:read'])]
+    #[Groups(['demandes:read', 'demandes:write', 'ofsOperateurView:read', 'avancement:read'])]
     #[SerializedName('commandeDemande')]
     private ?Commandes $commande_demande = null;
 
     #[ORM\Column(length: 50, nullable:  true)]
-    #[Groups(['demandes:read', 'demandes:write', 'demandesEtat:write', 'ofsOperateurView:read'])]
+    #[Groups(['demandes:read', 'demandes:write', 'demandesEtat:write', 'ofsOperateurView:read', 'avancement:read'])]
     #[SerializedName('etatDemande')]
     private ?string $etat_demande = null;
 
     #[ORM\Column(type: Types::BIGINT, nullable: true)]
-    #[Groups(['demandes:read', 'demandes:write', 'ofsOperateurView:read'])]
+    #[Groups(['demandes:read', 'demandes:write', 'ofsOperateurView:read', 'avancement:read'])]
     #[SerializedName('surfaceDemande')]
     private ?string $surface_demande = null;
 
     #[ORM\Column(type: Types::INTEGER, nullable: true)]
-    #[Groups(['demandes:read', 'demandes:write', 'ofsOperateurView:read'])]
+    #[Groups(['demandes:read', 'demandes:write', 'ofsOperateurView:read', 'avancement:read'])]
     #[SerializedName('nombrePieceDemande')]
     private ?int $nombrePiece_demande = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE, nullable: true)]
-    #[Groups(['demandes:read', 'demandes:write', 'ofsOperateurView:read'])]
+    #[Groups(['demandes:read', 'demandes:write', 'ofsOperateurView:read', 'avancement:read'])]
     #[SerializedName('dateDemande')]
     private ?\DateTimeInterface $date_demande = null;
 
     #[ORM\Column(type: Types::BOOLEAN, nullable: true)]
-    #[Groups(['demandes:read', 'demandes:write', 'ofsOperateurView:read'])]
+    #[Groups(['demandes:read', 'demandes:write', 'ofsOperateurView:read', 'avancement:read'])]
     #[SerializedName('reservationPeintureDemande')]
     private ?bool $reservationPeinture_demande = null;
 
     #[ORM\Column(length: 500, nullable: true)]
-    #[Groups(['demandes:read', 'demandes:write', 'ofsOperateurView:read'])]
+    #[Groups(['demandes:read', 'demandes:write', 'ofsOperateurView:read', 'avancement:read'])]
     #[SerializedName('commentaireDemande')]
     private ?string $commentaire_demande = null;
 

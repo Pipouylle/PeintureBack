@@ -32,7 +32,7 @@ class ExcelStockProvider implements ProviderInterface
             $dto->nomOperateur = $stock->getUserStock() !== null ? $stock->getUserStock()->getNameUser() : 'N/A';
 
             $dto->dateSortie = $stock->getDateSortieStock() !== null ? $stock->getDateSortieStock()->format('Y-m-d H:i:s') : 'N/A';
-            $dto->idOf = $stock->getOfStock() !== null ? $stock->getOfStock()->getId() : 'N/A';
+            $dto->idOf = $stock->getOfStock() !== null ? $stock->getOfStock()->getId() : 0;
             $dto->nomSysteme = $stock->getOfStock() !== null ? $stock->getOfStock()->getIdDemandeOf()->getCommandeDemande()->getSystemeCommande()->getNomSysteme() : 'N/A';
             $dto->typeSysteme = $stock->getOfStock() !== null ? $stock->getOfStock()->getIdDemandeOf()->getCommandeDemande()->getSystemeCommande()->getTypeSysteme() : 'N/A';
             // Add other fields as needed
