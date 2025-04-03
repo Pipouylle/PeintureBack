@@ -142,25 +142,25 @@ class ExcelFacturationProvider implements ProviderInterface
                     $dto->vaTotalGre = $avancementGreCommande * $dto->vaUnitGre;
                 }
                 if ($nbCouche > 0) {
-                    $dto->libC1 = '1 couche';
+                    $dto->libC1 = '1ere couche';
                     $dto->vaUnitC1 = floatval($commande->getCouches()[0]->getTarifArticleCouche());
                     $dto->qteC1 = $avancementCoucheCommande[0];
                     $dto->vaTotalC1 = $avancementCoucheCommande[0] * $dto->vaUnitC1;
                 }
                 if ($nbCouche > 1) {
-                    $dto->libC2 = '2 couche';
+                    $dto->libC2 = '2eme couche';
                     $dto->vaUnitC2 = floatval($commande->getCouches()[1]->getTarifArticleCouche());
                     $dto->qteC2 = $avancementCoucheCommande[1];
                     $dto->vaTotalC2 = $avancementCoucheCommande[1] * $dto->vaUnitC2;
                 }
                 if ($nbCouche > 2) {
-                    $dto->libC3 = '3 couche';
+                    $dto->libC3 = '3eme couche';
                     $dto->vaUnitC3 = floatval($commande->getCouches()[2]->getTarifArticleCouche());
                     $dto->qteC3 = $avancementCoucheCommande[2];
                     $dto->vaTotalC3 = $avancementCoucheCommande[2] * $dto->vaUnitC3;
                 }
                 if ($nbCouche > 3) {
-                    $dto->libC4 = '2 couche';
+                    $dto->libC4 = '4eme couche';
                     $dto->vaUnitC4 = floatval($commande->getCouches()[3]->getTarifArticleCouche());
                     $dto->qteC4 = $avancementCoucheCommande[3];
                     $dto->vaTotalC4 = $avancementCoucheCommande[3] * $dto->vaUnitC4;
