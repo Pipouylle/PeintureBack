@@ -7,6 +7,7 @@ use ApiPlatform\State\ProviderInterface;
 use App\DTOs\ExcelFacturationOutput;
 use App\Entity\Semaines;
 use Doctrine\ORM\EntityManagerInterface;
+use function Webmozart\Assert\Tests\StaticAnalysis\float;
 
 class ExcelFacturationProvider implements ProviderInterface
 {
@@ -21,11 +22,8 @@ class ExcelFacturationProvider implements ProviderInterface
     {
         $semaines = $this->em->getRepository(Semaines::class)->findAll();
         foreach ($semaines as $semaine) {
-            $dateDebut = $semaine->getDateDebutSemaine();
-            if (!$dateDebut) continue;
-
-            $annee = intval($dateDebut->format('Y'));
-            $mois = intval($dateDebut->format('m'));
+            $annee = $semaine->getAnnees();
+            $mois = $semaine->getMois();
             $cle = "$annee-$mois";
 
             if (!isset($semainesParMois[$cle])) {
@@ -54,15 +52,15 @@ class ExcelFacturationProvider implements ProviderInterface
                 $ofs = $semaine->getOfsSemaine();
                 foreach ($ofs as $of) {
                     $exist = false;
-                    $commande = $of->getIdDemandeOf()->getCommandeDemande();
+                    $commandeTest = $of->getIdDemandeOf()->getCommandeDemande();
                     foreach ($commandes as $commande) {
-                        if ($commande->getId() === $of->getIdDemandeOf()->getCommandeDemande()->getId()) {
+                        if ($commande->getId() === $commandeTest->getId()) {
                             $exist = true;
                             break;
                         }
                     }
                     if (!$exist) {
-                        $commandes[] = $commande;
+                        $commandes[] = $commandeTest;
                     }
                 }
             }
@@ -127,42 +125,42 @@ class ExcelFacturationProvider implements ProviderInterface
                 $dto->vaTotalC4 = 0;
 
                 $dto->libRegieSFP = 'Facturation de la régie SFP';
-                $dto->vaUnitRegieSFP = intval($commande->getRegieSFPCommande());
+                $dto->vaUnitRegieSFP = floatval($commande->getRegieSFPCommande());
                 $dto->qteRegieSFP = $regieSFPCommande;
                 $dto->vaTotalRegieSFP = $regieSFPCommande * $dto->vaUnitRegieSFP;
 
                 $dto->libRegieFP = 'Facturation de la régie FP';
-                $dto->vaUnitRegieFP = intval($commande->getRegieFPCommande());
+                $dto->vaUnitRegieFP = floatval($commande->getRegieFPCommande());
                 $dto->qteRegieFP = $regieFPCommande;
                 $dto->vaTotalRegieFP = $regieFPCommande * $dto->vaUnitRegieFP;
 
                 if($commande->getSystemeCommande()->getGrenaillageSysteme() !== null){
                     $dto->libGre = 'Facturation du grenaillage';
-                    $dto->vaUnitGre = intval($commande->getGrenaillageCommande());
+                    $dto->vaUnitGre = floatval($commande->getGrenaillageCommande());
                     $dto->qteGre = $avancementGreCommande;
                     $dto->vaTotalGre = $avancementGreCommande * $dto->vaUnitGre;
                 }
                 if ($nbCouche > 0) {
                     $dto->libC1 = 'Facturation de la couche 1';
-                    $dto->vaUnitC1 = intval($commande->getCouches()[0]->getTarifArticleCouche());
+                    $dto->vaUnitC1 = floatval($commande->getCouches()[0]->getTarifArticleCouche());
                     $dto->qteC1 = $avancementCoucheCommande[0];
                     $dto->vaTotalC1 = $avancementCoucheCommande[0] * $dto->vaUnitC1;
                 }
                 if ($nbCouche > 1) {
                     $dto->libC2 = 'Facturation de la couche 2';
-                    $dto->vaUnitC2 = intval($commande->getCouches()[1]->getTarifArticleCouche());
+                    $dto->vaUnitC2 = floatval($commande->getCouches()[1]->getTarifArticleCouche());
                     $dto->qteC2 = $avancementCoucheCommande[1];
                     $dto->vaTotalC2 = $avancementCoucheCommande[1] * $dto->vaUnitC2;
                 }
                 if ($nbCouche > 2) {
                     $dto->libC3 = 'Facturation de la couche 3';
-                    $dto->vaUnitC3 = intval($commande->getCouches()[2]->getTarifArticleCouche());
+                    $dto->vaUnitC3 = floatval($commande->getCouches()[2]->getTarifArticleCouche());
                     $dto->qteC3 = $avancementCoucheCommande[2];
                     $dto->vaTotalC3 = $avancementCoucheCommande[2] * $dto->vaUnitC3;
                 }
                 if ($nbCouche > 3) {
                     $dto->libC4 = 'Facturation de la couche 4';
-                    $dto->vaUnitC4 = intval($commande->getCouches()[3]->getTarifArticleCouche());
+                    $dto->vaUnitC4 = floatval($commande->getCouches()[3]->getTarifArticleCouche());
                     $dto->qteC4 = $avancementCoucheCommande[3];
                     $dto->vaTotalC4 = $avancementCoucheCommande[3] * $dto->vaUnitC4;
                 }

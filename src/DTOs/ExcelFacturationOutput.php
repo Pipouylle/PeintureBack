@@ -37,71 +37,71 @@ class ExcelFacturationOutput
     public string $libC1;
 
     #[Groups(['excel:read'])]
-    public int $vaUnitC1;
+    public float $vaUnitC1;
 
     #[Groups(['excel:read'])]
     public int $qteC1;
 
     #[Groups(['excel:read'])]
-    public int $vaTotalC1;
+    public float $vaTotalC1;
 
     #[Groups(['excel:read'])]
     public string $libC2;
 
     #[Groups(['excel:read'])]
-    public int $vaUnitC2;
+    public float $vaUnitC2;
 
     #[Groups(['excel:read'])]
     public int $qteC2;
 
     #[Groups(['excel:read'])]
-    public int $vaTotalC2;
+    public float $vaTotalC2;
 
     #[Groups(['excel:read'])]
     public string $libC3;
 
     #[Groups(['excel:read'])]
-    public int $vaUnitC3;
+    public float $vaUnitC3;
 
     #[Groups(['excel:read'])]
     public int $qteC3;
 
     #[Groups(['excel:read'])]
-    public int $vaTotalC3;
+    public float $vaTotalC3;
 
     #[Groups(['excel:read'])]
     public string $libC4;
 
     #[Groups(['excel:read'])]
-    public int $vaUnitC4;
+    public float $vaUnitC4;
 
     #[Groups(['excel:read'])]
     public int $qteC4;
 
     #[Groups(['excel:read'])]
-    public int $vaTotalC4;
+    public float $vaTotalC4;
 
     #[Groups(['excel:read'])]
     public string $libRegieSFP;
 
     #[Groups(['excel:read'])]
-    public int $vaUnitRegieSFP;
+    public float $vaUnitRegieSFP;
 
     #[Groups(['excel:read'])]
     public int $qteRegieSFP;
 
     #[Groups(['excel:read'])]
-    public int $vaTotalRegieSFP;
+    public float $vaTotalRegieSFP;
 
     #[Groups(['excel:read'])]
     public string $libRegieFP;
 
     #[Groups(['excel:read'])]
-    public int $vaUnitRegieFP;
+    public float $vaUnitRegieFP;
 
     #[Groups(['excel:read'])]
     public int $qteRegieFP;
 
     #[Groups(['excel:read'])]
-    public int $vaTotalRegieFP;
+    public float $vaTotalRegieFP;
 }
