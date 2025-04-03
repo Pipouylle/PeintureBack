@@ -25,13 +25,13 @@ class ExcelFacturationOutput
     public string $libGre;
 
     #[Groups(['excel:read'])]
-    public int $vaUnitGre;
+    public float $vaUnitGre;
 
     #[Groups(['excel:read'])]
     public int $qteGre;
 
     #[Groups(['excel:read'])]
-    public int $vaTotalGre;
+    public float $vaTotalGre;
 
     #[Groups(['excel:read'])]
     public string $libC1;
