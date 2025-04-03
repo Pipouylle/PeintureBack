@@ -71,6 +71,7 @@ class ExcelFacturationProvider implements ProviderInterface
                 $dto->mois = $mois;
                 $dto->chantier = $commande->getAffaireCommande()->getNomAffaire() . $commande->getAffaireCommande()->getNumeroAffaire();
                 $dto->commandeEureka = $commande->getEurekaCommande();
+                $dto->systeme = $commande->getSystemeCommande()->getNomSysteme();
 
                 $demandes = $commande->getDemandes();
                 $nbCouche = $commande->getSystemeCommande()->getCouches()->count();
@@ -141,25 +142,25 @@ class ExcelFacturationProvider implements ProviderInterface
                     $dto->vaTotalGre = $avancementGreCommande * $dto->vaUnitGre;
                 }
                 if ($nbCouche > 0) {
-                    $dto->libC1 = 'Facturation de la couche 1';
+                    $dto->libC1 = 'Facturation de la couche : ' . $commande->getSystemeCommande()->getCouches()[0]->getNomCouche();
                     $dto->vaUnitC1 = floatval($commande->getCouches()[0]->getTarifArticleCouche());
                     $dto->qteC1 = $avancementCoucheCommande[0];
                     $dto->vaTotalC1 = $avancementCoucheCommande[0] * $dto->vaUnitC1;
                 }
                 if ($nbCouche > 1) {
-                    $dto->libC2 = 'Facturation de la couche 2';
+                    $dto->libC2 = 'Facturation de la couche : ' . $commande->getSystemeCommande()->getCouches()[1]->getNomCouche();
                     $dto->vaUnitC2 = floatval($commande->getCouches()[1]->getTarifArticleCouche());
                     $dto->qteC2 = $avancementCoucheCommande[1];
                     $dto->vaTotalC2 = $avancementCoucheCommande[1] * $dto->vaUnitC2;
                 }
                 if ($nbCouche > 2) {
-                    $dto->libC3 = 'Facturation de la couche 3';
+                    $dto->libC3 = 'Facturation de la couche : ' . $commande->getSystemeCommande()->getCouches()[2]->getNomCouche();
                     $dto->vaUnitC3 = floatval($commande->getCouches()[2]->getTarifArticleCouche());
                     $dto->qteC3 = $avancementCoucheCommande[2];
                     $dto->vaTotalC3 = $avancementCoucheCommande[2] * $dto->vaUnitC3;
                 }
                 if ($nbCouche > 3) {
-                    $dto->libC4 = 'Facturation de la couche 4';
+                    $dto->libC4 = 'Facturation de la couche : ' . $commande->getSystemeCommande()->getCouches()[3]->getNomCouche();
                     $dto->vaUnitC4 = floatval($commande->getCouches()[3]->getTarifArticleCouche());
                     $dto->qteC4 = $avancementCoucheCommande[3];
                     $dto->vaTotalC4 = $avancementCoucheCommande[3] * $dto->vaUnitC4;

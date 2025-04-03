@@ -19,6 +19,9 @@ class ExcelFacturationOutput
     public string $chantier;
 
     #[Groups(['excel:read'])]
+    public string $systeme;
+
+    #[Groups(['excel:read'])]
     public string $commandeEureka;
 
     #[Groups(['excel:read'])]
