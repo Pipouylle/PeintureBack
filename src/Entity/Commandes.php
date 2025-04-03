@@ -12,6 +12,7 @@ use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use App\Controller\CommandesAffaireController;
 use App\DataProvider\ExcelCommandeProvider;
+use App\DataProvider\ExcelFacturationProvider;
 use App\DTOs\CommandeWithAffaire;
 use App\DTOs\ExcelCommandeOutput;
 use App\Repository\CommandesRepository;
@@ -44,6 +45,13 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
             output: ExcelCommandeOutput::class,
             name: 'sortie des commandes pour les excels',
             provider: ExcelCommandeProvider::class,
+        ),
+        new GetCollection(
+            uriTemplate: '/excel/facturations',
+            normalizationContext: ['groups' => ['excel:read']],
+            output: ExcelFacturationProvider::class,
+            name: 'facturations',
+            provider: ExcelFacturationProvider::class
         )
     ],
     normalizationContext: ['groups' => ['commandes:read']],
